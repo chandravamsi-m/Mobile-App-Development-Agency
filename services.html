@@ -1,0 +1,1525 @@
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile App Development Services &mdash; iOS, Android, Flutter, React Native | AppForge</title>
+  <meta name="description"
+    content="Full-spectrum mobile app development services including iOS, Android, Flutter, React Native, UI/UX design, backend development, QA, and maintenance.">
+  <meta property="og:title" content="Mobile App Development Services | AppForge">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    :root {
+      --hero-bg-bottom: #f8fafc;
+      --panel-shell-bg: rgba(255, 255, 255, .92);
+      --panel-shell-border: rgba(255, 255, 255, .55);
+      --panel-shell-shadow: 0 26px 80px rgba(15, 23, 42, .22);
+      --jump-card-bg: rgba(255, 255, 255, .92);
+      --jump-card-border: rgba(37, 99, 235, .12);
+      --jump-card-shadow: 0 14px 36px rgba(15, 23, 42, .08);
+      --jump-card-hover-shadow: 0 20px 42px rgba(15, 23, 42, .14);
+      --tool-shell-shadow: 0 18px 48px rgba(15, 23, 42, .08);
+    }
+
+    [data-theme="dark"] {
+      --hero-bg-bottom: var(--bg);
+      --panel-shell-bg: rgba(15, 23, 42, .65);
+      --panel-shell-border: rgba(255, 255, 255, .08);
+      --panel-shell-shadow: 0 26px 80px rgba(0, 0, 0, .5);
+      --jump-card-bg: rgba(15, 23, 42, .65);
+      --jump-card-border: rgba(255, 255, 255, .08);
+      --jump-card-shadow: 0 14px 36px rgba(0, 0, 0, .4);
+      --jump-card-hover-shadow: 0 20px 42px rgba(0, 0, 0, .5);
+      --tool-shell-shadow: 0 18px 48px rgba(0, 0, 0, .4);
+    }
+
+    .services-hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: calc(var(--nav-height) + 40px) 0 60px;
+      background:
+        radial-gradient(circle at top left, rgba(6, 182, 212, .16), transparent 34%),
+        radial-gradient(circle at 85% 20%, rgba(37, 99, 235, .18), transparent 30%),
+        linear-gradient(180deg, #0f172a 0%, #0a0f1d 100%);
+      border-bottom: 1px solid var(--border);
+      box-sizing: border-box;
+      text-align: center;
+      --text-primary: #ffffff;
+      --border: rgba(255, 255, 255, 0.25);
+      --bg-secondary: rgba(255, 255, 255, 0.08);
+    }
+
+    .services-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, .9), rgba(0, 0, 0, 0));
+      pointer-events: none;
+    }
+
+    .services-hero .breadcrumb {
+      display: flex;
+      justify-content: center;
+      margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
+    }
+
+    .services-hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .services-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: clamp(1rem, 3vh, 1.5rem);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(147, 197, 253, .25);
+      background: rgba(15, 23, 42, .45);
+      color: #bfdbfe;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .services-hero-title {
+      background: linear-gradient(135deg, #fff 30%, #93c5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      margin-bottom: clamp(1rem, 3vh, 1.5rem);
+      font-weight: 800;
+    }
+
+    .services-hero-desc {
+      color: rgba(255, 255, 255, .76);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.65;
+      margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
+      max-width: 580px;
+    }
+
+    .services-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-4);
+      margin-bottom: 0;
+    }
+
+    .services-jump {
+      position: relative;
+      margin-top: -44px;
+      z-index: 2;
+    }
+
+    .services-jump-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+
+    .services-jump-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 138px;
+      padding: 1.15rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--jump-card-border);
+      background: var(--jump-card-bg);
+      box-shadow: var(--jump-card-shadow);
+      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+      height: 100%;
+    }
+
+    .services-jump-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--jump-card-hover-shadow);
+      border-color: rgba(37, 99, 235, .24);
+    }
+
+    .services-jump-label {
+      color: var(--primary);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+
+    .services-jump-card strong {
+      display: block;
+      color: var(--text-primary);
+      font-size: 0.925rem;
+      line-height: 1.3;
+      margin-bottom: 0.35rem;
+    }
+
+    .services-jump-card span {
+      color: var(--text-secondary);
+      font-size: .875rem;
+      line-height: 1.55;
+    }
+
+    .service-frameworks {
+      padding: var(--space-20) 0;
+    }
+
+    .service-framework-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .service-framework-card {
+      padding: 1.5rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--surface), var(--bg-secondary));
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .service-framework-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--primary-50);
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    [data-theme="dark"] .service-framework-index {
+      background: rgba(37, 99, 235, 0.15);
+      color: #93c5fd;
+    }
+
+    .service-framework-card h3 {
+      font-size: 0.975rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-framework-card p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: .9375rem;
+      line-height: 1.65;
+    }
+
+    .service-slab {
+      padding: var(--space-20) 0;
+    }
+
+    .service-slab.alt {
+      background: linear-gradient(180deg, var(--bg-secondary), rgba(37, 99, 235, .03));
+    }
+
+    .service-detail-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1rem, 4vw, 4rem);
+      align-items: stretch;
+      padding: clamp(1.4rem, 3vw, 2.6rem);
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: 0 22px 54px rgba(15, 23, 42, .08);
+    }
+
+    @media (min-width: 1101px) {
+      .service-detail-card.alt-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .service-detail-card.alt-layout .service-copy {
+        order: 2;
+      }
+
+      .service-detail-card.alt-layout .service-visual {
+        order: 1;
+      }
+    }
+
+    .service-copy {
+      min-width: 0;
+    }
+
+    .service-copy h2 {
+      font-size: clamp(1.45rem, 2.2vw, 1.95rem);
+      line-height: 1.2;
+      letter-spacing: -.03em;
+      margin: 0.5rem 0 0.75rem;
+      max-width: 24ch;
+    }
+
+    .service-copy p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 48ch;
+      margin-bottom: 0;
+    }
+
+    .service-bullet-list {
+      display: grid;
+      gap: .65rem;
+      margin: var(--space-4) 0;
+    }
+
+    .service-bullet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .9rem;
+      padding: .75rem 1rem;
+      border-radius: var(--radius-lg);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+    }
+
+    .service-bullet-mark {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--primary-50);
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: .75rem;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+
+    [data-theme="dark"] .service-bullet-mark {
+      background: rgba(37, 99, 235, 0.15);
+      color: #93c5fd;
+    }
+
+    .service-bullet-copy strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: .9375rem;
+      color: var(--text-primary);
+    }
+
+    .service-bullet-copy span {
+      color: var(--text-secondary);
+      font-size: .875rem;
+      line-height: 1.55;
+    }
+
+    .service-copy-footer {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-top: var(--space-5);
+    }
+
+    .service-note {
+      color: var(--text-muted);
+      font-size: .875rem;
+      line-height: 1.55;
+    }
+
+    .service-visual {
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+      padding: 1.5rem;
+      border-radius: 26px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .service-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255, 255, 255, .18), transparent 38%);
+      pointer-events: none;
+    }
+
+    .service-visual.tone-ios {
+      background: linear-gradient(135deg, #111827, #1f2937 52%, #334155 100%);
+    }
+
+    .service-visual.tone-android {
+      background: linear-gradient(135deg, #052e16, #166534 48%, #16a34a 100%);
+    }
+
+    .service-visual.tone-flutter {
+      background: linear-gradient(135deg, #0f172a, #1d4ed8 48%, #06b6d4 100%);
+    }
+
+    .service-visual-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 255, 255, .16);
+      background: rgba(255, 255, 255, .08);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .service-visual h3 {
+      color: #fff;
+      font-size: 1.2rem;
+      line-height: 1.25;
+      margin: 0;
+      max-width: 22ch;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-visual p {
+      margin: 0;
+      color: rgba(255, 255, 255, .75);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-outcome-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .65rem;
+    }
+
+    .service-outcome-card {
+      padding: .75rem .9rem;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, .09);
+      border: 1px solid rgba(255, 255, 255, .12);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .service-outcome-card strong {
+      display: block;
+      font-size: 0.9rem;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .service-outcome-card span {
+      color: rgba(255, 255, 255, .72);
+      font-size: .8125rem;
+      line-height: 1.4;
+    }
+
+    .service-chip-row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+    }
+
+    .service-chip-row span {
+      padding: .45rem .8rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .12);
+      color: rgba(255, 255, 255, .78);
+      font-size: .8125rem;
+      font-weight: 600;
+    }
+
+    .svc-ecosystem {
+      background: linear-gradient(180deg, rgba(37, 99, 235, .02), var(--bg-secondary));
+    }
+
+    .service-ecosystem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-6);
+    }
+
+    .service-ecosystem-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 1.4rem;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: var(--gradient-card);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    }
+
+    .service-ecosystem-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: rgba(37, 99, 235, .18);
+    }
+
+    .service-eco-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: 0.75rem;
+      min-height: 68px;
+    }
+
+    .service-eco-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--primary-50);
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .875rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    [data-theme="dark"] .service-eco-mark {
+      background: rgba(37, 99, 235, 0.15);
+      color: #93c5fd;
+    }
+
+    .service-eco-kicker {
+      color: var(--primary);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+
+    .service-ecosystem-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .service-ecosystem-card p {
+      color: var(--text-secondary);
+      font-size: .9375rem;
+      line-height: 1.65;
+      margin-bottom: .75rem;
+      min-height: 74px;
+    }
+
+    .service-ecosystem-list {
+      display: grid;
+      gap: .5rem;
+      margin-bottom: 1rem;
+      min-height: 110px;
+    }
+
+    .service-ecosystem-list li {
+      position: relative;
+      padding-left: 1.15rem;
+      color: var(--text-secondary);
+      font-size: .875rem;
+      line-height: 1.55;
+    }
+
+    .service-ecosystem-list li::before {
+      content: "";
+      position: absolute;
+      top: .55rem;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .service-ecosystem-card .service-link {
+      margin-top: auto;
+    }
+
+    .svc-tools {
+      background: var(--bg);
+    }
+
+    .service-tools-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+      gap: var(--space-6);
+      align-items: stretch;
+    }
+
+    .tool-shell {
+      padding: clamp(1.2rem, 2.5vw, 1.5rem);
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: var(--tool-shell-shadow);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .tool-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .tool-head h3 {
+      font-size: 1.5rem;
+      margin: 0 0 .5rem;
+    }
+
+    .tool-head p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 58ch;
+    }
+
+    .tool-stats {
+      display: grid;
+      gap: .8rem;
+      min-width: 220px;
+      padding: 1rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      background: var(--bg-secondary);
+    }
+
+    .tool-stat-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      font-size: .875rem;
+      color: var(--text-secondary);
+    }
+
+    .tool-stat-row strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .planner-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .7rem;
+    }
+
+    .planner-option {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .75rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--bg-secondary);
+      cursor: pointer;
+      transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+      font-size: .925rem;
+      color: var(--text-primary);
+    }
+
+    .planner-option:hover {
+      border-color: rgba(37, 99, 235, .28);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .planner-option input {
+      accent-color: var(--primary);
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .tool-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: auto;
+      padding-top: var(--space-6);
+    }
+
+    .tool-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      height: 100%;
+    }
+
+    .tool-form button[type="submit"] {
+      margin-top: auto;
+    }
+
+    .tech-result {
+      margin-top: var(--space-6);
+      padding: 1.25rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--bg-secondary), var(--surface));
+    }
+
+    .tech-result-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-50);
+      color: var(--primary);
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    [data-theme="dark"] .tech-result-badge {
+      background: rgba(37, 99, 235, 0.15);
+      color: #93c5fd;
+    }
+
+    .tech-result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .tech-result-card {
+      padding: .95rem 1rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .tech-result-card span {
+      display: block;
+      color: var(--text-muted);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .55rem;
+    }
+
+    .tech-result-card strong {
+      display: block;
+      color: var(--text-primary);
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+
+    .tech-result p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 1240px) {
+      .services-jump-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 1100px) {
+
+      .services-hero-grid,
+      .service-detail-card,
+      .service-tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-hero-copy {
+        max-width: none;
+      }
+
+      .service-copy h2,
+      .service-visual h3 {
+        max-width: none;
+      }
+
+      .services-panel-shell,
+      .service-detail-card,
+      .tool-shell {
+        border-radius: 24px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .services-hero {
+        padding-bottom: 72px;
+      }
+
+      .services-hero-metrics,
+      .service-framework-grid,
+      .service-ecosystem-grid,
+      .services-panel-lane {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .services-jump-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .planner-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .services-hero-title {
+        font-size: clamp(1.7rem, 8vw, 2.5rem);
+      }
+
+      .services-hero-actions,
+      .service-copy-footer,
+      .tool-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .services-hero-metrics,
+      .service-framework-grid,
+      .service-ecosystem-grid,
+      .tech-result-grid,
+      .services-panel-grid,
+      .service-outcome-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-jump-grid,
+      .services-panel-lane {
+        grid-template-columns: 1fr;
+      }
+
+      .tool-stats {
+        min-width: 0;
+        width: 100%;
+      }
+
+      .service-eco-top,
+      .service-ecosystem-card p,
+      .service-ecosystem-list {
+        min-height: auto;
+      }
+    }
+
+    @media (min-width: 1101px) {
+      .services-hero {
+        height: 100vh;
+        min-height: 550px;
+        padding: var(--nav-height) 0 0;
+      }
+
+      .services-hero>.container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 24px;
+        padding-bottom: 40px;
+        box-sizing: border-box;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="site-nav"></div>
+
+  <main id="main">
+    <section class="services-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span>Services</span>
+        </div>
+
+        <div class="services-hero-content reveal">
+          <span class="services-eyebrow">Services Architecture</span>
+          <h1 class="services-hero-title">Mobile product delivery designed for clarity, speed, and scale.</h1>
+          <p class="services-hero-desc">We partner with startups and enterprise leaders to design, build, and scale
+            premium iOS, Android, Flutter, and React Native mobile applications.</p>
+
+          <div class="services-hero-actions">
+            <a href="contact.html#booking" class="btn btn-primary btn-lg">Book a discovery call</a>
+            <a href="#feature-planner" class="btn btn-secondary btn-lg">Plan your feature set</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services-jump">
+      <div class="container">
+        <div class="services-jump-grid">
+          <a class="services-jump-card reveal reveal-delay-1" href="#ios">
+            <div class="services-jump-label">Native</div>
+            <div>
+              <strong>iOS Development</strong>
+              <span>Premium Swift and SwiftUI apps for the Apple ecosystem.</span>
+            </div>
+          </a>
+          <a class="services-jump-card reveal reveal-delay-2" href="#android">
+            <div class="services-jump-label">Native</div>
+            <div>
+              <strong>Android Development</strong>
+              <span>Kotlin and Compose experiences built for modern Android devices.</span>
+            </div>
+          </a>
+          <a class="services-jump-card reveal reveal-delay-3" href="#flutter">
+            <div class="services-jump-label">Cross-platform</div>
+            <div>
+              <strong>Flutter Delivery</strong>
+              <span>Unified product builds with speed, consistency, and scale.</span>
+            </div>
+          </a>
+          <a class="services-jump-card reveal reveal-delay-1" href="#react-native">
+            <div class="services-jump-label">Extended stack</div>
+            <div>
+              <strong>Product Ecosystem</strong>
+              <span>React Native, backend systems, QA, launch, and maintenance.</span>
+            </div>
+          </a>
+          <a class="services-jump-card reveal reveal-delay-2" href="#feature-planner">
+            <div class="services-jump-label">Planning</div>
+            <div>
+              <strong>Feature Planner</strong>
+              <span>Shape scope and timeline before the first sprint begins.</span>
+            </div>
+          </a>
+          <a class="services-jump-card reveal reveal-delay-3" href="contact.html">
+            <div class="services-jump-label">Consultation</div>
+            <div>
+              <strong>Talk with our team</strong>
+              <span>Get a recommended delivery path matched to your product goals.</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section service-frameworks">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">How We Work</span>
+          <h2>A cleaner engagement model from strategy to long-term scale</h2>
+          <p>Every service line plugs into the same operating system: structured discovery, polished design execution,
+            disciplined engineering, and launch support that keeps momentum high.</p>
+        </div>
+
+        <div class="service-framework-grid">
+          <article class="service-framework-card reveal reveal-delay-1">
+            <div class="service-framework-index">01</div>
+            <h3>Scope with intention</h3>
+            <p>We define platform priorities, technical constraints, feature sequencing, and launch goals before
+              engineering begins.</p>
+          </article>
+          <article class="service-framework-card reveal reveal-delay-2">
+            <div class="service-framework-index">02</div>
+            <h3>Design for delivery</h3>
+            <p>Product flows, component systems, and interaction patterns are created with engineering feasibility and
+              responsiveness in mind.</p>
+          </article>
+          <article class="service-framework-card reveal reveal-delay-3">
+            <div class="service-framework-index">03</div>
+            <h3>Build with stability</h3>
+            <p>Code quality, architecture, integrations, and testing are handled as a single coordinated delivery track.
+            </p>
+          </article>
+          <article class="service-framework-card reveal reveal-delay-4">
+            <div class="service-framework-index">04</div>
+            <h3>Launch with confidence</h3>
+            <p>We support submissions, monitoring, iteration planning, and ongoing optimization after release.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-slab" id="ios">
+      <div class="container">
+        <div class="service-detail-card reveal">
+          <div class="service-copy">
+            <span class="section-label">iOS Development</span>
+            <h2>Premium Apple experiences built for trust, speed, and platform polish.</h2>
+            <p>Our iOS delivery track is built for teams that need a refined native experience from day one. We design
+              and engineer applications that feel at home on iPhone, iPad, and the broader Apple ecosystem while keeping
+              the codebase scalable for future features.</p>
+
+            <div class="service-bullet-list">
+              <div class="service-bullet-item">
+                <div class="service-bullet-mark">1</div>
+                <div class="service-bullet-copy">
+                  <strong>Swift and SwiftUI engineering</strong>
+                  <span>Modern native architecture with maintainable code, responsive views, and strong runtime
+                    performance.</span>
+                </div>
+              </div>
+              <div class="service-bullet-item">
+                <div class="service-bullet-mark">2</div>
+                <div class="service-bullet-copy">
+                  <strong>Apple design and security standards</strong>
+                  <span>Human Interface Guidelines alignment, secure storage, permissions handling, and privacy-aware
+                    flows.</span>
+                </div>
+              </div>
+              <div class="service-bullet-item">
+                <div class="service-bullet-mark">3</div>
+                <div class="service-bullet-copy">
+                  <strong>Launch support and ecosystem integrations</strong>
+                  <span>App Store submission, Sign in with Apple, Apple Pay, iCloud, analytics, and release
+                    preparation.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="service-copy-footer">
+              <a href="contact.html" class="btn btn-primary btn-lg">Discuss your iOS app</a>
+              <span class="service-note">Best for products where native feel, motion quality, and Apple ecosystem depth
+                matter.</span>
+            </div>
+          </div>
+
+          <div class="service-visual tone-ios">
+            <span class="service-visual-badge">Swift + SwiftUI</span>
+            <h3>Designed for high-trust, premium mobile experiences.</h3>
+            <p>Ideal for fintech, health, lifestyle, and subscription products that need a clean, reliable Apple-native
+              experience.</p>
+
+            <div class="service-outcome-grid">
+              <div class="service-outcome-card">
+                <strong>Native motion</strong>
+                <span>fast interactions and smooth transitions</span>
+              </div>
+              <div class="service-outcome-card">
+                <strong>Secure by default</strong>
+                <span>privacy-aware flows and protected app data</span>
+              </div>
+              <div class="service-outcome-card">
+                <strong>Store-ready</strong>
+                <span>submission support and release preparation</span>
+              </div>
+              <div class="service-outcome-card">
+                <strong>Future-proof</strong>
+                <span>architecture prepared for feature growth</span>
+              </div>
+            </div>
+
+            <div class="service-chip-row">
+              <span>UIKit</span>
+              <span>SwiftUI</span>
+              <span>Apple Pay</span>
+              <span>Core Data</span>
+              <span>HealthKit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-slab alt" id="android">
+      <div class="container">
+        <div class="service-detail-card alt-layout reveal">
+          <div class="service-copy">
+            <span class="section-label">Android Development</span>
+            <h2>Modern Android engineering with clean architecture and broad device support.</h2>
+            <p>Our Android teams focus on clarity, speed, and resilience across the fragmented Android ecosystem. We
+              create products that feel fast, aligned to Material guidance, and ready for long-term iteration.</p>
+
+            <div class="service-bullet-list">
+              <div class="service-bullet-item">
+                <div class="service-bullet-mark">1</div>
+                <div class="service-bullet-copy">
+                  <strong>Kotlin-first implementation</strong>
+                  <span>Robust application layers with Jetpack Compose, maintainable state management, and
+                    performance-minded rendering.</span>
+                </div>
+              </div>
+              <div class="service-bullet-item">
+                <div class="service-bullet-mark">2</div>
+                <div class="service-bullet-copy">
+                  <strong>Responsive device optimization</strong>
+                  <span>Layouts and interactions designed for phones, tablets, and foldables without sacrificing
+                    alignment or usability.</span>
+                </div>
+              </div>
+              <div class="service-bullet-item">
+                <div class="service-bullet-mark">3</div>
+                <div class="service-bullet-copy">
+                  <strong>Platform services and distribution</strong>
+                  <span>Play Store deployment, Firebase integrations, payments, maps, notifications, and release
+                    support.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="service-copy-footer">
+              <a href="contact.html" class="btn btn-primary btn-lg">Plan your Android build</a>
+              <span class="service-note">Best for products that need broad market reach and a strong native Android
+                foundation.</span>
+            </div>
+          </div>
+
+          <div class="service-visual tone-android">
+            <span class="service-visual-badge">Kotlin + Compose</span>
+            <h3>Android products tuned for reach, flexibility, and device diversity.</h3>
+            <p>We build Android experiences that stay consistent across phones, tablets, and foldables while preserving
+              clean architecture and maintainable release cycles.</p>
+
+            <div class="service-outcome-grid">
+              <div class="service-outcome-card">
+                <strong>Device coverage</strong>
+                <span>layouts tailored for varied Android form factors</span>
+              </div>
+              <div class="service-outcome-card">
+                <strong>Modern tooling</strong>
+                <span>Compose, Kotlin, and maintainable app layers</span>
+              </div>
+              <div class="service-outcome-card">
+                <strong>Scalable patterns</strong>
+                <span>clean architecture and modular feature delivery</span>
+              </div>
+              <div class="service-outcome-card">
+                <strong>Play ready</strong>
+                <span>submission guidance and release sequencing</span>
+              </div>
+            </div>
+
+            <div class="service-chip-row">
+              <span>Jetpack Compose</span>
+              <span>MVVM</span>
+              <span>Firebase</span>
+              <span>Hilt</span>
+              <span>WorkManager</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-slab" id="flutter">
+      <div class="container">
+        <div class="service-detail-card reveal">
+          <div class="service-copy">
+            <span class="section-label">Flutter Delivery</span>
+            <h2>Cross-platform execution without sacrificing product cohesion.</h2>
+            <p>Flutter is a strong fit when product teams need one coordinated interface language across platforms with
+              faster delivery and tighter design consistency. We use it to ship polished experiences while keeping
+              timelines and budgets efficient.</p>
+
+            <div class="service-bullet-list">
+              <div class="service-bullet-item">
+                <div class="service-bullet-mark">1</div>
+                <div class="service-bullet-copy">
+                  <strong>Single codebase delivery</strong>
+                  <span>Unified product builds across iOS and Android with cleaner maintenance and reduced
+                    duplication.</span>
+                </div>
+              </div>
+              <div class="service-bullet-item">
+                <div class="service-bullet-mark">2</div>
+                <div class="service-bullet-copy">
+                  <strong>Design precision at scale</strong>
+                  <span>Reusable widgets, consistent component behavior, and product experiences that closely match the
+                    design system.</span>
+                </div>
+              </div>
+              <div class="service-bullet-item">
+                <div class="service-bullet-mark">3</div>
+                <div class="service-bullet-copy">
+                  <strong>Fast iteration cycles</strong>
+                  <span>Efficient development, testing, release management, and future feature delivery across both
+                    platforms.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="service-copy-footer">
+              <a href="contact.html" class="btn btn-primary btn-lg">Start a Flutter project</a>
+              <span class="service-note">Best for teams balancing launch speed, budget efficiency, and interface
+                consistency.</span>
+            </div>
+          </div>
+
+          <div class="service-visual tone-flutter">
+            <span class="service-visual-badge">Flutter + Dart</span>
+            <h3>One design system, one delivery track, multiple platforms.</h3>
+            <p>Great for MVPs, operational apps, marketplaces, and teams that need cross-platform alignment without a
+              fragmented workflow.</p>
+
+            <div class="service-outcome-grid">
+              <div class="service-outcome-card">
+                <strong>Shared product logic</strong>
+                <span>reduced duplicate work across mobile platforms</span>
+              </div>
+              <div class="service-outcome-card">
+                <strong>Visual consistency</strong>
+                <span>strong parity between design and delivery</span>
+              </div>
+              <div class="service-outcome-card">
+                <strong>Faster release flow</strong>
+                <span>efficient updates and testing cycles</span>
+              </div>
+              <div class="service-outcome-card">
+                <strong>Scalable architecture</strong>
+                <span>fit for ongoing iteration after launch</span>
+              </div>
+            </div>
+
+            <div class="service-chip-row">
+              <span>Dart</span>
+              <span>Riverpod</span>
+              <span>BLoC</span>
+              <span>Firebase</span>
+              <span>CI/CD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section svc-ecosystem" id="react-native">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Extended Services</span>
+          <h2>The rest of the product ecosystem, aligned around the same quality bar</h2>
+          <p>When the core app build is only one part of the challenge, we extend the same design and engineering
+            discipline into supporting capabilities that keep the whole product strong.</p>
+        </div>
+
+        <div class="service-ecosystem-grid">
+          <article class="service-ecosystem-card reveal reveal-delay-1" id="rn">
+            <div class="service-eco-top">
+              <div>
+                <div class="service-eco-kicker">Cross-platform</div>
+                <h3>React Native</h3>
+              </div>
+              <div class="service-eco-mark">RN</div>
+            </div>
+            <p>Shared-code mobile delivery for teams with JavaScript and TypeScript strengths, fast iteration cycles,
+              and a need for efficient multi-platform rollout.</p>
+            <ul class="service-ecosystem-list">
+              <li>TypeScript-first architecture and clean navigation flows</li>
+              <li>Native module integration for deeper device capabilities</li>
+              <li>Release strategy tuned for long-term maintainability</li>
+            </ul>
+            <a href="contact.html" class="service-link">Talk about React Native</a>
+          </article>
+
+          <article class="service-ecosystem-card reveal reveal-delay-2" id="design">
+            <div class="service-eco-top">
+              <div>
+                <div class="service-eco-kicker">Experience design</div>
+                <h3>UI and UX design systems</h3>
+              </div>
+              <div class="service-eco-mark">UX</div>
+            </div>
+            <p>Design work grounded in user flows, conversion logic, accessibility, and components that can be handed
+              off cleanly to engineering.</p>
+            <ul class="service-ecosystem-list">
+              <li>Wireframes, journey maps, prototypes, and usability testing</li>
+              <li>Figma design systems built for real implementation</li>
+              <li>Responsive patterns across app states and edge cases</li>
+            </ul>
+            <a href="contact.html" class="service-link">Plan your design track</a>
+          </article>
+
+          <article class="service-ecosystem-card reveal reveal-delay-3">
+            <div class="service-eco-top">
+              <div>
+                <div class="service-eco-kicker">Platform foundation</div>
+                <h3>Backend development</h3>
+              </div>
+              <div class="service-eco-mark">API</div>
+            </div>
+            <p>Secure, scalable backend systems that support mobile logic, user data, payments, notifications,
+              analytics, and third-party integrations.</p>
+            <ul class="service-ecosystem-list">
+              <li>REST and GraphQL APIs with resilient data models</li>
+              <li>Authentication, real-time events, storage, and admin logic</li>
+              <li>Architecture built for growth, observability, and uptime</li>
+            </ul>
+            <a href="contact.html" class="service-link">Design your backend</a>
+          </article>
+
+          <article class="service-ecosystem-card reveal reveal-delay-1">
+            <div class="service-eco-top">
+              <div>
+                <div class="service-eco-kicker">Quality</div>
+                <h3>QA and release assurance</h3>
+              </div>
+              <div class="service-eco-mark">QA</div>
+            </div>
+            <p>Quality control that covers behavior, performance, and release readiness across the environments and
+              devices that matter most.</p>
+            <ul class="service-ecosystem-list">
+              <li>Functional, regression, performance, and device testing</li>
+              <li>Bug triage workflows tied closely to engineering delivery</li>
+              <li>Launch validation before App Store and Play submission</li>
+            </ul>
+            <a href="contact.html" class="service-link">Improve QA coverage</a>
+          </article>
+
+          <article class="service-ecosystem-card reveal reveal-delay-2">
+            <div class="service-eco-top">
+              <div>
+                <div class="service-eco-kicker">Go to market</div>
+                <h3>Store launch and optimization</h3>
+              </div>
+              <div class="service-eco-mark">ASO</div>
+            </div>
+            <p>Submission support, listing strategy, and release planning to help your app land smoothly and present
+              clearly from the first impression.</p>
+            <ul class="service-ecosystem-list">
+              <li>App Store and Play submission packaging and review support</li>
+              <li>Metadata, screenshots, listing clarity, and phased rollout planning</li>
+              <li>Post-launch analytics hooks for performance monitoring</li>
+            </ul>
+            <a href="contact.html" class="service-link">Prepare your launch</a>
+          </article>
+
+          <article class="service-ecosystem-card reveal reveal-delay-3" id="maintenance">
+            <div class="service-eco-top">
+              <div>
+                <div class="service-eco-kicker">Long-term support</div>
+                <h3>Maintenance and product growth</h3>
+              </div>
+              <div class="service-eco-mark">Ops</div>
+            </div>
+            <p>We stay involved after release to keep your application current, performant, monitored, and ready for the
+              next milestone.</p>
+            <ul class="service-ecosystem-list">
+              <li>OS compatibility updates, monitoring, and performance tuning</li>
+              <li>Feature roadmap delivery tied to real product data</li>
+              <li>Support coverage that keeps the product stable while it grows</li>
+            </ul>
+            <a href="contact.html" class="service-link">Set up ongoing support</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section svc-tools">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Planning Tools</span>
+          <h2>Useful planning tools, presented with the same clarity as the service experience</h2>
+          <p>Use these interactive tools to shape scope, compare delivery approaches, and create better conversations
+            before your product build begins.</p>
+        </div>
+
+        <div class="service-tools-grid">
+          <div class="tool-shell reveal" id="feature-planner">
+            <div class="tool-head">
+              <div>
+                <span class="section-label">Feature Planner</span>
+                <h3>Define the features that shape your MVP</h3>
+                <p>Select the capabilities you are considering and get a quick view of scope complexity and estimated
+                  delivery effort.</p>
+              </div>
+
+              <div class="tool-stats">
+                <div class="tool-stat-row">
+                  <span>Selected features</span>
+                  <strong id="planner-total">0</strong>
+                </div>
+                <div class="tool-stat-row">
+                  <span>Complexity</span>
+                  <span class="badge badge-success" id="planner-complexity">Simple</span>
+                </div>
+                <div class="tool-stat-row">
+                  <span>Estimated time</span>
+                  <strong id="planner-weeks">4 weeks</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="planner-grid">
+              <label class="planner-option">
+                <input type="checkbox" data-feature="auth" data-label="User Authentication">
+                <span>Authentication</span>
+              </label>
+              <label class="planner-option">
+                <input type="checkbox" data-feature="onboarding" data-label="Onboarding Flow">
+                <span>Onboarding flow</span>
+              </label>
+              <label class="planner-option">
+                <input type="checkbox" data-feature="profile" data-label="User Profile">
+                <span>User profile</span>
+              </label>
+              <label class="planner-option">
+                <input type="checkbox" data-feature="push" data-label="Push Notifications">
+                <span>Push notifications</span>
+              </label>
+              <label class="planner-option">
+                <input type="checkbox" data-feature="payments" data-label="In-App Payments">
+                <span>Payments</span>
+              </label>
+              <label class="planner-option">
+                <input type="checkbox" data-feature="chat" data-label="In-App Chat">
+                <span>In-app chat</span>
+              </label>
+              <label class="planner-option">
+                <input type="checkbox" data-feature="maps" data-label="Maps &amp; Location">
+                <span>Maps and location</span>
+              </label>
+              <label class="planner-option">
+                <input type="checkbox" data-feature="camera" data-label="Camera &amp; Media">
+                <span>Camera and media</span>
+              </label>
+              <label class="planner-option">
+                <input type="checkbox" data-feature="analytics" data-label="Analytics Dashboard">
+                <span>Analytics dashboard</span>
+              </label>
+              <label class="planner-option">
+                <input type="checkbox" data-feature="social" data-label="Social Login &amp; Sharing">
+                <span>Social features</span>
+              </label>
+              <label class="planner-option">
+                <input type="checkbox" data-feature="offline" data-label="Offline Mode">
+                <span>Offline mode</span>
+              </label>
+              <label class="planner-option">
+                <input type="checkbox" data-feature="ai" data-label="AI/ML Features">
+                <span>AI or ML features</span>
+              </label>
+            </div>
+
+            <div class="tool-actions">
+              <button type="button" id="planner-clear" class="btn btn-ghost btn-sm">Clear all</button>
+              <button type="button" id="planner-export" class="btn btn-secondary btn-sm">Export plan</button>
+              <a href="contact.html" class="btn btn-primary btn-sm">Get a detailed estimate</a>
+            </div>
+          </div>
+
+          <div class="tool-shell reveal reveal-delay-1">
+            <div class="tool-head">
+              <div>
+                <span class="section-label">Technology Tool</span>
+                <h3>Get a recommended stack direction</h3>
+                <p>Answer three practical questions and we will suggest a starting point for platform, framework, and
+                  backend architecture.</p>
+              </div>
+            </div>
+
+            <form id="tech-tool-form" class="tool-form">
+              <div class="form-group">
+                <label class="form-label" for="tech-platform">Target platform</label>
+                <select id="tech-platform" class="form-control">
+                  <option value="ios">iOS only</option>
+                  <option value="android">Android only</option>
+                  <option value="both" selected>iOS and Android</option>
+                  <option value="web">Web app</option>
+                  <option value="all">All platforms</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tech-complexity">App complexity</label>
+                <select id="tech-complexity" class="form-control">
+                  <option value="mvp" selected>MVP or simple</option>
+                  <option value="standard">Standard</option>
+                  <option value="complex">Complex</option>
+                  <option value="enterprise">Enterprise</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="tech-scale">Expected user scale</label>
+                <select id="tech-scale" class="form-control">
+                  <option value="small" selected>Under 10K users</option>
+                  <option value="medium">10K to 500K users</option>
+                  <option value="large">500K+ users</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary full-width">Get recommendation</button>
+            </form>
+
+            <div id="tech-result" class="tech-result hidden">
+              <div class="tech-result-badge" id="tech-icon">RN</div>
+
+              <div class="tech-result-grid">
+                <div class="tech-result-card">
+                  <span>Recommended stack</span>
+                  <strong id="tech-stack-name">React Native</strong>
+                </div>
+                <div class="tech-result-card">
+                  <span>Backend</span>
+                  <strong id="tech-backend-name">Firebase</strong>
+                </div>
+              </div>
+
+              <p id="tech-rec-desc">Our recommendation based on your requirements.</p>
+              <a href="contact.html" class="btn btn-primary full-width mt-4">Get full architecture guidance</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container" style="text-align:center">
+        <h2 style="color:#fff">Need help choosing the right service mix?</h2>
+        <p>We can map your product idea to the right platform strategy, build scope, and launch path in a focused
+          discovery conversation.</p>
+        <div class="cta-actions">
+          <a href="contact.html#booking" class="btn btn-white btn-xl">Book free consultation</a>
+          <a href="contact.html" class="btn btn-outline-white btn-xl">Send project details</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/tools.js"></script>
+</body>
+
+</html>

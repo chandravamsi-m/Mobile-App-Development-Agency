@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About AppForge — Our Story, Team & Mission | Mobile App Agency</title>
+  <meta name="description" content="Meet the AppForge team — 50+ experienced engineers, designers, and strategists building market-leading mobile apps since 2013. Our story, values, and team.">
+  <meta property="og:title" content="About AppForge — Our Story & Team">
+  <meta property="og:description" content="50+ passionate engineers, designers, and strategists united by one mission — to build apps that change lives.">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://appforge.io/about.html">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+
+  <style>
+    /* ====================================================
+       ABOUT PAGE — Premium Enterprise Redesign
+    ==================================================== */
+
+    /* ── Page Hero ─────────────────────────────────────── */
+    .ab-hero {
+      padding: calc(var(--nav-height) + 80px) 0 0;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .ab-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% -5%, rgba(37,99,235,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ab-hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding-bottom: 4rem;
+    }
+    .ab-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--primary);
+      background: var(--primary-50);
+      border: 1px solid var(--primary-100);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 1.25rem;
+    }
+    [data-theme="dark"] .ab-hero-eyebrow {
+      background: rgba(37,99,235,.15);
+      border-color: rgba(37,99,235,.3);
+    }
+    .ab-hero-title {
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      color: var(--text-primary);
+      max-width: 760px;
+      margin: 0 auto 1.25rem;
+    }
+    .ab-hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .ab-hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+      background: var(--surface);
+      box-shadow: var(--shadow-md);
+    }
+    .ab-hero-stat {
+      flex: 1;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background var(--transition-fast);
+    }
+    .ab-hero-stat:last-child { border-right: none; }
+    .ab-hero-stat:hover { background: var(--bg-secondary); }
+    .ab-stat-num {
+      font-family: var(--font-heading);
+      font-size: 1.875rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: var(--text-primary);
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: .375rem;
+    }
+    .ab-stat-lbl {
+      font-size: .75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* Team photo banner */
+    .ab-team-photo {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .ab-team-photo img {
+      width: 100%;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      display: block;
+      aspect-ratio: 21/9;
+      object-fit: cover;
+      object-position: center;
+    }
+    .ab-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, var(--bg) 100%);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      pointer-events: none;
+    }
+
+    /* ── Our Story ─────────────────────────────────────── */
+    .ab-story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .ab-story-img-wrap {
+      position: relative;
+    }
+    .ab-story-img {
+      width: 100%;
+      border-radius: var(--radius-xl);
+      display: block;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      box-shadow: var(--shadow-2xl);
+    }
+    .ab-story-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow-xl);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .ab-story-badge-icon {
+      width: 44px; height: 44px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .ab-story-badge-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      font-family: var(--font-heading);
+      line-height: 1;
+    }
+    .ab-story-badge-lbl {
+      font-size: .75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .ab-story-text h2 { margin-bottom: 1.25rem; }
+    .ab-story-text p { margin-bottom: 1rem; line-height: 1.8; }
+    .ab-story-text p:last-of-type { margin-bottom: 1.75rem; }
+    .ab-check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .625rem;
+      margin-bottom: 2rem;
+    }
+    .ab-check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .625rem;
+      font-size: .9375rem;
+      color: var(--text-secondary);
+    }
+    .ab-check-icon {
+      width: 20px; height: 20px;
+      background: var(--primary-50);
+      border: 1px solid var(--primary-100);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--primary);
+    }
+    [data-theme="dark"] .ab-check-icon { background: rgba(37,99,235,.15); border-color: rgba(37,99,235,.3); }
+
+    @media (max-width: 900px) {
+      .ab-story-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .ab-story-badge { right: 0; bottom: -16px; }
+    }
+
+    /* ── Mission & Vision ──────────────────────────────── */
+    .ab-mv-section { background: var(--secondary); }
+    .ab-mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .ab-mv-card {
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .ab-mv-card.mission {
+      background: linear-gradient(135deg, var(--primary) 0%, #0891b2 100%);
+      color: #fff;
+    }
+    .ab-mv-card.vision {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      color: rgba(255,255,255,.9);
+    }
+    .ab-mv-icon {
+      width: 52px; height: 52px;
+      border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .mission .ab-mv-icon { background: rgba(255,255,255,.2); color: #fff; }
+    .vision  .ab-mv-icon { background: rgba(255,255,255,.08); color: rgba(255,255,255,.8); }
+    .ab-mv-title { font-size: 1.375rem; font-weight: 700; margin-bottom: 1rem; }
+    .mission .ab-mv-title { color: #fff; }
+    .vision  .ab-mv-title { color: #fff; }
+    .ab-mv-text { font-size: .9375rem; line-height: 1.75; }
+    .mission .ab-mv-text { color: rgba(255,255,255,.85); }
+    .vision  .ab-mv-text { color: rgba(255,255,255,.65); }
+
+    @media (max-width: 700px) { .ab-mv-grid { grid-template-columns: 1fr; } }
+
+    /* ── Core Values ───────────────────────────────────── */
+    .ab-values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .ab-value-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+    .ab-value-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+    .ab-value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(37,99,235,.15);
+    }
+    .ab-value-card:hover::after { opacity: 1; }
+    .ab-val-icon {
+      width: 46px; height: 46px;
+      background: var(--primary-50);
+      border: 1px solid var(--primary-100);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+    }
+    [data-theme="dark"] .ab-val-icon { background: rgba(37,99,235,.15); border-color: rgba(37,99,235,.3); }
+    .ab-val-title { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: .5rem; }
+    .ab-val-desc { font-size: .875rem; color: var(--text-secondary); line-height: 1.65; margin: 0; }
+
+    @media (max-width: 900px) { .ab-values-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .ab-values-grid { grid-template-columns: 1fr; } }
+
+    /* ── Timeline / Journey ────────────────────────────── */
+    .ab-timeline-section { background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .ab-timeline {
+      position: relative;
+      max-width: 780px;
+      margin: 3.5rem auto 0;
+    }
+    /* Vertical line */
+    .ab-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 96px;
+      width: 2px;
+      background: var(--border);
+    }
+    .ab-tl-item {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 2rem;
+      position: relative;
+      padding-bottom: 2.5rem;
+    }
+    .ab-tl-item:last-child { padding-bottom: 0; }
+    /* Year column */
+    .ab-tl-year {
+      text-align: right;
+      font-family: var(--font-heading);
+      font-size: .8125rem;
+      font-weight: 800;
+      color: var(--primary);
+      padding-top: .25rem;
+      padding-right: 1.5rem;
+      letter-spacing: -.01em;
+    }
+    /* Dot on the line */
+    .ab-tl-item::after {
+      content: '';
+      position: absolute;
+      left: calc(96px - 5px);
+      top: 6px;
+      width: 10px; height: 10px;
+      background: var(--primary);
+      border: 2px solid var(--bg-secondary);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(37,99,235,.2);
+    }
+    .ab-tl-content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      transition: all var(--transition-base);
+    }
+    .ab-tl-content:hover {
+      border-color: rgba(37,99,235,.2);
+      box-shadow: var(--shadow-sm);
+    }
+    .ab-tl-badge {
+      display: inline-block;
+      font-size: .6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--primary);
+      background: var(--primary-50);
+      border: 1px solid var(--primary-100);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      margin-bottom: .625rem;
+    }
+    [data-theme="dark"] .ab-tl-badge { background: rgba(37,99,235,.15); border-color: rgba(37,99,235,.3); }
+    .ab-tl-title { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: .375rem; }
+    .ab-tl-desc { font-size: .875rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+
+    @media (max-width: 600px) {
+      .ab-timeline::before { left: 0; }
+      .ab-tl-item { grid-template-columns: 1fr; padding-bottom: 2rem; padding-left: 1.25rem; }
+      .ab-tl-year { text-align: left; padding-right: 0; font-size: 1rem; }
+      .ab-tl-item::after { left: -5px; }
+    }
+
+    /* ── Leadership Team ───────────────────────────────── */
+    .ab-leaders-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      margin-top: 3.5rem;
+    }
+    .ab-leader-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: all var(--transition-base);
+    }
+    .ab-leader-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+      border-color: rgba(37,99,235,.2);
+    }
+    .ab-leader-visual {
+      aspect-ratio: 1/1;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-secondary);
+    }
+    .ab-leader-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform var(--transition-base);
+    }
+    .ab-leader-avatar {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,.2);
+    }
+    .ab-leader-role-chip {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: .6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+      backdrop-filter: blur(8px);
+      z-index: 2;
+    }
+    .ab-leader-body { padding: 1.5rem; }
+    .ab-leader-name { font-size: 1.0625rem; font-weight: 700; color: var(--text-primary); margin-bottom: .25rem; }
+    .ab-leader-title { font-size: .8125rem; font-weight: 600; color: var(--primary); margin-bottom: .75rem; }
+    .ab-leader-bio { font-size: .8125rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem; }
+    .ab-leader-socials {
+      display: flex;
+      gap: .5rem;
+    }
+    .ab-social-btn {
+      width: 30px; height: 30px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--bg-secondary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .6875rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+    }
+    .ab-social-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    @media (max-width: 900px) { .ab-leaders-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .ab-leaders-grid { grid-template-columns: 1fr; } }
+
+    /* ── Dev Team Grid ─────────────────────────────────── */
+    .ab-devteam-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-top: 3.5rem;
+    }
+    .ab-dev-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+      transition: all var(--transition-base);
+    }
+    .ab-dev-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(37,99,235,.15);
+    }
+    .ab-dev-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto .875rem;
+      font-family: var(--font-heading);
+    }
+    .ab-dev-name { font-size: .9375rem; font-weight: 700; color: var(--text-primary); margin-bottom: .25rem; }
+    .ab-dev-role { font-size: .75rem; font-weight: 600; color: var(--primary); margin-bottom: .5rem; }
+    .ab-dev-bio { font-size: .75rem; color: var(--text-muted); line-height: 1.5; }
+
+    @media (max-width: 900px) { .ab-devteam-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .ab-devteam-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* ── Certifications ────────────────────────────────── */
+    .ab-cert-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-top: 3.5rem;
+    }
+    .ab-cert-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+      transition: all var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .625rem;
+    }
+    .ab-cert-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(37,99,235,.15);
+    }
+    .ab-cert-icon {
+      width: 52px; height: 52px;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.375rem;
+      margin-bottom: .25rem;
+    }
+    .ab-cert-name { font-size: .875rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
+    .ab-cert-issuer { font-size: .75rem; color: var(--text-muted); }
+
+    @media (max-width: 1024px) { .ab-cert-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px)  { .ab-cert-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* ── Culture / Benefits Strip ──────────────────────── */
+    .ab-culture-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-top: 3.5rem;
+    }
+    .ab-culture-item {
+      padding: 2rem;
+      border-right: 1px solid var(--border);
+      transition: background var(--transition-base);
+    }
+    .ab-culture-item:last-child { border-right: none; }
+    .ab-culture-item:hover { background: var(--bg-tertiary); }
+    .ab-culture-num {
+      font-family: var(--font-heading);
+      font-size: 2.25rem;
+      font-weight: 900;
+      letter-spacing: -.03em;
+      color: var(--primary);
+      margin-bottom: .375rem;
+    }
+    .ab-culture-lbl { font-size: .9375rem; font-weight: 700; color: var(--text-primary); margin-bottom: .375rem; }
+    .ab-culture-desc { font-size: .8125rem; color: var(--text-muted); line-height: 1.5; }
+
+    @media (max-width: 768px) {
+      .ab-culture-strip { grid-template-columns: 1fr 1fr; }
+      .ab-culture-item:nth-child(2) { border-right: none; }
+      .ab-culture-item:nth-child(1), .ab-culture-item:nth-child(2) { border-bottom: 1px solid var(--border); }
+    }
+    @media (max-width: 480px) {
+      .ab-culture-strip { grid-template-columns: 1fr; }
+      .ab-culture-item:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    /* ── CTA ───────────────────────────────────────────── */
+    .ab-cta {
+      background: var(--secondary);
+      position: relative;
+      overflow: hidden;
+    }
+    .ab-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(37,99,235,.28) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ab-cta-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .ab-cta-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: rgba(255,255,255,.65);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 1.5rem;
+    }
+    .ab-cta-title {
+      font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -.03em;
+      line-height: 1.15;
+      max-width: 620px;
+      margin: 0 auto 1rem;
+    }
+    .ab-cta-sub {
+      font-size: 1.0625rem;
+      color: rgba(255,255,255,.6);
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
+    }
+    .ab-cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .ab-cta-trust {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .ab-cta-trust-item {
+      font-size: .8125rem;
+      color: rgba(255,255,255,.45);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .ab-cta-trust-item svg { color: rgba(255,255,255,.35); }
+  </style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+<main id="main">
+
+  <!-- ══════════════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════════ -->
+  <section class="ab-hero" aria-labelledby="about-hero-title">
+    <div class="container">
+      <div class="ab-hero-inner">
+        <span class="ab-hero-eyebrow">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="12"/></svg>
+          Founded 2013 · San Francisco
+        </span>
+
+        <h1 class="ab-hero-title reveal" id="about-hero-title">
+          Building Mobile Experiences That<br><span class="text-gradient">Change Industries</span>
+        </h1>
+
+        <p class="ab-hero-subtitle reveal">
+          We are a team of 50+ engineers, designers, and strategists united by one mission — to build apps that create real-world impact and drive measurable growth for our clients.
+        </p>
+
+        <!-- Stat bar -->
+        <div class="ab-hero-stats reveal">
+          <div class="ab-hero-stat">
+            <div class="ab-stat-num">200+</div>
+            <div class="ab-stat-lbl">Apps Delivered</div>
+          </div>
+          <div class="ab-hero-stat">
+            <div class="ab-stat-num">50+</div>
+            <div class="ab-stat-lbl">Team Members</div>
+          </div>
+          <div class="ab-hero-stat">
+            <div class="ab-stat-num">12yrs</div>
+            <div class="ab-stat-lbl">In Business</div>
+          </div>
+          <div class="ab-hero-stat">
+            <div class="ab-stat-num">98%</div>
+            <div class="ab-stat-lbl">Satisfaction</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team office photo -->
+      <div class="ab-team-photo reveal">
+        <img
+          src="assets/images/about-team-office.png"
+          alt="AppForge team collaborating in a modern open-plan tech office"
+          loading="eager"
+          width="1100"
+          height="471"
+        >
+        <div class="ab-photo-overlay"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       OUR STORY
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="about-story-heading">
+    <div class="container">
+      <div class="ab-story-grid">
+
+        <!-- Image side -->
+        <div class="ab-story-img-wrap reveal reveal-delay-1">
+          <img
+            src="assets/images/about-mission.png"
+            alt="AppForge product ecosystem illustration showing mobile app development stack"
+            class="ab-story-img"
+            loading="lazy"
+            width="600"
+            height="450"
+          >
+          <!-- Floating badge -->
+          <div class="ab-story-badge">
+            <div class="ab-story-badge-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <div class="ab-story-badge-num">150M+</div>
+              <div class="ab-story-badge-lbl">Combined app installs</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text side -->
+        <div class="ab-story-text reveal reveal-delay-2">
+          <span class="section-label" style="margin-bottom:1.25rem; display:inline-flex;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            Our Story
+          </span>
+          <h2 id="about-story-heading">From a 3-Person Startup to a <span class="text-gradient">50+ Team Agency</span></h2>
+
+          <p>AppForge was founded in 2013 by three software engineers who were frustrated by the gap between what mobile apps could be and what most development shops were actually building. We started with a simple belief: great mobile experiences are built by teams that truly care about the end user.</p>
+
+          <p>Today, we've delivered 200+ apps across 15+ industries, helping startups raise millions and enterprises serve billions of users. Our proprietary client portal — born from our own frustrations with project opacity — is now the cornerstone of every engagement.</p>
+
+          <ul class="ab-check-list">
+            <li class="ab-check-item">
+              <span class="ab-check-icon">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Real-time project dashboards for every client
+            </li>
+            <li class="ab-check-item">
+              <span class="ab-check-icon">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              2-week agile sprints with weekly client reviews
+            </li>
+            <li class="ab-check-item">
+              <span class="ab-check-icon">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Full-stack teams — design, dev, QA, and DevOps
+            </li>
+            <li class="ab-check-item">
+              <span class="ab-check-icon">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              End-to-end App Store submission and post-launch SLA
+            </li>
+          </ul>
+
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <a href="contact.html" class="btn btn-primary" id="about-work-btn">
+              Work With Us
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="case-studies.html" class="btn btn-secondary" id="about-portfolio-btn">View Our Work</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       MISSION & VISION
+  ══════════════════════════════════════════════════════ -->
+  <section class="section ab-mv-section" aria-labelledby="about-mv-heading">
+    <div class="container">
+      <div class="section-header reveal" style="text-align:center; color:#fff;">
+        <span class="section-label" style="background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.12); color:rgba(255,255,255,.75);">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          What Drives Us
+        </span>
+        <h2 id="about-mv-heading" style="color:#fff;">Mission, Vision <span class="text-gradient">&amp; Values</span></h2>
+        <p style="color:rgba(255,255,255,.6);">The principles that guide every decision we make and every line of code we write.</p>
+      </div>
+
+      <div class="ab-mv-grid">
+        <div class="ab-mv-card mission reveal reveal-delay-1">
+          <div class="ab-mv-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="ab-mv-title">Our Mission</div>
+          <p class="ab-mv-text">To empower businesses of all sizes to harness the full power of mobile technology — delivering exceptional, scalable apps that create real-world impact and drive measurable results for every stakeholder.</p>
+        </div>
+        <div class="ab-mv-card vision reveal reveal-delay-2">
+          <div class="ab-mv-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="ab-mv-title">Our Vision</div>
+          <p class="ab-mv-text">To be the most trusted mobile development partner globally — where every client, from early-stage startup to Fortune 500 enterprise, has access to world-class talent and fully transparent project collaboration.</p>
+        </div>
+      </div>
+
+      <!-- Culture strip inside dark section -->
+      <div class="ab-culture-strip reveal" style="margin-top:3rem; background:rgba(255,255,255,.03); border-color:rgba(255,255,255,.08);">
+        <div class="ab-culture-item" style="border-color:rgba(255,255,255,.08);">
+          <div class="ab-culture-num">15+</div>
+          <div class="ab-culture-lbl" style="color:#fff;">Industries Served</div>
+          <div class="ab-culture-desc" style="color:rgba(255,255,255,.45);">FinTech, HealthTech, E-commerce, EdTech, PropTech, and more</div>
+        </div>
+        <div class="ab-culture-item" style="border-color:rgba(255,255,255,.08);">
+          <div class="ab-culture-num">3</div>
+          <div class="ab-culture-lbl" style="color:#fff;">Global Offices</div>
+          <div class="ab-culture-desc" style="color:rgba(255,255,255,.45);">San Francisco · London · Singapore</div>
+        </div>
+        <div class="ab-culture-item">
+          <div class="ab-culture-num">20%</div>
+          <div class="ab-culture-lbl" style="color:#fff;">R&D Time Budget</div>
+          <div class="ab-culture-desc" style="color:rgba(255,255,255,.45);">Every engineer dedicates 20% of working time to learning new technologies</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       CORE VALUES
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="about-values-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Core Values
+        </span>
+        <h2 id="about-values-heading">Principles That Shape <span class="text-gradient">Everything We Do</span></h2>
+        <p>Six values embedded in every process, sprint review, and client interaction at AppForge.</p>
+      </div>
+
+      <div class="ab-values-grid">
+        <div class="ab-value-card reveal reveal-delay-1">
+          <div class="ab-val-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 13 9 20 9"/><path d="M20 14.58A12 12 0 1 1 9.42 4"/></svg>
+          </div>
+          <div class="ab-val-title">Speed Without Compromise</div>
+          <p class="ab-val-desc">We move fast without cutting corners. Our agile process delivers weekly progress with zero compromise on code quality or security standards.</p>
+        </div>
+        <div class="ab-value-card reveal reveal-delay-2">
+          <div class="ab-val-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div class="ab-val-title">Radical Transparency</div>
+          <p class="ab-val-desc">Our client portal gives you real-time visibility into every sprint, task, commit, and decision. No surprises — ever. Open books, always.</p>
+        </div>
+        <div class="ab-value-card reveal reveal-delay-3">
+          <div class="ab-val-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="ab-val-title">Partnership Mindset</div>
+          <p class="ab-val-desc">We don't just build what you ask for — we challenge assumptions, suggest improvements, and act like strategic co-founders invested in your success.</p>
+        </div>
+        <div class="ab-value-card reveal reveal-delay-1">
+          <div class="ab-val-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <div class="ab-val-title">Inclusive Design</div>
+          <p class="ab-val-desc">We build for everyone. Accessibility (WCAG 2.1 AA) is baked into every design spec and development task — not added on after launch.</p>
+        </div>
+        <div class="ab-value-card reveal reveal-delay-2">
+          <div class="ab-val-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <div class="ab-val-title">Continuous Learning</div>
+          <p class="ab-val-desc">Every AppForge engineer dedicates 20% of working time to learning. This ensures every project benefits from the latest techniques and frameworks.</p>
+        </div>
+        <div class="ab-value-card reveal reveal-delay-3">
+          <div class="ab-val-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div class="ab-val-title">Data-Driven Decisions</div>
+          <p class="ab-val-desc">Every architecture choice, feature prioritization, and design decision is backed by user research, analytics, and measurable success criteria.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       COMPANY JOURNEY / TIMELINE
+  ══════════════════════════════════════════════════════ -->
+  <section class="section ab-timeline-section" aria-labelledby="about-timeline-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Company Journey
+        </span>
+        <h2 id="about-timeline-heading">12 Years of <span class="text-gradient">Building the Future</span></h2>
+        <p>Key milestones in our journey from a three-person garage startup to a globally recognized mobile development agency.</p>
+      </div>
+
+      <div class="ab-timeline">
+
+        <div class="ab-tl-item reveal reveal-delay-1">
+          <div class="ab-tl-year">2013</div>
+          <div class="ab-tl-content">
+            <span class="ab-tl-badge">Founded</span>
+            <div class="ab-tl-title">AppForge Is Born</div>
+            <p class="ab-tl-desc">Three co-founders launched AppForge in a San Francisco garage with a single mission: build mobile apps that actually matter. First client signed within 60 days.</p>
+          </div>
+        </div>
+
+        <div class="ab-tl-item reveal reveal-delay-2">
+          <div class="ab-tl-year">2015</div>
+          <div class="ab-tl-content">
+            <span class="ab-tl-badge">Series A</span>
+            <div class="ab-tl-title">First 25 Apps &amp; $3M Funding</div>
+            <p class="ab-tl-desc">Delivered 25 high-quality apps and closed a $3M Series A round. Expanded the engineering team to 15 full-time specialists across iOS, Android, and backend.</p>
+          </div>
+        </div>
+
+        <div class="ab-tl-item reveal reveal-delay-3">
+          <div class="ab-tl-year">2017</div>
+          <div class="ab-tl-content">
+            <span class="ab-tl-badge">Product Launch</span>
+            <div class="ab-tl-title">Launched the Client Portal</div>
+            <p class="ab-tl-desc">Released our proprietary real-time project collaboration platform — now used by 100% of our clients for sprint tracking, design reviews, and direct team communication.</p>
+          </div>
+        </div>
+
+        <div class="ab-tl-item reveal reveal-delay-4">
+          <div class="ab-tl-year">2019</div>
+          <div class="ab-tl-content">
+            <span class="ab-tl-badge">Milestone</span>
+            <div class="ab-tl-title">100 Apps &amp; Top Agency Award</div>
+            <p class="ab-tl-desc">Celebrated delivering our 100th app — with a combined 50M+ downloads. Named Top App Development Agency by Clutch.co for the first time.</p>
+          </div>
+        </div>
+
+        <div class="ab-tl-item reveal reveal-delay-1">
+          <div class="ab-tl-year">2021</div>
+          <div class="ab-tl-content">
+            <span class="ab-tl-badge">Partnership</span>
+            <div class="ab-tl-title">Google Flutter Agency Partner</div>
+            <p class="ab-tl-desc">Became an official Google Flutter Agency Partner. Launched a specialized Flutter Center of Excellence and published two open-source Flutter packages used by 10,000+ developers.</p>
+          </div>
+        </div>
+
+        <div class="ab-tl-item reveal reveal-delay-2">
+          <div class="ab-tl-year">2025</div>
+          <div class="ab-tl-content">
+            <span class="ab-tl-badge">Today</span>
+            <div class="ab-tl-title">200+ Apps &amp; Global Expansion</div>
+            <p class="ab-tl-desc">50+ team members across three continents, offices in San Francisco, London, and Singapore, 200+ apps shipped, and 150M+ combined installs worldwide.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       LEADERSHIP TEAM
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="about-leadership-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Leadership
+        </span>
+        <h2 id="about-leadership-heading">Meet the <span class="text-gradient">Leadership Team</span></h2>
+        <p>Experienced leaders who've built products used by millions of people worldwide.</p>
+      </div>
+
+      <div class="ab-leaders-grid">
+
+        <!-- Alex Harrison -->
+        <div class="ab-leader-card reveal reveal-delay-1">
+          <div class="ab-leader-visual">
+            <img src="assets/images/leader-alex.png" alt="Alex Harrison" class="ab-leader-img" loading="lazy" width="400" height="400">
+            <span class="ab-leader-role-chip" style="background:rgba(37,99,235,.35); color:#ffffff; border:1px solid rgba(255,255,255,.2);">CEO &amp; Co-Founder</span>
+          </div>
+          <div class="ab-leader-body">
+            <div class="ab-leader-name">Alex Harrison</div>
+            <div class="ab-leader-title">Chief Executive Officer</div>
+            <p class="ab-leader-bio">Former VP of Engineering at Stripe. 15 years building mobile products at scale. Led engineering teams of 100+ across 3 continents and 6 product launches.</p>
+            <div class="ab-leader-socials">
+              <a href="#" class="ab-social-btn" aria-label="LinkedIn">in</a>
+              <a href="#" class="ab-social-btn" aria-label="X / Twitter">𝕏</a>
+              <a href="#" class="ab-social-btn" aria-label="GitHub">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sophia Chen -->
+        <div class="ab-leader-card reveal reveal-delay-2">
+          <div class="ab-leader-visual">
+            <img src="assets/images/leader-sophia.png" alt="Sophia Chen" class="ab-leader-img" loading="lazy" width="400" height="400">
+            <span class="ab-leader-role-chip" style="background:rgba(124,58,237,.35); color:#ffffff; border:1px solid rgba(255,255,255,.2);">CTO &amp; Co-Founder</span>
+          </div>
+          <div class="ab-leader-body">
+            <div class="ab-leader-name">Sophia Chen</div>
+            <div class="ab-leader-title">Chief Technology Officer</div>
+            <p class="ab-leader-bio">Ex-Google Senior Engineer and official Flutter contributor. Speaker at Google I/O and Apple WWDC. Holds 8 patents in mobile performance optimization.</p>
+            <div class="ab-leader-socials">
+              <a href="#" class="ab-social-btn" aria-label="LinkedIn">in</a>
+              <a href="#" class="ab-social-btn" aria-label="X / Twitter">𝕏</a>
+              <a href="#" class="ab-social-btn" aria-label="GitHub">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marcus Rivera -->
+        <div class="ab-leader-card reveal reveal-delay-3">
+          <div class="ab-leader-visual">
+            <img src="assets/images/leader-marcus.png" alt="Marcus Rivera" class="ab-leader-img" loading="lazy" width="400" height="400">
+            <span class="ab-leader-role-chip" style="background:rgba(245,158,11,.35); color:#ffffff; border:1px solid rgba(255,255,255,.2);">CPO &amp; Co-Founder</span>
+          </div>
+          <div class="ab-leader-body">
+            <div class="ab-leader-name">Marcus Rivera</div>
+            <div class="ab-leader-title">Chief Product Officer</div>
+            <p class="ab-leader-bio">Former Head of Product at Airbnb. Expert in user-centered design and product strategy. Five unicorn exits and 200M+ cumulative users across shipped products.</p>
+            <div class="ab-leader-socials">
+              <a href="#" class="ab-social-btn" aria-label="LinkedIn">in</a>
+              <a href="#" class="ab-social-btn" aria-label="X / Twitter">𝕏</a>
+              <a href="#" class="ab-social-btn" aria-label="Dribbble" style="font-size:.625rem;">●</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       DEVELOPMENT TEAM
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" style="background:var(--bg-secondary); border-top:1px solid var(--border); border-bottom:1px solid var(--border);" aria-labelledby="about-devteam-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          The Team
+        </span>
+        <h2 id="about-devteam-heading">50+ Specialists, <span class="text-gradient">One Goal</span></h2>
+        <p>Senior engineers, designers, QA leads, and DevOps specialists all working in your time zone.</p>
+      </div>
+
+      <div class="ab-devteam-grid">
+        <div class="ab-dev-card reveal reveal-delay-1">
+          <div class="ab-dev-avatar" style="background:linear-gradient(135deg,#16a34a,#06b6d4);">JK</div>
+          <div class="ab-dev-name">James Kim</div>
+          <div class="ab-dev-role">Lead iOS Engineer</div>
+          <div class="ab-dev-bio">8 years Swift & SwiftUI. 12 apps shipped with 4.8+ ratings on the App Store.</div>
+        </div>
+        <div class="ab-dev-card reveal reveal-delay-2">
+          <div class="ab-dev-avatar" style="background:linear-gradient(135deg,#0891b2,#7c3aed);">PR</div>
+          <div class="ab-dev-name">Priya Rajan</div>
+          <div class="ab-dev-role">Senior Flutter Dev</div>
+          <div class="ab-dev-bio">Flutter GDE. 20+ cross-platform apps. Dart core contributor and open-source maintainer.</div>
+        </div>
+        <div class="ab-dev-card reveal reveal-delay-3">
+          <div class="ab-dev-avatar" style="background:linear-gradient(135deg,#db2777,#f59e0b);">LN</div>
+          <div class="ab-dev-name">Lena Novak</div>
+          <div class="ab-dev-role">Lead UI/UX Designer</div>
+          <div class="ab-dev-bio">Dribbble top 100. Former Figma design team. 150+ polished app screen sets delivered.</div>
+        </div>
+        <div class="ab-dev-card reveal reveal-delay-4">
+          <div class="ab-dev-avatar" style="background:linear-gradient(135deg,#059669,#0ea5e9);">DT</div>
+          <div class="ab-dev-name">David Torres</div>
+          <div class="ab-dev-role">Backend Architect</div>
+          <div class="ab-dev-bio">AWS certified. Designed serverless systems serving 10M+ concurrent users at sub-50ms latency.</div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:2.5rem;">
+        <a href="contact.html" class="btn btn-secondary" id="join-team-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="11" x2="17" y2="11"/><line x1="20" y1="8" x2="20" y2="14"/></svg>
+          We're Hiring — View Open Roles
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       CERTIFICATIONS & AWARDS
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="about-certs-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+          Trust &amp; Credentials
+        </span>
+        <h2 id="about-certs-heading">Certifications <span class="text-gradient">&amp; Awards</span></h2>
+        <p>Industry recognition and partnerships that validate our commitment to engineering excellence and security.</p>
+      </div>
+
+      <div class="ab-cert-grid">
+        <div class="ab-cert-card reveal reveal-delay-1">
+          <div class="ab-cert-icon" style="background:#f1f5f9;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <div class="ab-cert-name">Apple Developer Enterprise Program</div>
+          <div class="ab-cert-issuer">Apple Inc.</div>
+        </div>
+        <div class="ab-cert-card reveal reveal-delay-2">
+          <div class="ab-cert-icon" style="background:#fef9c3;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#854d0e" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>
+          </div>
+          <div class="ab-cert-name">Google Play Partner</div>
+          <div class="ab-cert-issuer">Google LLC</div>
+        </div>
+        <div class="ab-cert-card reveal reveal-delay-3">
+          <div class="ab-cert-icon" style="background:#dbeafe;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <div class="ab-cert-name">Flutter Agency Partner</div>
+          <div class="ab-cert-issuer">Google Flutter Team</div>
+        </div>
+        <div class="ab-cert-card reveal reveal-delay-4">
+          <div class="ab-cert-icon" style="background:#fef3c7;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#b45309" stroke-width="1.8"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          </div>
+          <div class="ab-cert-name">AWS Advanced Consulting Partner</div>
+          <div class="ab-cert-issuer">Amazon Web Services</div>
+        </div>
+        <div class="ab-cert-card reveal reveal-delay-1">
+          <div class="ab-cert-icon" style="background:#fef9c3;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#854d0e" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="ab-cert-name">Top App Dev Company</div>
+          <div class="ab-cert-issuer">Clutch.co 2023 &amp; 2024</div>
+        </div>
+        <div class="ab-cert-card reveal reveal-delay-2">
+          <div class="ab-cert-icon" style="background:#f0fdf4;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="1.8"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <div class="ab-cert-name">5-Star Agency Rating</div>
+          <div class="ab-cert-issuer">GoodFirms</div>
+        </div>
+        <div class="ab-cert-card reveal reveal-delay-3">
+          <div class="ab-cert-icon" style="background:#ede9fe;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="ab-cert-name">ISO 27001 Certified</div>
+          <div class="ab-cert-issuer">Information Security Management</div>
+        </div>
+        <div class="ab-cert-card reveal reveal-delay-4">
+          <div class="ab-cert-icon" style="background:#ecfdf5;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div class="ab-cert-name">WCAG 2.1 AA Compliance</div>
+          <div class="ab-cert-issuer">Web Accessibility Initiative</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       CTA
+  ══════════════════════════════════════════════════════ -->
+  <section class="section ab-cta" aria-labelledby="about-cta-heading">
+    <div class="container">
+      <div class="ab-cta-inner reveal">
+        <span class="ab-cta-label">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Ready to Start?
+        </span>
+        <h2 class="ab-cta-title" id="about-cta-heading">Ready to Work With a Team That Truly Cares?</h2>
+        <p class="ab-cta-sub">Join 150+ companies that trust AppForge. Let's build something extraordinary together — on time, on budget, and beyond expectations.</p>
+        <div class="ab-cta-actions">
+          <a href="contact.html" class="btn btn-white btn-xl" id="about-cta-start-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Start Your Project
+          </a>
+          <a href="case-studies.html" class="btn btn-outline-white btn-xl" id="about-cta-work-btn">View Our Work</a>
+        </div>
+        <div class="ab-cta-trust">
+          <div class="ab-cta-trust-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Free discovery call
+          </div>
+          <div class="ab-cta-trust-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            No upfront commitment
+          </div>
+          <div class="ab-cta-trust-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Response within 24 hours
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

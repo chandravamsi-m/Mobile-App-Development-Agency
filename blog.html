@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AppForge Insights — Mobile App Development &amp; Tech Blog</title>
+  <meta name="description" content="Read our latest insights on mobile app development, React Native &amp; Flutter frameworks, UX/UI accessibility guidelines, AWS security, and ASO trends.">
+  <meta property="og:title" content="AppForge Insights — Mobile Engineering &amp; Design Blog">
+  <meta property="og:description" content="Expert analysis on mobile trends, tutorials, security, and case studies by AppForge engineers.">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://appforge.io/blog.html">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+
+  <style>
+    /* ====================================================
+       BLOG PAGE — Premium Enterprise Layout
+     ==================================================== */
+
+    /* ── Page Header / Hero ────────────────────────────── */
+    .bl-hero {
+      padding: calc(var(--nav-height) + 60px) 0 4rem;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .bl-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% -10%, rgba(37,99,235,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .bl-hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .bl-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--primary);
+      background: var(--primary-50);
+      border: 1px solid var(--primary-100);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 1.25rem;
+    }
+    [data-theme="dark"] .bl-hero-eyebrow {
+      background: rgba(37,99,235,.15);
+      border-color: rgba(37,99,235,.3);
+    }
+    .bl-hero-title {
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -.03em;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+    .bl-hero-desc {
+      font-size: 1.0625rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 580px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Modern search bar in hero */
+    .bl-search-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .bl-search-input {
+      width: 100%;
+      height: 52px;
+      padding: 0 1.25rem 0 3rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      color: var(--text-primary);
+      font-size: .9375rem;
+      font-family: inherit;
+      transition: all var(--transition-base);
+      box-shadow: var(--shadow-sm);
+    }
+    .bl-search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37,99,235,.15);
+      outline: none;
+    }
+    .bl-search-icon {
+      position: absolute;
+      left: 1.125rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    /* ── Main Layout Wrapper ────────────────────────────── */
+    .bl-layout {
+      padding: 4.5rem 0;
+      background: var(--bg);
+    }
+    .bl-layout .container {
+      max-width: 1400px;
+    }
+    .bl-grid-container {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 320px);
+      gap: clamp(1.5rem, 3vw, 3rem);
+      align-items: start;
+    }
+    .bl-main-content {
+      min-width: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .bl-grid-container { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    /* ── Featured Post Card ────────────────────────────── */
+    .bl-featured-section {
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 3.5rem;
+    }
+    .bl-featured-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      transition: all var(--transition-base);
+      box-shadow: var(--shadow-md);
+    }
+    .bl-featured-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-2xl);
+      border-color: rgba(37,99,235,.2);
+    }
+    .bl-feat-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      background: var(--bg-secondary);
+    }
+    .bl-feat-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-base);
+    }
+    .bl-featured-card:hover .bl-feat-img {
+      transform: scale(1.03);
+    }
+    .bl-feat-body {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .bl-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1rem;
+    }
+    .bl-card-category {
+      font-size: .6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--primary);
+      background: var(--primary-50);
+      border: 1px solid var(--primary-100);
+      padding: 3px 10px;
+      border-radius: var(--radius-sm);
+    }
+    [data-theme="dark"] .bl-card-category {
+      background: rgba(37,99,235,.15);
+      border-color: rgba(37,99,235,.3);
+    }
+    .bl-card-readtime {
+      font-size: .75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .bl-feat-title {
+      font-size: 1.625rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.25;
+      letter-spacing: -.02em;
+      margin-bottom: 1rem;
+      transition: color var(--transition-fast);
+    }
+    .bl-feat-title:hover {
+      color: var(--primary);
+    }
+    .bl-feat-desc {
+      font-size: .9375rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+    .bl-author-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+    }
+    .bl-author-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .875rem;
+      box-shadow: 0 4px 12px rgba(37,99,235,.15);
+    }
+    .bl-author-name {
+      font-size: .875rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .bl-author-role {
+      font-size: .75rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .bl-featured-card { grid-template-columns: 1fr; }
+      .bl-feat-body { padding: 2rem; }
+    }
+
+    /* ── Category Filters ──────────────────────────────── */
+    .bl-filters-bar {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .bl-filter-btn {
+      font-family: inherit;
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .bl-filter-btn:hover {
+      background: var(--border);
+      color: var(--text-primary);
+    }
+    .bl-filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ── Left Articles Grid ────────────────────────────── */
+    .bl-main-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(1.25rem, 2vw, 2rem);
+      grid-auto-flow: row dense;
+      align-items: stretch;
+    }
+    .bl-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: all var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .bl-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+    .bl-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(37,99,235,.18);
+    }
+    .bl-card-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      background: var(--bg-secondary);
+    }
+    .bl-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-base);
+    }
+    .bl-card:hover .bl-card-img {
+      transform: scale(1.04);
+    }
+    .bl-card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .bl-card-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.35;
+      margin-bottom: .625rem;
+      transition: color var(--transition-fast);
+    }
+    .bl-card-title:hover {
+      color: var(--primary);
+    }
+    .bl-card-desc {
+      font-size: .875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .bl-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .bl-card-author-name {
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .bl-card-date {
+      font-size: .75rem;
+      color: var(--text-muted);
+    }
+
+    @media (min-width: 1280px), (min-width: 820px) and (max-width: 1024px) {
+      .bl-main-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .bl-card:last-child:nth-child(odd) {
+        grid-column: auto;
+      }
+      .bl-card:last-child:nth-child(3n - 2) {
+        grid-column: 1 / -1;
+      }
+      .bl-card:last-child:nth-child(3n - 1) {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .bl-main-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Right Sidebar ────────────────────────────────── */
+    .bl-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    .bl-sidebar-widget {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+    }
+    .bl-widget-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+      padding-bottom: .625rem;
+      border-bottom: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bl-widget-title svg { color: var(--primary); }
+
+    /* Trending vertical cards */
+    .bl-trend-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .bl-trend-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: transform var(--transition-fast);
+    }
+    .bl-trend-item:hover {
+      transform: translateX(4px);
+    }
+    .bl-trend-rank {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary);
+      opacity: .4;
+      line-height: 1;
+      width: 24px;
+      flex-shrink: 0;
+    }
+    .bl-trend-content { flex: 1; }
+    .bl-trend-title {
+      font-size: .875rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.35;
+      margin-bottom: 4px;
+      transition: color var(--transition-fast);
+    }
+    .bl-trend-title:hover { color: var(--primary); }
+    .bl-trend-meta {
+      font-size: .75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Glassmorphic Newsletter */
+    .bl-news-widget {
+      background: linear-gradient(135deg, rgba(37,99,235,.05) 0%, rgba(6,182,212,.05) 100%);
+      border: 1px solid rgba(37,99,235,.15);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+      text-align: center;
+    }
+    .bl-news-icon {
+      width: 44px; height: 44px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      margin: 0 auto 1rem;
+      box-shadow: 0 4px 12px rgba(37,99,235,.2);
+    }
+    .bl-news-title { font-size: 1.125rem; font-weight: 800; color: var(--text-primary); margin-bottom: .5rem; }
+    .bl-news-desc { font-size: .8125rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.25rem; }
+    .bl-news-form {
+      display: flex;
+      flex-direction: column;
+      gap: .625rem;
+    }
+    .bl-news-input {
+      width: 100%;
+      height: 42px;
+      padding: 0 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      color: var(--text-primary);
+      font-size: .8125rem;
+      transition: border-color var(--transition-fast);
+    }
+    .bl-news-input:focus { border-color: var(--primary); outline: none; }
+    .bl-news-btn {
+      width: 100%;
+      height: 42px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: .8125rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+    .bl-news-btn:hover { background: var(--primary-hover); }
+
+    /* Tag Cloud */
+    .bl-tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .bl-tag-link {
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fast);
+    }
+    .bl-tag-link:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-50);
+    }
+    [data-theme="dark"] .bl-tag-link:hover {
+      background: rgba(37,99,235,.12);
+    }
+
+    /* ── Pagination ────────────────────────────────────── */
+    .bl-pagination {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 3.5rem;
+    }
+    .bl-page-btn {
+      width: 38px; height: 38px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 600;
+      font-size: .875rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .bl-page-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .bl-page-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+  </style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<main id="main">
+
+  <!-- ══════════════════════════════════════════════════════
+       BLOG HERO SECTION
+  ══════════════════════════════════════════════════════ -->
+  <section class="bl-hero" aria-labelledby="blog-hero-heading">
+    <div class="container">
+      <div class="bl-hero-inner">
+        <span class="bl-hero-eyebrow">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="12"/></svg>
+          AppForge Insights · Tech Hub
+        </span>
+        <h1 class="bl-hero-title reveal" id="blog-hero-heading">Engineering &amp;<br><span class="text-gradient">Design Excellence</span></h1>
+        <p class="bl-hero-desc reveal">Tactical guides, layout guidelines, architectural metrics, and app development case studies compiled by our senior developers.</p>
+
+        <!-- Search Bar Mockup -->
+        <div class="bl-search-wrap reveal reveal-delay-1">
+          <svg class="bl-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="bl-search-input" placeholder="Search insights, frameworks, guides..." aria-label="Search articles">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       MAIN CONTENT AREA
+  ══════════════════════════════════════════════════════ -->
+  <section class="bl-layout">
+    <div class="container">
+      <div class="bl-grid-container">
+
+        <!-- Left Column: Featured & Grid -->
+        <div class="bl-main-content">
+
+          <!-- Featured Article -->
+          <div class="bl-featured-section">
+            <article class="bl-featured-card reveal">
+              <div class="bl-feat-img-wrap">
+                <img
+                  src="assets/images/blog-sprints.png"
+                  alt="Agile mobile product design sprint workshop workspace"
+                  class="bl-feat-img"
+                  loading="eager"
+                  width="700"
+                  height="438"
+                >
+              </div>
+              <div class="bl-feat-body">
+                <div class="bl-meta-row">
+                  <span class="bl-card-category">Mobile Trends</span>
+                  <span class="bl-card-readtime">8 min read</span>
+                </div>
+                <a href="#" style="text-decoration:none;">
+                  <h2 class="bl-feat-title">Designing Mobile Sprints: How We Reduced Time-To-Market by 40%</h2>
+                </a>
+                <p class="bl-feat-desc">A detailed walkthrough of our standard design system integration pipeline and cross-platform synchronization scripts, enabling startups to deploy dual-platform codebases ahead of schedules.</p>
+                <div class="bl-author-bar">
+                  <div class="bl-author-avatar" style="background:linear-gradient(135deg,#7c3aed,#db2777);">SC</div>
+                  <div>
+                    <div class="bl-author-name">Sophia Chen</div>
+                    <div class="bl-author-role">CTO &amp; Co-Founder</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Category Filters Row -->
+          <div class="filter-bar bl-filters-bar reveal" data-target="#blog-grid">
+            <button class="filter-btn bl-filter-btn active" data-filter="all">All Articles</button>
+            <button class="filter-btn bl-filter-btn" data-filter="mobile-trends">📱 Mobile Trends</button>
+            <button class="filter-btn bl-filter-btn" data-filter="app-marketing">📣 App Marketing</button>
+            <button class="filter-btn bl-filter-btn" data-filter="ui-ux">🎨 UI/UX Design</button>
+            <button class="filter-btn bl-filter-btn" data-filter="dev-tutorials">🛠️ Tutorials</button>
+            <button class="filter-btn bl-filter-btn" data-filter="case-studies">💼 Case Studies</button>
+          </div>
+
+          <!-- Articles Grid -->
+          <div class="bl-main-grid" id="blog-grid">
+
+            <!-- Card 1: Flutter -->
+            <article class="bl-card reveal" data-category="mobile-trends">
+              <div class="bl-card-img-wrap">
+                <img
+                  src="assets/images/blog-flutter.png"
+                  alt="Flutter and React Native glowing 3D logo icons overlaying developer workspace"
+                  class="bl-card-img"
+                  loading="lazy"
+                  width="400"
+                  height="250"
+                >
+              </div>
+              <div class="bl-card-body">
+                <div class="bl-meta-row">
+                  <span class="bl-card-category">Mobile Trends</span>
+                  <span class="bl-card-readtime">5 min read</span>
+                </div>
+                <a href="#" style="text-decoration:none;">
+                  <h3 class="bl-card-title">Is Flutter Still King in 2026?</h3>
+                </a>
+                <p class="bl-card-desc">An analytical look at Dart's compilation metrics and GPU rendering capabilities compared to React Native's architecture.</p>
+                <div class="bl-card-footer">
+                  <span class="bl-card-author-name">Priya Rajan</span>
+                  <span class="bl-card-date">Jan 12, 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2: WCAG Accessibility -->
+            <article class="bl-card reveal" data-category="ui-ux">
+              <div class="bl-card-img-wrap">
+                <img
+                  src="assets/images/blog-accessibility.png"
+                  alt="Figma interface grid checking WCAG compliance on button targets"
+                  class="bl-card-img"
+                  loading="lazy"
+                  width="400"
+                  height="250"
+                >
+              </div>
+              <div class="bl-card-body">
+                <div class="bl-meta-row">
+                  <span class="bl-card-category">UI/UX Design</span>
+                  <span class="bl-card-readtime">6 min read</span>
+                </div>
+                <a href="#" style="text-decoration:none;">
+                  <h3 class="bl-card-title">Designing Touch Targets for WCAG Compliance</h3>
+                </a>
+                <p class="bl-card-desc">Why 48x48dp spacing is essential for target sizing, accessibility layouts, and keyboard focus states.</p>
+                <div class="bl-card-footer">
+                  <span class="bl-card-author-name">Lena Novak</span>
+                  <span class="bl-card-date">Jan 08, 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3: Cognito Biometrics -->
+            <article class="bl-card reveal" data-category="dev-tutorials">
+              <div class="bl-card-img-wrap">
+                <img
+                  src="assets/images/blog-cognito.png"
+                  alt="Cognito user biometric lock face security shield graphics overlaying smartphone"
+                  class="bl-card-img"
+                  loading="lazy"
+                  width="400"
+                  height="250"
+                >
+              </div>
+              <div class="bl-card-body">
+                <div class="bl-meta-row">
+                  <span class="bl-card-category">Tutorials</span>
+                  <span class="bl-card-readtime">10 min read</span>
+                </div>
+                <a href="#" style="text-decoration:none;">
+                  <h3 class="bl-card-title">Configuring AWS Cognito for Biometric App Auth</h3>
+                </a>
+                <p class="bl-card-desc">A step-by-step guide to secure device keyrings, keychain stores, and credential handshakes.</p>
+                <div class="bl-card-footer">
+                  <span class="bl-card-author-name">David Torres</span>
+                  <span class="bl-card-date">Dec 28, 2025</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4: ASO Strategy -->
+            <article class="bl-card reveal" data-category="app-marketing">
+              <div class="bl-card-img-wrap">
+                <img
+                  src="assets/images/blog-aso.png"
+                  alt="App Store Listing metrics showing high organic search growth rankings charts"
+                  class="bl-card-img"
+                  loading="lazy"
+                  width="400"
+                  height="250"
+                >
+              </div>
+              <div class="bl-card-body">
+                <div class="bl-meta-row">
+                  <span class="bl-card-category">App Marketing</span>
+                  <span class="bl-card-readtime">4 min read</span>
+                </div>
+                <a href="#" style="text-decoration:none;">
+                  <h3 class="bl-card-title">ASO Strategies to Maximize Search Rankings</h3>
+                </a>
+                <p class="bl-card-desc">Optimizing keywords, design previews, and client review feedback loops to acquire users organically.</p>
+                <div class="bl-card-footer">
+                  <span class="bl-card-author-name">Alex Harrison</span>
+                  <span class="bl-card-date">Dec 15, 2025</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 5: Scale Metrics FinNova -->
+            <article class="bl-card reveal" data-category="case-studies">
+              <div class="bl-card-img-wrap">
+                <img
+                  src="assets/images/blog-finnova.png"
+                  alt="Dashboard visual of cloud serverless nodes with zero latency performance charts"
+                  class="bl-card-img"
+                  loading="lazy"
+                  width="400"
+                  height="250"
+                >
+              </div>
+              <div class="bl-card-body">
+                <div class="bl-meta-row">
+                  <span class="bl-card-category">Case Studies</span>
+                  <span class="bl-card-readtime">7 min read</span>
+                </div>
+                <a href="#" style="text-decoration:none;">
+                  <h3 class="bl-card-title">Scale Metrics: FinNova's AWS Uptime Architecture</h3>
+                </a>
+                <p class="bl-card-desc">How we co-engineered serverless logic handling millions of requests with zero service degradation.</p>
+                <div class="bl-card-footer">
+                  <span class="bl-card-author-name">David Torres</span>
+                  <span class="bl-card-date">Nov 30, 2025</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Pagination -->
+          <div class="bl-pagination reveal">
+            <button class="bl-page-btn active">1</button>
+            <button class="bl-page-btn">2</button>
+            <button class="bl-page-btn">»</button>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Sidebar -->
+        <div class="bl-sidebar reveal">
+
+          <!-- Trending Widget -->
+          <div class="bl-sidebar-widget">
+            <h4 class="bl-widget-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 6l-9.5 9.5-5-5L1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              Trending Insights
+            </h4>
+            <div class="bl-trend-list">
+              <div class="bl-trend-item">
+                <span class="bl-trend-rank">01</span>
+                <div class="bl-trend-content">
+                  <a href="#" style="text-decoration:none;"><h5 class="bl-trend-title">Flutter vs Native: Performance Benchmarks</h5></a>
+                  <span class="bl-trend-meta">9,410 views · 5 min read</span>
+                </div>
+              </div>
+              <div class="bl-trend-item">
+                <span class="bl-trend-rank">02</span>
+                <div class="bl-trend-content">
+                  <a href="#" style="text-decoration:none;"><h5 class="bl-trend-title">Securing Keychain Access in Cross-Platform Frameworks</h5></a>
+                  <span class="bl-trend-meta">6,220 views · 8 min read</span>
+                </div>
+              </div>
+              <div class="bl-trend-item">
+                <span class="bl-trend-rank">03</span>
+                <div class="bl-trend-content">
+                  <a href="#" style="text-decoration:none;"><h5 class="bl-trend-title">Designing for Dark Mode: 6 Accessibility Rules</h5></a>
+                  <span class="bl-trend-meta">4,800 views · 4 min read</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Glassmorphic Newsletter Widget -->
+          <div class="bl-news-widget">
+            <div class="bl-news-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <h4 class="bl-news-title">Subscribe to Forge</h4>
+            <p class="bl-news-desc">Get the latest mobile design guidelines and serverless security hacks delivered straight to your inbox once a week.</p>
+            <form class="bl-news-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+              <input type="email" class="bl-news-input" placeholder="Enter your business email" required aria-label="Business email address">
+              <button type="submit" class="bl-news-btn">Subscribe</button>
+            </form>
+          </div>
+
+          <!-- Popular Tags Widget -->
+          <div class="bl-sidebar-widget">
+            <h4 class="bl-widget-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+              Popular Tech tags
+            </h4>
+            <div class="bl-tag-cloud">
+              <a href="#" class="bl-tag-link">Flutter</a>
+              <a href="#" class="bl-tag-link">React Native</a>
+              <a href="#" class="bl-tag-link">AWS Cognito</a>
+              <a href="#" class="bl-tag-link">Serverless</a>
+              <a href="#" class="bl-tag-link">WCAG 2.1</a>
+              <a href="#" class="bl-tag-link">iOS Swift</a>
+              <a href="#" class="bl-tag-link">ASO</a>
+              <a href="#" class="bl-tag-link">UI/UX Layouts</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

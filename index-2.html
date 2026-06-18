@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AppForge — Home 2 · Premium Mobile App Development Agency</title>
+  <meta name="description" content="AppForge is an enterprise-grade mobile app development agency. We build high-performance iOS, Android, and cross-platform apps with radical transparency and real-time collaboration.">
+  <meta property="og:title" content="AppForge — Premium SaaS Mobile App Development">
+  <meta property="og:description" content="Build scalable iOS and Android applications with an experienced development team and track progress in real-time.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://appforge.io/index-2.html">
+  <meta property="og:image" content="assets/images/og-image-2.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://appforge.io/index-2.html">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+
+  <style>
+    /* ====================================================
+       HOME 2 — Page-Specific Styles
+       All tokens come from main.css (:root)
+    ==================================================== */
+
+    /* ── Hero ──────────────────────────────────────────── */
+    .h2-hero {
+      padding: calc(var(--nav-height) + 96px) 0 100px;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .h2-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(37,99,235,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* Decorative grid */
+    .h2-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37,99,235,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, black 0%, transparent 80%);
+      pointer-events: none;
+    }
+
+    .h2-hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .h2-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--primary);
+      background: var(--primary-50);
+      border: 1px solid var(--primary-100);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 1.5rem;
+    }
+    [data-theme="dark"] .h2-hero-eyebrow {
+      background: rgba(37,99,235,.15);
+      border-color: rgba(37,99,235,.3);
+    }
+
+    .h2-hero-title {
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      color: var(--text-primary);
+      max-width: 840px;
+      margin: 0 auto 1.5rem;
+    }
+    .h2-hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .h2-hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .h2-trust-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .h2-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .8125rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .h2-trust-item svg { color: var(--success); }
+
+    /* Dashboard Mockup */
+    .h2-mockup-wrap {
+      position: relative;
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+    .h2-mockup {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 40px 80px -20px rgba(0,0,0,.2), var(--shadow-glow-primary);
+      overflow: hidden;
+    }
+    /* Browser chrome */
+    .h2-mockup-bar {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .h2-mockup-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .h2-mockup-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .h2-mockup-dots span:nth-child(1) { background: #FF5F57; }
+    .h2-mockup-dots span:nth-child(2) { background: #FEBC2E; }
+    .h2-mockup-dots span:nth-child(3) { background: #28C840; }
+    .h2-mockup-url {
+      flex: 1;
+      background: var(--border);
+      border-radius: 4px;
+      height: 22px;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .h2-mockup-body {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 360px;
+      background: var(--bg-secondary);
+    }
+
+    /* Sidebar */
+    .h2-dash-sidebar {
+      border-right: 1px solid var(--border);
+      padding: 20px 0;
+      background: var(--surface);
+    }
+    .h2-dash-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 16px 16px;
+      font-size: .875rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+    .h2-dash-logo-icon {
+      width: 28px; height: 28px;
+      border-radius: 6px;
+      background: var(--gradient-primary);
+    }
+    .h2-dash-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      font-size: .8125rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      border-radius: 6px;
+      margin: 0 8px 2px;
+    }
+    .h2-dash-nav-item.active {
+      background: var(--primary-50);
+      color: var(--primary);
+      font-weight: 600;
+    }
+    [data-theme="dark"] .h2-dash-nav-item.active {
+      background: rgba(37,99,235,.15);
+    }
+    .h2-dash-nav-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: .5;
+      flex-shrink: 0;
+    }
+    .h2-dash-nav-item.active .h2-dash-nav-dot { opacity: 1; }
+
+    /* Main content */
+    .h2-dash-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .h2-dash-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .h2-dash-title { font-size: .9375rem; font-weight: 700; color: var(--text-primary); }
+    .h2-dash-sprint { font-size: .75rem; font-weight: 700; color: var(--primary); background: var(--primary-50); padding: 3px 10px; border-radius: var(--radius-full); border: 1px solid var(--primary-100); }
+    [data-theme="dark"] .h2-dash-sprint { background: rgba(37,99,235,.15); border-color: rgba(37,99,235,.3); }
+
+    .h2-dash-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .h2-dash-stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .h2-dash-stat-val { font-size: 1.25rem; font-weight: 800; color: var(--text-primary); }
+    .h2-dash-stat-lbl { font-size: .6875rem; color: var(--text-muted); margin-top: 2px; }
+
+    .h2-dash-tasks { display: flex; flex-direction: column; gap: 8px; }
+    .h2-dash-task {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .h2-dash-task-row { display: flex; justify-content: space-between; font-size: .75rem; margin-bottom: 6px; }
+    .h2-dash-task-name { font-weight: 600; color: var(--text-primary); }
+    .h2-dash-task-pct { font-weight: 700; color: var(--primary); }
+
+    /* Floating pills */
+    .h2-float-pill {
+      position: absolute;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-lg);
+      white-space: nowrap;
+      z-index: 3;
+      animation: h2-float 7s ease-in-out infinite alternate;
+    }
+    .h2-float-pill.p1 { bottom: -20px; left: -20px; animation-delay: 0s; }
+    .h2-float-pill.p2 { top: -16px; right: 40px; animation-delay: 2.5s; }
+    .h2-float-pill-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+
+    @keyframes h2-float {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 768px) {
+      .h2-mockup-body { grid-template-columns: 1fr; }
+      .h2-dash-sidebar { display: none; }
+      .h2-float-pill { display: none; }
+    }
+
+    /* ── Logos / Brands ────────────────────────────────── */
+    .h2-brands {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .h2-brands-label {
+      text-align: center;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .h2-logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .h2-logo-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .9375rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      transition: color var(--transition-fast);
+    }
+    .h2-logo-item:hover { color: var(--text-primary); }
+    .h2-logo-mark {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .875rem;
+    }
+
+    /* ── How It Works ──────────────────────────────────── */
+    .h2-process-section {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+    .h2-process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-top: 3.5rem;
+    }
+    .h2-process-step {
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: background var(--transition-base);
+    }
+    .h2-process-step:not(:last-child) {
+      border-right: 1px solid var(--border);
+    }
+    .h2-process-step:hover { background: var(--surface); }
+    .h2-step-num {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: .75rem;
+      letter-spacing: -.04em;
+    }
+    .h2-step-icon {
+      width: 44px; height: 44px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .h2-step-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: .5rem;
+    }
+    .h2-step-desc {
+      font-size: .875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .h2-process-grid { grid-template-columns: 1fr 1fr; }
+      .h2-process-step:nth-child(2) { border-right: none; }
+      .h2-process-step:nth-child(1),
+      .h2-process-step:nth-child(2) { border-bottom: 1px solid var(--border); }
+    }
+    @media (max-width: 540px) {
+      .h2-process-grid { grid-template-columns: 1fr; }
+      .h2-process-step:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border); }
+      .h2-process-step:nth-child(2) { border-right: none; }
+    }
+
+    /* ── Capabilities / Features ───────────────────────── */
+    .h2-caps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    .h2-caps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .h2-cap-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      border-radius: var(--radius-lg);
+      border: 1.5px solid transparent;
+      transition: all var(--transition-base);
+      cursor: default;
+    }
+    .h2-cap-item:hover {
+      border-color: var(--border);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .h2-cap-icon {
+      width: 42px; height: 42px;
+      flex-shrink: 0;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-50);
+      color: var(--primary);
+    }
+    [data-theme="dark"] .h2-cap-icon { background: rgba(37,99,235,.15); }
+    .h2-cap-title { font-size: .9375rem; font-weight: 700; color: var(--text-primary); margin-bottom: .25rem; }
+    .h2-cap-desc  { font-size: .875rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* Right side visual panel */
+    .h2-caps-visual {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .h2-cv-header { font-size: .8125rem; font-weight: 700; color: var(--text-primary); margin-bottom: .5rem; display: flex; align-items: center; justify-content: space-between; }
+    .h2-cv-pill { font-size: .6875rem; font-weight: 700; color: var(--success); background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.25); padding: 2px 8px; border-radius: var(--radius-full); }
+
+    .h2-tech-row {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .h2-tech-tag {
+      font-size: .75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .h2-cv-metric-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
+    .h2-cv-metric {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: .875rem;
+    }
+    .h2-cv-metric-val { font-size: 1.375rem; font-weight: 800; color: var(--primary); font-family: var(--font-heading); }
+    .h2-cv-metric-lbl { font-size: .6875rem; color: var(--text-muted); margin-top: 2px; }
+
+    .h2-cv-progress-item { display: flex; flex-direction: column; gap: 6px; }
+    .h2-cv-prog-label { display: flex; justify-content: space-between; font-size: .75rem; font-weight: 600; color: var(--text-primary); }
+    .h2-cv-prog-label span { color: var(--text-muted); font-weight: 500; }
+
+    @media (max-width: 900px) {
+      .h2-caps-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    /* ── App Showcase ──────────────────────────────────── */
+    .h2-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      margin-top: 3.5rem;
+    }
+    .h2-showcase-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: all var(--transition-base);
+      display: flex;
+      flex-direction: column;
+    }
+    .h2-showcase-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 32px 64px -12px rgba(0,0,0,.18);
+      border-color: rgba(37,99,235,.25);
+    }
+
+    /* Image visual area */
+    .h2-showcase-visual {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+    .h2-showcase-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .h2-showcase-card:hover .h2-showcase-img {
+      transform: scale(1.06);
+    }
+    /* Gradient overlay at bottom of image */
+    .h2-showcase-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.55) 100%);
+      pointer-events: none;
+    }
+    /* Floating category chip on image */
+    .h2-sc-img-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      font-size: .6875rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.25);
+    }
+    /* Bottom-left info on image */
+    .h2-sc-img-bottom {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .h2-sc-img-name {
+      font-size: .8125rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0,0,0,.4);
+    }
+    .h2-sc-img-badge {
+      font-size: .6875rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.2);
+    }
+
+    /* Card body */
+    .h2-showcase-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: .875rem;
+    }
+    .h2-sc-body-top {
+      display: flex;
+      flex-direction: column;
+      gap: .375rem;
+    }
+    .h2-showcase-title {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin: 0;
+    }
+    .h2-showcase-desc {
+      font-size: .875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+    /* Feature bullet tags */
+    .h2-sc-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .375rem;
+      margin-top: auto;
+    }
+    .h2-sc-feat {
+      font-size: .6875rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      border-radius: var(--radius-sm);
+    }
+    /* Footer row */
+    .h2-sc-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: .875rem;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+    .h2-sc-footer-link {
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap var(--transition-fast);
+    }
+    .h2-sc-footer-link:hover { gap: 8px; }
+    .h2-sc-platform {
+      font-size: .75rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    @media (max-width: 1024px) { .h2-showcase-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } }
+    @media (max-width: 900px)  { .h2-showcase-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 580px)  { .h2-showcase-grid { grid-template-columns: 1fr; } }
+
+    /* ── Metrics / Results ─────────────────────────────── */
+    .h2-metrics-section {
+      background: var(--secondary);
+      color: #fff;
+    }
+    .h2-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.07);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-top: 3.5rem;
+    }
+    .h2-metric-cell {
+      background: rgba(255,255,255,.03);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: background var(--transition-base);
+    }
+    .h2-metric-cell:hover { background: rgba(255,255,255,.07); }
+    .h2-metric-num {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -.03em;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: .625rem;
+    }
+    .h2-metric-lbl {
+      font-size: .875rem;
+      color: rgba(255,255,255,.6);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 900px) { .h2-metrics-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .h2-metrics-grid { grid-template-columns: 1fr; } }
+
+    /* ── Testimonials ──────────────────────────────────── */
+    .h2-testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .h2-testi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: all var(--transition-base);
+    }
+    .h2-testi-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(37,99,235,.15);
+      transform: translateY(-3px);
+    }
+    .h2-testi-stars {
+      display: flex;
+      gap: 3px;
+      color: #F59E0B;
+      font-size: .875rem;
+    }
+    .h2-testi-quote {
+      font-size: .9375rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .h2-testi-author {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    .h2-testi-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .h2-testi-name { font-size: .9375rem; font-weight: 700; color: var(--text-primary); }
+    .h2-testi-role { font-size: .8125rem; color: var(--text-muted); }
+
+    @media (max-width: 900px) { .h2-testimonials-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 580px) { .h2-testimonials-grid { grid-template-columns: 1fr; } }
+
+    /* ── CTA ───────────────────────────────────────────── */
+    .h2-cta {
+      background: var(--secondary);
+      position: relative;
+      overflow: hidden;
+    }
+    .h2-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(37,99,235,.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .h2-cta-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .h2-cta-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: rgba(255,255,255,.7);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 1.5rem;
+    }
+    .h2-cta-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -.03em;
+      max-width: 700px;
+      margin: 0 auto 1rem;
+    }
+    .h2-cta-sub {
+      color: rgba(255,255,255,.65);
+      font-size: 1.0625rem;
+      margin: 0 auto 2.5rem;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+    .h2-cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .h2-cta-guarantee {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .h2-cta-g-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .8125rem;
+      color: rgba(255,255,255,.5);
+      font-weight: 500;
+    }
+    .h2-cta-g-item svg { color: rgba(255,255,255,.4); }
+  </style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<main id="main">
+
+  <!-- ══════════════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════════ -->
+  <section class="h2-hero" aria-labelledby="h2-hero-title">
+    <div class="container">
+      <div class="h2-hero-inner">
+        <span class="h2-hero-eyebrow">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="12"/></svg>
+          Now accepting enterprise projects for Q3 2026
+        </span>
+
+        <h1 class="h2-hero-title reveal" id="h2-hero-title">
+          The Development Engine Behind <span class="text-gradient">Market-Leading</span> Mobile Apps
+        </h1>
+
+        <p class="h2-hero-subtitle reveal">
+          We combine expert engineering, transparent collaboration, and battle-tested processes to deliver iOS and Android apps that scale from zero to millions of users.
+        </p>
+
+        <div class="h2-hero-actions reveal">
+          <a href="contact.html" class="btn btn-primary btn-xl" id="h2-hero-start-btn">
+            Start Your Project
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="case-studies.html" class="btn btn-secondary btn-xl" id="h2-hero-work-btn">View Our Work</a>
+        </div>
+
+        <div class="h2-trust-row reveal">
+          <div class="h2-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            No hidden fees
+          </div>
+          <div class="h2-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Real-time client portal
+          </div>
+          <div class="h2-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            On-time delivery guarantee
+          </div>
+          <div class="h2-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            150+ apps launched
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Mockup -->
+      <div class="h2-mockup-wrap reveal" style="margin-top:4rem;">
+        <!-- Floating pills -->
+        <div class="h2-float-pill p1">
+          <div class="h2-float-pill-dot" style="background:var(--success);"></div>
+          Sprint 4 — 92% complete
+        </div>
+        <div class="h2-float-pill p2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          4.9 App Store Rating
+        </div>
+
+        <div class="h2-mockup">
+          <!-- Browser chrome bar -->
+          <div class="h2-mockup-bar">
+            <div class="h2-mockup-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="h2-mockup-url"></div>
+            <div style="width:60px;"></div>
+          </div>
+
+          <!-- Dashboard body -->
+          <div class="h2-mockup-body">
+            <!-- Sidebar -->
+            <div class="h2-dash-sidebar">
+              <div class="h2-dash-logo">
+                <div class="h2-dash-logo-icon"></div>
+                <span>AppForge</span>
+              </div>
+              <div class="h2-dash-nav-item active">
+                <div class="h2-dash-nav-dot"></div>
+                Sprint Board
+              </div>
+              <div class="h2-dash-nav-item">
+                <div class="h2-dash-nav-dot"></div>
+                Milestones
+              </div>
+              <div class="h2-dash-nav-item">
+                <div class="h2-dash-nav-dot"></div>
+                Design Review
+              </div>
+              <div class="h2-dash-nav-item">
+                <div class="h2-dash-nav-dot"></div>
+                Team Chat
+              </div>
+              <div class="h2-dash-nav-item">
+                <div class="h2-dash-nav-dot"></div>
+                Analytics
+              </div>
+              <div class="h2-dash-nav-item">
+                <div class="h2-dash-nav-dot"></div>
+                Documents
+              </div>
+            </div>
+
+            <!-- Main content -->
+            <div class="h2-dash-content">
+              <div class="h2-dash-header-row">
+                <div class="h2-dash-title">FinNova Mobile — Sprint Pipeline</div>
+                <div class="h2-dash-sprint">Sprint 4 of 6</div>
+              </div>
+
+              <div class="h2-dash-cards">
+                <div class="h2-dash-stat">
+                  <div class="h2-dash-stat-val">24</div>
+                  <div class="h2-dash-stat-lbl">Tasks Completed</div>
+                </div>
+                <div class="h2-dash-stat">
+                  <div class="h2-dash-stat-val" style="color:var(--warning);">3</div>
+                  <div class="h2-dash-stat-lbl">In Review</div>
+                </div>
+                <div class="h2-dash-stat">
+                  <div class="h2-dash-stat-val" style="color:var(--success);">On Track</div>
+                  <div class="h2-dash-stat-lbl">Delivery Status</div>
+                </div>
+              </div>
+
+              <div class="h2-dash-tasks">
+                <div class="h2-dash-task">
+                  <div class="h2-dash-task-row">
+                    <span class="h2-dash-task-name">Biometric Login System</span>
+                    <span class="h2-dash-task-pct">100%</span>
+                  </div>
+                  <div class="progress"><div class="progress-bar success" style="width:100%"></div></div>
+                </div>
+                <div class="h2-dash-task">
+                  <div class="h2-dash-task-row">
+                    <span class="h2-dash-task-name">Plaid Payment Integration</span>
+                    <span class="h2-dash-task-pct">78%</span>
+                  </div>
+                  <div class="progress"><div class="progress-bar" style="width:78%"></div></div>
+                </div>
+                <div class="h2-dash-task">
+                  <div class="h2-dash-task-row">
+                    <span class="h2-dash-task-name">Real-Time Push Notifications</span>
+                    <span class="h2-dash-task-pct" style="color:var(--warning);">24%</span>
+                  </div>
+                  <div class="progress"><div class="progress-bar warning" style="width:24%"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       TRUSTED BRANDS
+  ══════════════════════════════════════════════════════ -->
+  <div class="h2-brands" aria-label="Trusted by">
+    <div class="container">
+      <p class="h2-brands-label">Trusted by fast-growing startups and global enterprises</p>
+      <div class="h2-logos-row">
+        <div class="h2-logo-item">
+          <div class="h2-logo-mark" style="background:#FEE2E2;">🏦</div>FinNova
+        </div>
+        <div class="h2-logo-item">
+          <div class="h2-logo-mark" style="background:#D1FAE5;">🏥</div>MedCare
+        </div>
+        <div class="h2-logo-item">
+          <div class="h2-logo-mark" style="background:#DBEAFE;">🛒</div>ShopWave
+        </div>
+        <div class="h2-logo-item">
+          <div class="h2-logo-mark" style="background:#EDE9FE;">🚀</div>LaunchPad
+        </div>
+        <div class="h2-logo-item">
+          <div class="h2-logo-mark" style="background:#FEF3C7;">🍕</div>QuickBite
+        </div>
+        <div class="h2-logo-item">
+          <div class="h2-logo-mark" style="background:#F3F4F6;">💪</div>FitLife
+        </div>
+        <div class="h2-logo-item">
+          <div class="h2-logo-mark" style="background:#E0F2FE;">✈️</div>TravelEasy
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       HOW IT WORKS
+  ══════════════════════════════════════════════════════ -->
+  <section class="section h2-process-section" aria-labelledby="h2-process-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Our Process
+        </span>
+        <h2 id="h2-process-heading">How We Take Your App <span class="text-gradient">From Idea to Launch</span></h2>
+        <p>A structured, transparent four-phase methodology refined across 150+ successful launches.</p>
+      </div>
+
+      <div class="h2-process-grid">
+        <div class="h2-process-step reveal reveal-delay-1">
+          <div class="h2-step-num">01</div>
+          <div class="h2-step-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="h2-step-title">Discovery & Scope</div>
+          <p class="h2-step-desc">We run structured workshops to capture your requirements, define the architecture, and produce a detailed project specification.</p>
+        </div>
+        <div class="h2-process-step reveal reveal-delay-2">
+          <div class="h2-step-num">02</div>
+          <div class="h2-step-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h.01M15 9h.01M9 15h.01M15 15h.01"/></svg>
+          </div>
+          <div class="h2-step-title">Design & Prototype</div>
+          <p class="h2-step-desc">Our UI/UX designers produce high-fidelity prototypes in Figma with an interactive clickthrough for your sign-off before a single line of code is written.</p>
+        </div>
+        <div class="h2-process-step reveal reveal-delay-3">
+          <div class="h2-step-num">03</div>
+          <div class="h2-step-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="h2-step-title">Agile Development</div>
+          <p class="h2-step-desc">2-week sprints with daily standups, real-time progress visible in your Client Portal dashboard, and continuous QA testing throughout the build.</p>
+        </div>
+        <div class="h2-process-step reveal reveal-delay-4">
+          <div class="h2-step-num">04</div>
+          <div class="h2-step-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="h2-step-title">Launch & Sustain</div>
+          <p class="h2-step-desc">We handle App Store and Play Store submission end-to-end. Post-launch we provide performance monitoring, updates, and an SLA maintenance package.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       CAPABILITIES
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="h2-caps-heading">
+    <div class="container">
+      <div class="h2-caps-grid">
+        <!-- Left: text -->
+        <div>
+          <div class="section-header reveal" style="text-align:left; margin-left:0; max-width:100%; margin-bottom:2rem;">
+            <span class="section-label">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              Core Capabilities
+            </span>
+            <h2 id="h2-caps-heading">Engineering Excellence Across Every <span class="text-gradient">Layer</span></h2>
+            <p>From native Swift & Kotlin to cross-platform Flutter and React Native — we choose the right tool for your business requirements, not our convenience.</p>
+          </div>
+
+          <div class="h2-caps-list">
+            <div class="h2-cap-item reveal reveal-delay-1">
+              <div class="h2-cap-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <div>
+                <div class="h2-cap-title">Native iOS & Android</div>
+                <p class="h2-cap-desc">Built with SwiftUI, UIKit, Jetpack Compose, and Kotlin for true 60fps native performance and deep OS integration.</p>
+              </div>
+            </div>
+            <div class="h2-cap-item reveal reveal-delay-2">
+              <div class="h2-cap-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <div>
+                <div class="h2-cap-title">Cross-Platform Flutter & React Native</div>
+                <p class="h2-cap-desc">A single codebase delivering near-native UX on both platforms — ideal for faster time-to-market without sacrificing quality.</p>
+              </div>
+            </div>
+            <div class="h2-cap-item reveal reveal-delay-3">
+              <div class="h2-cap-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <div>
+                <div class="h2-cap-title">Security-First Architecture</div>
+                <p class="h2-cap-desc">HIPAA, SOC2, GDPR-compliant systems with biometric auth, end-to-end encryption, and regular penetration testing.</p>
+              </div>
+            </div>
+            <div class="h2-cap-item reveal reveal-delay-4">
+              <div class="h2-cap-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div>
+                <div class="h2-cap-title">Scalable Backend & Cloud</div>
+                <p class="h2-cap-desc">Serverless architectures on AWS, GCP, and Firebase designed to handle millions of concurrent users without pre-provisioning.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: visual panel -->
+        <div class="h2-caps-visual reveal">
+          <div>
+            <div class="h2-cv-header">
+              Tech Stack Coverage
+              <span class="h2-cv-pill">Production-Ready</span>
+            </div>
+            <div class="h2-tech-row">
+              <span class="h2-tech-tag">Swift / SwiftUI</span>
+              <span class="h2-tech-tag">Kotlin</span>
+              <span class="h2-tech-tag">Flutter</span>
+              <span class="h2-tech-tag">React Native</span>
+              <span class="h2-tech-tag">Node.js</span>
+              <span class="h2-tech-tag">Firebase</span>
+              <span class="h2-tech-tag">AWS Lambda</span>
+              <span class="h2-tech-tag">PostgreSQL</span>
+              <span class="h2-tech-tag">Redis</span>
+              <span class="h2-tech-tag">GraphQL</span>
+            </div>
+          </div>
+
+          <div style="height:1px; background:var(--border);"></div>
+
+          <div>
+            <div class="h2-cv-header" style="margin-bottom:1rem;">Delivery Metrics</div>
+            <div class="h2-cv-metric-row">
+              <div class="h2-cv-metric">
+                <div class="h2-cv-metric-val">98%</div>
+                <div class="h2-cv-metric-lbl">On-time delivery rate</div>
+              </div>
+              <div class="h2-cv-metric">
+                <div class="h2-cv-metric-val">4.9★</div>
+                <div class="h2-cv-metric-lbl">Avg. App Store rating</div>
+              </div>
+              <div class="h2-cv-metric">
+                <div class="h2-cv-metric-val">150+</div>
+                <div class="h2-cv-metric-lbl">Apps shipped globally</div>
+              </div>
+              <div class="h2-cv-metric">
+                <div class="h2-cv-metric-val">< 0.1%</div>
+                <div class="h2-cv-metric-lbl">Post-launch crash rate</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:1px; background:var(--border);"></div>
+
+          <div style="display:flex; flex-direction:column; gap:1rem;">
+            <div class="h2-cv-header" style="margin-bottom:0;">Current Sprint Health</div>
+            <div class="h2-cv-progress-item">
+              <div class="h2-cv-prog-label">Code Coverage <span>94%</span></div>
+              <div class="progress"><div class="progress-bar success" style="width:94%"></div></div>
+            </div>
+            <div class="h2-cv-progress-item">
+              <div class="h2-cv-prog-label">Sprint Velocity <span>89%</span></div>
+              <div class="progress"><div class="progress-bar" style="width:89%"></div></div>
+            </div>
+            <div class="h2-cv-progress-item">
+              <div class="h2-cv-prog-label">Bug Resolution Rate <span>99%</span></div>
+              <div class="progress"><div class="progress-bar success" style="width:99%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       APP SHOWCASE
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" style="background:var(--bg-secondary); border-top:1px solid var(--border); border-bottom:1px solid var(--border);" aria-labelledby="h2-showcase-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Product Showcase
+        </span>
+        <h2 id="h2-showcase-heading">Apps We've Built That <span class="text-gradient">People Actually Use</span></h2>
+        <p>High-fidelity case studies across FinTech, HealthTech, E-commerce, and on-demand delivery verticals.</p>
+      </div>
+
+      <div class="h2-showcase-grid">
+
+        <!-- ── FinNova ── -->
+        <article class="h2-showcase-card reveal reveal-delay-1">
+          <div class="h2-showcase-visual">
+            <img
+              src="assets/images/showcase-finnova.png"
+              alt="FinNova neobanking app dashboard showing account balance, transaction history, and spending analytics"
+              class="h2-showcase-img"
+              loading="lazy"
+              width="800"
+              height="600"
+            >
+            <!-- Category chip on image -->
+            <span class="h2-sc-img-tag" style="background:rgba(30,58,138,.7); color:#93c5fd;">FinTech</span>
+            <!-- Bottom overlay -->
+            <div class="h2-sc-img-bottom">
+              <span class="h2-sc-img-name">FinNova Banking</span>
+              <span class="h2-sc-img-badge">iOS · Android</span>
+            </div>
+          </div>
+
+          <div class="h2-showcase-body">
+            <div class="h2-sc-body-top">
+              <h3 class="h2-showcase-title">FinNova — Neobanking Platform</h3>
+              <p class="h2-showcase-desc">A secure digital banking application with Plaid API integration, instant ACH transfers, biometric authentication, and real-time portfolio analytics dashboard.</p>
+            </div>
+            <div class="h2-sc-features">
+              <span class="h2-sc-feat">Biometric Auth</span>
+              <span class="h2-sc-feat">Plaid API</span>
+              <span class="h2-sc-feat">ACH Transfers</span>
+              <span class="h2-sc-feat">FDIC Compliant</span>
+            </div>
+            <div class="h2-sc-footer">
+              <a href="case-studies.html" class="h2-sc-footer-link">
+                View Case Study
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="h2-sc-platform">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                Cross-platform
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── MedCare ── -->
+        <article class="h2-showcase-card reveal reveal-delay-2">
+          <div class="h2-showcase-visual">
+            <img
+              src="assets/images/showcase-medcare.png"
+              alt="MedCare telehealth app showing doctor consultation interface, appointment booking, and patient vitals"
+              class="h2-showcase-img"
+              loading="lazy"
+              width="800"
+              height="600"
+            >
+            <span class="h2-sc-img-tag" style="background:rgba(6,78,59,.7); color:#6ee7b7;">HealthTech</span>
+            <div class="h2-sc-img-bottom">
+              <span class="h2-sc-img-name">MedCare Telehealth</span>
+              <span class="h2-sc-img-badge">HIPAA Compliant</span>
+            </div>
+          </div>
+
+          <div class="h2-showcase-body">
+            <div class="h2-sc-body-top">
+              <h3 class="h2-showcase-title">MedCare — Telehealth Platform</h3>
+              <p class="h2-showcase-desc">HIPAA-compliant telemedicine app with real-time video consultations, e-prescriptions, AI symptom triage, and secure EHR integration for seamless patient care.</p>
+            </div>
+            <div class="h2-sc-features">
+              <span class="h2-sc-feat">HIPAA Compliant</span>
+              <span class="h2-sc-feat">Video Consults</span>
+              <span class="h2-sc-feat">E-Prescriptions</span>
+              <span class="h2-sc-feat">AI Triage</span>
+            </div>
+            <div class="h2-sc-footer">
+              <a href="case-studies.html" class="h2-sc-footer-link">
+                View Case Study
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="h2-sc-platform">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                iOS · Android
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ── QuickBite ── -->
+        <article class="h2-showcase-card reveal reveal-delay-3">
+          <div class="h2-showcase-visual">
+            <img
+              src="assets/images/showcase-quickbite.png"
+              alt="QuickBite food delivery app showing live order tracking map, driver location, and order status"
+              class="h2-showcase-img"
+              loading="lazy"
+              width="800"
+              height="600"
+            >
+            <span class="h2-sc-img-tag" style="background:rgba(124,45,18,.75); color:#fdba74;">On-Demand</span>
+            <div class="h2-sc-img-bottom">
+              <span class="h2-sc-img-name">QuickBite Delivery</span>
+              <span class="h2-sc-img-badge">Live GPS Tracking</span>
+            </div>
+          </div>
+
+          <div class="h2-showcase-body">
+            <div class="h2-sc-body-top">
+              <h3 class="h2-showcase-title">QuickBite — Food Delivery App</h3>
+              <p class="h2-showcase-desc">Three-sided marketplace for customers, restaurants, and delivery drivers with real-time GPS tracking, dynamic pricing engine, and restaurant CMS integration.</p>
+            </div>
+            <div class="h2-sc-features">
+              <span class="h2-sc-feat">Live GPS</span>
+              <span class="h2-sc-feat">Stripe Payments</span>
+              <span class="h2-sc-feat">Dynamic Pricing</span>
+              <span class="h2-sc-feat">3-sided Market</span>
+            </div>
+            <div class="h2-sc-footer">
+              <a href="case-studies.html" class="h2-sc-footer-link">
+                View Case Study
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="h2-sc-platform">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                Cross-platform
+              </span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div style="text-align:center; margin-top:3rem;">
+        <a href="case-studies.html" class="btn btn-secondary btn-lg" id="h2-view-all-btn">
+          View All 15+ Case Studies
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SUCCESS METRICS
+  ══════════════════════════════════════════════════════ -->
+  <section class="section h2-metrics-section" aria-labelledby="h2-metrics-heading">
+    <div class="container">
+      <div class="section-header reveal" style="color:#fff;">
+        <span class="section-label" style="background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.12); color:rgba(255,255,255,.8);">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          Proven Results
+        </span>
+        <h2 id="h2-metrics-heading" style="color:#fff;">Delivering Consistent, <span class="text-gradient">Measurable</span> Outcomes</h2>
+        <p style="color:rgba(255,255,255,.6);">Metrics drawn from 150+ live products across FinTech, HealthTech, E-commerce, and Enterprise SaaS verticals.</p>
+      </div>
+
+      <div class="h2-metrics-grid reveal">
+        <div class="h2-metric-cell">
+          <div class="h2-metric-num">200+</div>
+          <div class="h2-metric-lbl">High-performing apps shipped and live in production</div>
+        </div>
+        <div class="h2-metric-cell">
+          <div class="h2-metric-num">98%</div>
+          <div class="h2-metric-lbl">Client satisfaction and repeat engagement rate</div>
+        </div>
+        <div class="h2-metric-cell">
+          <div class="h2-metric-num">150M+</div>
+          <div class="h2-metric-lbl">Total combined installs across all delivered apps</div>
+        </div>
+        <div class="h2-metric-cell">
+          <div class="h2-metric-num">3×</div>
+          <div class="h2-metric-lbl">Average ROI increase reported by our clients in year one</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       TESTIMONIALS
+  ══════════════════════════════════════════════════════ -->
+  <section class="section" aria-labelledby="h2-testi-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Client Stories
+        </span>
+        <h2 id="h2-testi-heading">What Founders & CTOs Say <span class="text-gradient">About Us</span></h2>
+        <p>Don't take our word for it — hear from the people who've shipped with us.</p>
+      </div>
+
+      <div class="h2-testimonials-grid">
+        <article class="h2-testi-card reveal reveal-delay-1">
+          <div class="h2-testi-stars">★★★★★</div>
+          <p class="h2-testi-quote">"The client dashboard was a game changer. We could review prototypes, request revisions, and monitor progress in real-time. AppForge delivered on time and within budget — a rarity in this industry."</p>
+          <div class="h2-testi-author">
+            <div class="h2-testi-avatar">JD</div>
+            <div>
+              <div class="h2-testi-name">John Dowson</div>
+              <div class="h2-testi-role">Founder, FoodFlow</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="h2-testi-card reveal reveal-delay-2">
+          <div class="h2-testi-stars">★★★★★</div>
+          <p class="h2-testi-quote">"AppForge's technical depth is stellar. They took our complex AI healthcare model and successfully optimized it to perform on-device in Swift. The performance gains were beyond our expectations."</p>
+          <div class="h2-testi-author">
+            <div class="h2-testi-avatar" style="background:linear-gradient(135deg,#7c3aed,#06b6d4);">LL</div>
+            <div>
+              <div class="h2-testi-name">Laura Lee</div>
+              <div class="h2-testi-role">CTO, PulseMed</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="h2-testi-card reveal reveal-delay-3">
+          <div class="h2-testi-stars">★★★★★</div>
+          <p class="h2-testi-quote">"We evaluated four agencies. AppForge was the only one that could speak our language technically while still keeping the business perspective front and center. Our app hit 500K downloads in 3 months."</p>
+          <div class="h2-testi-author">
+            <div class="h2-testi-avatar" style="background:linear-gradient(135deg,#0f172a,#1e40af);">MK</div>
+            <div>
+              <div class="h2-testi-name">Marcus Kim</div>
+              <div class="h2-testi-role">CEO, TravelEasy</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       CTA
+  ══════════════════════════════════════════════════════ -->
+  <section class="section h2-cta" aria-labelledby="h2-cta-heading">
+    <div class="container">
+      <div class="h2-cta-inner reveal">
+        <span class="h2-cta-label">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Get Started Today
+        </span>
+        <h2 class="h2-cta-title" id="h2-cta-heading">Let's Bring Your <br>Mobile Vision to Reality</h2>
+        <p class="h2-cta-sub">Book a free 30-minute discovery call with our solutions architects to map out your architecture, timeline, and investment.</p>
+        <div class="h2-cta-actions">
+          <a href="contact.html#booking" class="btn btn-white btn-xl" id="h2-cta-book-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Schedule Discovery Call
+          </a>
+          <a href="contact.html" class="btn btn-outline-white btn-xl" id="h2-cta-rfp-btn">Submit RFP Inquiry</a>
+        </div>
+        <div class="h2-cta-guarantee">
+          <div class="h2-cta-g-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            No commitment required
+          </div>
+          <div class="h2-cta-g-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Free project scoping
+          </div>
+          <div class="h2-cta-g-item">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Response within 24 hours
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

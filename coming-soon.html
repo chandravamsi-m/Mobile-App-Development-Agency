@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon - Portal Upgrades & Releases — AppForge</title>
+  <meta name="description" content="Our client portal upgrade is launching soon. Subscribe to receive updates and be notified when we go live.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .cs-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--gradient-hero);
+      padding: var(--space-8) var(--space-6);
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+    }
+    .cs-card {
+      max-width: 600px;
+      width: 100%;
+      z-index: 2;
+    }
+    
+    /* Countdown numbers */
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+      margin: var(--space-10) 0;
+    }
+    .countdown-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5) var(--space-4);
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+    .countdown-num {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+    .countdown-lbl {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.6);
+    }
+  </style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<main id="main">
+  <div class="cs-wrapper">
+    <!-- Grid Overlay Background -->
+    <div style="position:absolute; inset:0; opacity:0.05; background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 24px 24px;" aria-hidden="true"></div>
+    
+    <div class="cs-card reveal">
+      <a href="index.html" class="sidebar-logo" style="justify-content:center; color:#fff; font-size:1.5rem; margin-bottom:var(--space-6);">
+        <div class="sidebar-logo-icon">⚡</div>
+        AppForge
+      </a>
+      
+      <span class="badge badge-accent" style="margin-bottom:var(--space-3)">Portal v3.0 Release</span>
+      <h1 style="color:#fff; font-size:clamp(2rem, 5vw, 3rem)">Major Upgrades Launching Soon</h1>
+      <p style="color:rgba(255,255,255,0.7); max-width:500px; margin:var(--space-3) auto 0;">We are deploying secure WebRTC video consultation slots, Figma live overlay integrations, and automatic repository deployment tools.</p>
+      
+      <!-- Countdown Wrapper -->
+      <div class="countdown-grid" id="countdown" aria-live="polite">
+        <div class="countdown-box">
+          <div class="countdown-num" id="cd-days">30</div>
+          <div class="countdown-lbl">Days</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num" id="cd-hours">00</div>
+          <div class="countdown-lbl">Hours</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num" id="cd-mins">00</div>
+          <div class="countdown-lbl">Mins</div>
+        </div>
+        <div class="countdown-box">
+          <div class="countdown-num" id="cd-secs">00</div>
+          <div class="countdown-lbl">Secs</div>
+        </div>
+      </div>
+      
+      <!-- Newsletter Signup -->
+      <form id="subscribe-form" style="max-width:480px; margin:0 auto; display:flex; gap:8px; flex-direction:row; flex-wrap:wrap; justify-content:center">
+        <div class="form-group" style="flex:2; min-width:260px;">
+          <input type="email" id="subscribe-email" class="form-control" placeholder="Enter your business email" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.12); color:#fff" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="flex:1; justify-content:center; height:fit-content; padding: 12px 24px">Get Notified</button>
+      </form>
+      
+      <div style="margin-top:var(--space-8);">
+        <a href="index.html" class="btn btn-outline-white btn-sm">🏠 Go to Homepage</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="toast-container" role="alert" aria-live="polite"></div>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/tools.js"></script>
+</body>
+</html>

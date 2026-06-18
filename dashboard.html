@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Portal Dashboard — AppForge</title>
+  <meta name="description" content="Manage your mobile app design prototypes, check development sprint milestones, communicate with developers, and upload files.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <style>
+    /* Additional UI polishing for dashboard */
+    .mini-chart { display: flex; align-items: flex-end; gap: 8px; height: 100px; margin-top: var(--space-4); padding-bottom: 8px; border-bottom: 1.5px solid var(--border); }
+    .mini-chart-bar { flex: 1; background: var(--gradient-primary); border-radius: var(--radius-sm) var(--radius-sm) 0 0; transition: height 1s ease; }
+    
+    /* Collapsed Sidebar overrides if active */
+    .sidebar.collapsed { width: 70px; }
+    .sidebar.collapsed .sidebar-logo span,
+    .sidebar.collapsed .project-selector,
+    .sidebar.collapsed .sidebar-nav-label,
+    .sidebar.collapsed .sidebar-nav-badge,
+    .sidebar.collapsed .sidebar-user-name,
+    .sidebar.collapsed .sidebar-user-role,
+    .sidebar.collapsed .sidebar-user-menu,
+    .sidebar.collapsed .sidebar-section-label { display: none !important; }
+    .sidebar.collapsed .sidebar-nav-item { justify-content: center; padding: 10px 0; }
+    .sidebar.collapsed .sidebar-user { justify-content: center; padding: 8px 0; }
+    .dashboard-main.expanded { margin-left: 70px; }
+    [dir="rtl"] .dashboard-main.expanded { margin-right: 70px; margin-left: 0; }
+  </style>
+</head>
+<body class="dashboard-body">
+
+<!-- Left Sidebar Navigation -->
+<aside class="sidebar" role="navigation" aria-label="Portal Navigation">
+  <div class="sidebar-header">
+    <a href="index.html" class="sidebar-logo">
+      <div class="sidebar-logo-icon">⚡</div>
+      <span>AppForge</span>
+    </a>
+    <button class="sidebar-collapse-btn" id="sidebar-collapse-toggle" aria-label="Collapse sidebar">◀</button>
+  </div>
+
+  <div class="project-selector">
+    <div class="project-select-label">Active Workspace</div>
+    <div class="project-select-btn">
+      <div class="project-icon">🏦</div>
+      <div class="project-name">FinNova Banking</div>
+      <div class="project-status">● Live</div>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav" aria-label="Primary pages">
+    <div class="sidebar-section-label">Collaboration</div>
+    <a href="#" class="sidebar-nav-item active" data-page="overview">
+      <span class="sidebar-nav-icon">📊</span>
+      <span class="sidebar-nav-label">Overview</span>
+    </a>
+    <a href="#" class="sidebar-nav-item" data-page="milestones">
+      <span class="sidebar-nav-icon">🏁</span>
+      <span class="sidebar-nav-label">Milestones</span>
+    </a>
+    <a href="#" class="sidebar-nav-item" data-page="requirements">
+      <span class="sidebar-nav-icon">📋</span>
+      <span class="sidebar-nav-label">Requirements</span>
+    </a>
+    <a href="#" class="sidebar-nav-item" data-page="prototypes">
+      <span class="sidebar-nav-icon">🎨</span>
+      <span class="sidebar-nav-label">Prototype Review</span>
+      <span class="sidebar-nav-badge">2</span>
+    </a>
+    <a href="#" class="sidebar-nav-item" data-page="messaging">
+      <span class="sidebar-nav-icon">💬</span>
+      <span class="sidebar-nav-label">Messaging</span>
+    </a>
+    <a href="#" class="sidebar-nav-item" data-page="files">
+      <span class="sidebar-nav-icon">📁</span>
+      <span class="sidebar-nav-label">File Manager</span>
+    </a>
+
+    <div class="sidebar-section-label">Finance & Settings</div>
+    <a href="#" class="sidebar-nav-item" data-page="invoices">
+      <span class="sidebar-nav-icon">💳</span>
+      <span class="sidebar-nav-label">Invoice Center</span>
+    </a>
+    <a href="#" class="sidebar-nav-item" data-page="settings">
+      <span class="sidebar-nav-icon">⚙️</span>
+      <span class="sidebar-nav-label">Settings</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-user">
+      <div class="sidebar-user-avatar">JD</div>
+      <div class="sidebar-user-name">
+        <div class="sidebar-user-name">John Dowson</div>
+        <div class="sidebar-user-role">Product Owner</div>
+      </div>
+      <div class="sidebar-user-menu" data-action="logout" title="Sign Out">✖</div>
+    </div>
+  </div>
+</aside>
+
+<!-- Sidebar Overlay for Mobile -->
+<div class="modal-overlay" id="sidebar-overlay" style="z-index: 150;"></div>
+
+<!-- Main Section Area -->
+<div class="dashboard-main">
+  <!-- Topbar Header -->
+  <header class="dashboard-topbar">
+    <div class="topbar-left">
+      <button class="sidebar-toggle-btn" aria-label="Toggle sidebar menu">☰</button>
+      <h1 class="topbar-page-title">Overview</h1>
+      <div class="topbar-search">
+        <span class="topbar-search-icon">🔍</span>
+        <input type="text" placeholder="Search tasks, uploads, deliverables..." aria-label="Search items">
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button class="topbar-action-btn" id="notif-btn" aria-label="Notifications Panel">
+        🔔
+        <span class="notif-dot"></span>
+      </button>
+      
+      <!-- Notifications Dropdown Box -->
+      <div class="card hidden" id="notif-panel" style="position: absolute; top: 60px; right: 20px; width: 320px; z-index: 110; box-shadow: var(--shadow-xl);">
+        <h3 style="font-size: 0.9375rem; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 8px;">Notifications</h3>
+        <div class="notif-list">
+          <div class="notif-item unread">
+            <span class="notif-icon" style="background:var(--primary-50)">🎨</span>
+            <div class="notif-text">
+              <strong>Lena Novak</strong> uploaded prototype v2.1 (Biometric Screen).
+              <div class="notif-time">10 mins ago</div>
+            </div>
+          </div>
+          <div class="notif-item unread">
+            <span class="notif-icon" style="background:var(--primary-50)">💬</span>
+            <div class="notif-text">
+              <strong>Priya Rajan</strong> sent a code push update message.
+              <div class="notif-time">1 hr ago</div>
+            </div>
+          </div>
+          <div class="notif-item">
+            <span class="notif-icon" style="background:var(--primary-50)">💳</span>
+            <div class="notif-text">
+              Invoice #INV-2025-004 has been marked as **Paid**.
+              <div class="notif-time">Yesterday</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="theme-toggle topbar-action-btn" style="border: 1px solid var(--border); font-size:1.125rem">🌙</button>
+    </div>
+  </header>
+
+  <!-- Page Content Viewports -->
+  <main class="dashboard-content" id="main">
+
+    <!-- ── PAGE 1: OVERVIEW ── -->
+    <div class="dash-page active" id="page-overview">
+      <div class="dash-page-header">
+        <div>
+          <h2 class="dash-page-title">Workspace Progress</h2>
+          <p class="dash-page-subtitle">Track the active sprint pipeline and latest milestones here.</p>
+        </div>
+        <div class="dash-page-actions">
+          <button class="btn btn-secondary btn-sm" id="rtl-toggle">RTL Mode</button>
+          <a href="#" class="btn btn-primary btn-sm" data-page="messaging" onclick="document.querySelector('[data-page=messaging]').click()">💬 Chat With Team</a>
+        </div>
+      </div>
+
+      <div class="widget-grid">
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(37,99,235,.1);color:var(--primary)">🏁</div>
+          <div class="widget-info">
+            <div class="widget-label">Sprint 4 Complete</div>
+            <div class="widget-value">78%</div>
+            <div class="widget-change up">▲ 12% this week</div>
+          </div>
+        </div>
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(34,197,94,.1);color:var(--success)">✅</div>
+          <div class="widget-info">
+            <div class="widget-label">Tasks Completed</div>
+            <div class="widget-value">24 / 30</div>
+            <div class="widget-change neutral">● 6 remaining</div>
+          </div>
+        </div>
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(245,158,11,.1);color:var(--warning)">⏳</div>
+          <div class="widget-info">
+            <div class="widget-label">Active Developers</div>
+            <div class="widget-value">8</div>
+            <div class="widget-change neutral">● Full capacity</div>
+          </div>
+        </div>
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(239,68,68,.1);color:var(--danger)">📅</div>
+          <div class="widget-info">
+            <div class="widget-label">Target Launch</div>
+            <div class="widget-value">14d</div>
+            <div class="widget-change down">▼ Tight schedule</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-grid-main">
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <h3 class="dash-card-title">Sprints Velocity Graph</h3>
+            <span style="font-size:0.75rem;color:var(--text-muted)">Story Points Completed</span>
+          </div>
+          <div class="dash-card-body">
+            <div class="ppb-header">
+              <span class="ppb-name">Sprint 4 Velocity Progress</span>
+              <span class="ppb-pct">92 points</span>
+            </div>
+            <div class="progress" style="margin-bottom:var(--space-6)"><div class="progress-bar" style="width: 78%"></div></div>
+            
+            <div class="mini-chart">
+              <div class="mini-chart-bar" data-height="40%" style="height: 40%"></div>
+              <div class="mini-chart-bar" data-height="65%" style="height: 65%"></div>
+              <div class="mini-chart-bar" data-height="55%" style="height: 55%"></div>
+              <div class="mini-chart-bar" data-height="85%" style="height: 85%"></div>
+              <div class="mini-chart-bar" data-height="92%" style="height: 92%"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.7rem; color:var(--text-muted); margin-top:8px;">
+              <span>Sprint 1</span>
+              <span>Sprint 2</span>
+              <span>Sprint 3</span>
+              <span>Sprint 4 (Active)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-header"><h3 class="dash-card-title">Team Activity</h3></div>
+          <div class="dash-card-body">
+            <div class="activity-list">
+              <div class="activity-item">
+                <span class="activity-dot" style="background:var(--primary)"></span>
+                <div class="activity-content">
+                  <div class="activity-text"><strong>Priya Rajan</strong> integrated Stripe Connect payment flows.</div>
+                  <div class="activity-time">2 hrs ago</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="activity-dot" style="background:var(--success)"></span>
+                <div class="activity-content">
+                  <div class="activity-text"><strong>James Kim</strong> approved biometric iOS FaceID login modules.</div>
+                  <div class="activity-time">5 hrs ago</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="activity-dot" style="background:var(--warning)"></span>
+                <div class="activity-content">
+                  <div class="activity-text"><strong>Lena Novak</strong> uploaded Figma UI frames for review.</div>
+                  <div class="activity-time">Yesterday</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE 2: MILESTONES ── -->
+    <div class="dash-page" id="page-milestones">
+      <div class="dash-page-header">
+        <div>
+          <h2 class="dash-page-title">Sprint Milestones</h2>
+          <p class="dash-page-subtitle">Track project phases, target completion dates, and overall scope.</p>
+        </div>
+      </div>
+
+      <div class="milestone-list">
+        <div class="milestone-item">
+          <div class="milestone-left">
+            <div class="milestone-step done">✓</div>
+            <div class="milestone-info">
+              <div class="milestone-name">Phase 1: Product Discovery & Wireframes</div>
+              <div class="milestone-date">Completed on Nov 15, 2025</div>
+            </div>
+          </div>
+          <div class="milestone-right">
+            <div class="milestone-progress-wrap">
+              <div class="progress"><div class="progress-bar success" style="width: 100%"></div></div>
+            </div>
+            <span class="badge badge-success">Completed</span>
+          </div>
+        </div>
+
+        <div class="milestone-item">
+          <div class="milestone-left">
+            <div class="milestone-step active">2</div>
+            <div class="milestone-info">
+              <div class="milestone-name">Phase 2: Core Sprint Development</div>
+              <div class="milestone-date">Target Date: Jan 10, 2026</div>
+            </div>
+          </div>
+          <div class="milestone-right">
+            <div class="milestone-progress-wrap">
+              <div class="progress"><div class="progress-bar" style="width: 78%"></div></div>
+            </div>
+            <span class="badge badge-primary">Active</span>
+          </div>
+        </div>
+
+        <div class="milestone-item">
+          <div class="milestone-left">
+            <div class="milestone-step pending">3</div>
+            <div class="milestone-info">
+              <div class="milestone-name">Phase 3: QA Integration & Penetration Testing</div>
+              <div class="milestone-date">Target Date: Jan 24, 2026</div>
+            </div>
+          </div>
+          <div class="milestone-right">
+            <div class="milestone-progress-wrap">
+              <div class="progress"><div class="progress-bar warning" style="width: 0%"></div></div>
+            </div>
+            <span class="badge badge-muted">Pending</span>
+          </div>
+        </div>
+      </div>
+      
+      <h3 style="font-size:1.125rem; margin: var(--space-8) 0 var(--space-4);">Sprint Breakdowns</h3>
+      <div class="sprint-grid">
+        <div class="sprint-card">
+          <div class="sprint-label" style="color:var(--success)">Sprint 3 (Done)</div>
+          <div class="sprint-name">Core Authentication Modules</div>
+          <div class="sprint-dates">Nov 20 – Dec 05</div>
+          <div class="sprint-tasks-count">12/12 User Stories Complete</div>
+        </div>
+        <div class="sprint-card">
+          <div class="sprint-label" style="color:var(--primary)">Sprint 4 (Active)</div>
+          <div class="sprint-name">Plaid Connect & Payment Processing</div>
+          <div class="sprint-dates">Dec 06 – Dec 20</div>
+          <div class="sprint-tasks-count">8/10 User Stories Complete</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE 3: REQUIREMENTS CENTER ── -->
+    <div class="dash-page" id="page-requirements">
+      <div class="dash-page-header">
+        <div>
+          <h2 class="dash-page-title">Requirements Center</h2>
+          <p class="dash-page-subtitle">Submit new requirement modules and check approval workflows.</p>
+        </div>
+        <div class="dash-page-actions">
+          <button class="btn btn-primary btn-sm" data-modal="req-modal">➕ Submit Requirement</button>
+        </div>
+      </div>
+
+      <div class="req-list">
+        <div class="req-item">
+          <div class="req-icon" style="background:rgba(37,99,235,.1);color:var(--primary)">📋</div>
+          <div class="req-info">
+            <div class="req-title">Plaid Multi-Account Sync API</div>
+            <div class="req-desc">Request access scope allowing users to aggregate balances across multiple banks.</div>
+            <div class="req-meta">
+              <span class="req-meta-item">📅 Dec 14, 2025</span>
+              <span class="badge badge-danger">high</span>
+            </div>
+          </div>
+          <div class="req-actions">
+            <span class="badge badge-success">Approved</span>
+          </div>
+        </div>
+        <div class="req-item">
+          <div class="req-icon" style="background:rgba(37,99,235,.1);color:var(--primary)">📋</div>
+          <div class="req-info">
+            <div class="req-title">Biometric Prompt Fallback Option</div>
+            <div class="req-desc">Implement passcode lock alternative if biometric scans fail three times.</div>
+            <div class="req-meta">
+              <span class="req-meta-item">📅 Dec 10, 2025</span>
+              <span class="badge badge-warning">medium</span>
+            </div>
+          </div>
+          <div class="req-actions">
+            <span class="badge badge-success">Approved</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Requirement Modal Window -->
+      <div class="modal-overlay" id="req-modal" style="z-index: 210;">
+        <div class="modal-card card" style="max-width: 500px; width: 100%; margin: 60px auto; position: relative;">
+          <button class="modal-close" style="position: absolute; right: 16px; top: 16px; font-size:1.25rem;">✕</button>
+          <h3 style="font-size:1.25rem; margin-bottom:var(--space-2)">📋 Submit Requirement</h3>
+          <p style="font-size:0.8125rem; color:var(--text-muted); margin-bottom:var(--space-5)">State details of the scope module or API addition.</p>
+          
+          <form id="req-form">
+            <div class="form-group" style="margin-bottom:var(--space-4)">
+              <label class="form-label required" for="req-title">Title</label>
+              <input type="text" id="req-title" class="form-control" placeholder="Module / API Name" required>
+            </div>
+            <div class="form-group" style="margin-bottom:var(--space-4)">
+              <label class="form-label" for="req-desc">Description</label>
+              <textarea id="req-desc" class="form-control" placeholder="State expected user flow or endpoint inputs..."></textarea>
+            </div>
+            <div class="form-group" style="margin-bottom:var(--space-6)">
+              <label class="form-label" for="req-priority">Priority</label>
+              <select id="req-priority" class="form-control">
+                <option value="high">High Priority</option>
+                <option value="medium" selected>Medium Priority</option>
+                <option value="low">Low Priority</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary full-width">🚀 Submit Requirement</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE 4: PROTOTYPE REVIEW ── -->
+    <div class="dash-page" id="page-prototypes">
+      <div class="dash-page-header">
+        <div>
+          <h2 class="dash-page-title">Prototype Reviews</h2>
+          <p class="dash-page-subtitle">Test and approve live UI/UX design mockups and wireframes.</p>
+        </div>
+      </div>
+
+      <div class="prototype-grid">
+        <!-- Card 1 -->
+        <div class="prototype-card">
+          <div class="prototype-preview" style="background: linear-gradient(135deg, #2563eb, #06b6d4);">
+            📱 FinNova Accounts
+          </div>
+          <div class="prototype-body">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <h3 class="prototype-name">Mobile Dashboard v2.1</h3>
+              <span class="badge badge-warning proto-status-badge">Pending Action</span>
+            </div>
+            <div class="prototype-version">Last update: Dec 14, 2025 by Lena Novak</div>
+            <div class="prototype-actions">
+              <button class="btn btn-success btn-sm proto-approve" style="flex:1">Approve</button>
+              <button class="btn btn-danger btn-sm proto-reject" style="flex:1">Request Rev.</button>
+            </div>
+            
+            <div class="comment-thread">
+              <div class="comment-thread-list">
+                <div class="comment-item">
+                  <div class="client-avatar" style="width:24px; height:24px; font-size:0.6rem;">LN</div>
+                  <div class="comment-body">
+                    <div class="comment-author">Lena Novak (UI/UX)</div>
+                    <div class="comment-text">Uploaded biometric sign-in option wireframes. Please verify spacing.</div>
+                    <div class="comment-time">1 hr ago</div>
+                  </div>
+                </div>
+              </div>
+              <div class="comment-input-row">
+                <input type="text" placeholder="Add feedback comment..." aria-label="Comment entry field">
+                <button class="btn btn-primary btn-sm comment-send">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="prototype-card">
+          <div class="prototype-preview" style="background: linear-gradient(135deg, #10b981, #06b6d4);">
+            💳 Payments Form
+          </div>
+          <div class="prototype-body">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <h3 class="prototype-name">Transfer Flow Wireframe</h3>
+              <span class="badge badge-success proto-status-badge">Approved</span>
+            </div>
+            <div class="prototype-version">Last update: Dec 08, 2025 by Lena Novak</div>
+            <div class="prototype-actions">
+              <button class="btn btn-success btn-sm proto-approve" disabled style="flex:1">Approve</button>
+              <button class="btn btn-danger btn-sm proto-reject" disabled style="flex:1">Request Rev.</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE 5: TEAM COMMUNICATION (MESSAGING) ── -->
+    <div class="dash-page" id="page-messaging">
+      <div class="dash-page-header">
+        <div>
+          <h2 class="dash-page-title">Internal Collaboration Chat</h2>
+          <p class="dash-page-subtitle">Communicate directly with our mobile engineering and design leads.</p>
+        </div>
+      </div>
+
+      <div class="messaging-layout">
+        <div class="msg-sidebar">
+          <div class="msg-sidebar-header">Conversations</div>
+          <div class="msg-search">
+            <input type="text" placeholder="Search developer threads..." aria-label="Search threads">
+          </div>
+          <div class="msg-thread-list">
+            <div class="msg-thread active">
+              <div class="sidebar-user-avatar">SC</div>
+              <div class="msg-thread-info">
+                <div class="msg-thread-name">Sophia Chen (CTO)</div>
+                <div class="msg-thread-preview">Got the Plaid configuration.</div>
+              </div>
+              <span class="msg-unread"></span>
+            </div>
+            <div class="msg-thread">
+              <div class="sidebar-user-avatar" style="background:linear-gradient(135deg,#db2777,#f59e0b)">LN</div>
+              <div class="msg-thread-info">
+                <div class="msg-thread-name">Lena Novak (Design)</div>
+                <div class="msg-thread-preview">Are the FaceID target Target...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="msg-main">
+          <div class="msg-main-header">
+            <div>
+              <div class="msg-main-name">Sophia Chen (CTO)</div>
+              <div class="msg-main-status">● Online</div>
+            </div>
+          </div>
+          <div class="msg-messages">
+            <div class="msg-bubble received">
+              Hi John! I've co-configured the Sandbox Plaid token on AWS. Could you supply the updated endpoint keys?
+              <div class="msg-bubble-time">10:30 AM</div>
+            </div>
+            <div class="msg-bubble sent">
+              Sure! I've uploaded the new keys file to the File Manager in dashboard.
+              <div class="msg-bubble-time">10:32 AM</div>
+            </div>
+            <div class="msg-bubble received">
+              Got it! We'll integrate it into our Sprint 4 pipeline.
+              <div class="msg-bubble-time">10:35 AM</div>
+            </div>
+          </div>
+          <div class="msg-input-area">
+            <textarea id="msg-input" class="msg-input" placeholder="Type collaboration message... Press Enter to send" aria-label="Message text area"></textarea>
+            <button class="btn btn-primary" id="msg-send-btn" style="height:fit-content; align-self:center;">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE 6: FILE MANAGER ── -->
+    <div class="dash-page" id="page-files">
+      <div class="dash-page-header">
+        <div>
+          <h2 class="dash-page-title">File Manager</h2>
+          <p class="dash-page-subtitle">Upload and download scopes, certificates, and wireframe assets.</p>
+        </div>
+      </div>
+
+      <div class="upload-area">
+        <input type="file" id="file-input" style="display:none" multiple>
+        <div class="upload-icon">📁</div>
+        <div class="upload-text">Drag files here or click to upload assets</div>
+        <div class="upload-hint">Support PDF, PNG, JSON, ZIP (Max 15MB)</div>
+      </div>
+
+      <div class="file-grid">
+        <div class="file-card">
+          <div class="file-icon">📝</div>
+          <div class="file-name">Plaid_API_Keys_Dec.json</div>
+          <div class="file-meta">4.2 KB</div>
+          <div class="file-actions">
+            <button class="btn btn-ghost btn-sm btn-icon" title="Download">⬇️</button>
+            <button class="btn btn-ghost btn-sm btn-icon" title="Delete">🗑️</button>
+          </div>
+        </div>
+        <div class="file-card">
+          <div class="file-icon">📄</div>
+          <div class="file-name">Scope_Sprint_4_FinNova.pdf</div>
+          <div class="file-meta">1.5 MB</div>
+          <div class="file-actions">
+            <button class="btn btn-ghost btn-sm btn-icon" title="Download">⬇️</button>
+            <button class="btn btn-ghost btn-sm btn-icon" title="Delete">🗑️</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE 7: INVOICE CENTER ── -->
+    <div class="dash-page" id="page-invoices">
+      <div class="dash-page-header">
+        <div>
+          <h2 class="dash-page-title">Invoice Center</h2>
+          <p class="dash-page-subtitle">Track payments, budgets, and download PDF transaction history.</p>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0">
+        <table class="invoice-table" style="width:100%">
+          <thead>
+            <tr>
+              <th>Invoice ID</th>
+              <th>Sprint / Milestone Reference</th>
+              <th>Due Date</th>
+              <th>Amount ($)</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="invoice-id">#INV-2025-004</td>
+              <td>Sprint 3 Development Milestone</td>
+              <td>Dec 10, 2025</td>
+              <td>$12,500</td>
+              <td><span class="badge badge-success">Paid</span></td>
+              <td><button class="btn btn-outline-primary btn-sm invoice-download">⬇ PDF</button></td>
+            </tr>
+            <tr>
+              <td class="invoice-id">#INV-2025-005</td>
+              <td>Sprint 4 Plaid Pay Integration</td>
+              <td>Jan 05, 2026</td>
+              <td>$12,500</td>
+              <td><span class="badge badge-warning">Unpaid</span></td>
+              <td><button class="btn btn-outline-primary btn-sm invoice-download">⬇ PDF</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── PAGE 8: SETTINGS ── -->
+    <div class="dash-page" id="page-settings">
+      <div class="dash-page-header">
+        <div>
+          <h2 class="dash-page-title">Account Settings</h2>
+          <p class="dash-page-subtitle">Manage portal profiles, configurations, and logins.</p>
+        </div>
+      </div>
+
+      <div class="settings-grid">
+        <div class="settings-nav">
+          <button class="settings-nav-btn active" data-settings="profile">👤 Edit Profile</button>
+          <button class="settings-nav-btn" data-settings="security">🔒 Security Settings</button>
+          <button class="settings-nav-btn" data-settings="notifications">🔔 Notifications</button>
+        </div>
+
+        <div class="settings-panel">
+          <!-- Subpanel 1: Profile -->
+          <div class="settings-subpanel" id="settings-profile">
+            <div class="settings-section">
+              <h3 class="settings-section-title">Edit Profile</h3>
+              <div class="avatar-upload">
+                <div class="avatar-preview">JD</div>
+                <div class="avatar-upload-btns">
+                  <button class="btn btn-secondary btn-sm">Change Image</button>
+                  <button class="btn btn-ghost btn-sm">Delete</button>
+                </div>
+              </div>
+              
+              <div class="form-row form-row-2" style="margin-bottom:var(--space-4)">
+                <div class="form-group">
+                  <label class="form-label" for="profile-name">Full Name</label>
+                  <input type="text" id="profile-name" class="form-control" value="John Dowson">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profile-role">Designation</label>
+                  <input type="text" id="profile-role" class="form-control" value="Product Owner" disabled>
+                </div>
+              </div>
+              
+              <button class="btn btn-primary" id="settings-save-btn">Save profile updates</button>
+            </div>
+          </div>
+
+          <!-- Subpanel 2: Security -->
+          <div class="settings-subpanel hidden" id="settings-security">
+            <div class="settings-section">
+              <h3 class="settings-section-title">Security Configurations</h3>
+              <div class="form-group" style="margin-bottom:var(--space-4)">
+                <label class="form-label" for="current-password">Current Password</label>
+                <input type="password" id="current-password" class="form-control" placeholder="••••••••">
+              </div>
+              <div class="form-group" style="margin-bottom:var(--space-6)">
+                <label class="form-label" for="new-password">New Password</label>
+                <input type="password" id="new-password" class="form-control" placeholder="••••••••">
+              </div>
+              <button class="btn btn-primary" id="change-password-btn">Change Login Password</button>
+            </div>
+          </div>
+
+          <!-- Subpanel 3: Notifications -->
+          <div class="settings-subpanel hidden" id="settings-notifications">
+            <div class="settings-section">
+              <h3 class="settings-section-title">Notification Preferences</h3>
+              
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <div class="settings-row-label">Sprint Progress Updates</div>
+                  <div class="settings-row-desc">Receive notifications when tasks are marked complete in sprints.</div>
+                </div>
+                <div class="toggle active"></div>
+              </div>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <div class="settings-row-label">Design Review Alerts</div>
+                  <div class="settings-row-desc">Get notified when design teams upload wireframes or prototypes.</div>
+                </div>
+                <div class="toggle active"></div>
+              </div>
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <div class="settings-row-label">Invoice Marked Paid</div>
+                  <div class="settings-row-desc">Receive transaction receipts after budget payments clear.</div>
+                </div>
+                <div class="toggle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/main.js"></script>
+<script src="assets/js/dashboard.js"></script>
+<script>
+  // Setup sidebar collapse
+  const collapseToggle = document.getElementById('sidebar-collapse-toggle');
+  const sidebarEl = document.querySelector('.sidebar');
+  const dashMainEl = document.querySelector('.dashboard-main');
+  
+  collapseToggle?.addEventListener('click', () => {
+    const isCollapsed = sidebarEl.classList.toggle('collapsed');
+    dashMainEl.classList.toggle('expanded', isCollapsed);
+    collapseToggle.textContent = isCollapsed ? '▶' : '◀';
+  });
+</script>
+</body>
+</html>

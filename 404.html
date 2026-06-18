@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page/Screen Not Found — AppForge</title>
+  <meta name="description" content="The app screen or page you are looking for has crashed or does not exist. Navigate back to Home, Services, or Case Studies.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .error-wrapper {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-8) var(--space-6);
+    }
+    .error-card {
+      max-width: 560px;
+      width: 100%;
+    }
+    .error-icon {
+      font-size: 5rem;
+      margin-bottom: var(--space-6);
+      display: inline-block;
+      animation: crash-shake 1.5s ease infinite alternate;
+    }
+    @keyframes crash-shake {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-10px) rotate(5deg); }
+    }
+  </style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<main id="main">
+  <div class="error-wrapper">
+    <div class="error-card card reveal">
+      <div class="error-icon" aria-hidden="true">💥</div>
+      <h1 style="font-size: 2.25rem; margin-bottom: var(--space-3)">Error 404: Screen Crashed</h1>
+      <p style="color:var(--text-secondary); font-size:1.125rem; margin-bottom:var(--space-8)">The app module or page you are requesting could not be compiled. It may have been moved, renamed, or deleted.</p>
+      
+      <div style="display:flex; flex-direction:column; gap:12px; max-width:320px; margin:0 auto;">
+        <a href="index.html" class="btn btn-primary" style="justify-content:center;">🏠 Return to Home</a>
+        <a href="services.html" class="btn btn-secondary" style="justify-content:center;">⚙️ Browse App Services</a>
+        <a href="contact.html" class="btn btn-ghost" style="justify-content:center;">📬 Report Screen Bug</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Studies — App Development Portfolio | AppForge</title>
+  <meta name="description" content="Explore AppForge's portfolio of 200+ successful mobile apps across FinTech, Healthcare, Food Delivery, E-commerce, Fitness, and Travel.">
+  <meta property="og:title" content="Case Studies & Portfolio | AppForge">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .case-detail { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-2xl); overflow: hidden; margin-bottom: var(--space-6); }
+    .case-detail-header { display: grid; grid-template-columns: 1fr 1fr; }
+    .case-detail-visual { display: flex; align-items: center; justify-content: center; font-size: 5rem; min-height: 280px; }
+    .case-detail-meta { padding: var(--space-8); }
+    .case-detail-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin: var(--space-5) 0; }
+    .case-detail-metric { background: var(--bg-secondary); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; }
+    .case-detail-metric-value { font-family: var(--font-heading); font-weight: 800; font-size: 1.5rem; color: var(--primary); }
+    .case-detail-metric-label { font-size: .75rem; color: var(--text-muted); margin-top: 2px; }
+    .challenge-solution { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); padding: var(--space-6) var(--space-8) var(--space-8); border-top: 1px solid var(--border); }
+    .cs-box { }
+    .cs-box-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: var(--space-3); }
+    .cs-box ul { display: flex; flex-direction: column; gap: var(--space-2); }
+    .cs-box li { font-size: .875rem; color: var(--text-secondary); display: flex; align-items: flex-start; gap: var(--space-2); }
+    .cs-box li::before { content: '→'; color: var(--primary); font-weight: 700; flex-shrink: 0; }
+    @media (max-width: 768px) { .case-detail-header { grid-template-columns: 1fr; } .case-detail-metrics { grid-template-columns: repeat(2, 1fr); } .challenge-solution { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div id="site-nav"></div>
+<main id="main">
+
+<section class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <span>Case Studies</span></div>
+    <h1>200+ Apps Delivered. <br>Real Results. Real Impact.</h1>
+    <p>Explore our portfolio of successful mobile applications across diverse industries. From startup MVPs to enterprise-grade platforms.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Stats -->
+    <div class="stats-grid reveal" style="margin-bottom:var(--space-12)">
+      <div class="stat-item"><div class="stat-number" data-target="200" data-suffix="+">200+</div><div class="stat-label">Apps Delivered</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="50" data-suffix="M+">50M+</div><div class="stat-label">Total App Downloads</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="15" data-suffix="+">15+</div><div class="stat-label">Industries Served</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="4.8" data-suffix="★">4.8★</div><div class="stat-label">Average App Rating</div></div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filter-bar reveal" data-target="#portfolio-grid">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="fintech">💳 FinTech</button>
+      <button class="filter-btn" data-filter="healthcare">🏥 Healthcare</button>
+      <button class="filter-btn" data-filter="food">🍕 Food Delivery</button>
+      <button class="filter-btn" data-filter="ecommerce">🛒 E-commerce</button>
+      <button class="filter-btn" data-filter="fitness">💪 Fitness</button>
+      <button class="filter-btn" data-filter="travel">✈️ Travel</button>
+    </div>
+
+    <div id="portfolio-grid">
+      <!-- FinNova -->
+      <div class="case-detail reveal" data-category="fintech">
+        <div class="case-detail-header">
+          <div class="case-detail-visual" style="background:linear-gradient(135deg,#1e3a5f,#2563eb)">
+            <div>🏦</div>
+          </div>
+          <div class="case-detail-meta">
+            <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap">
+              <span class="badge badge-primary">FinTech</span>
+              <span class="badge badge-success">Live on App Store</span>
+              <span class="badge badge-accent">iOS + Android</span>
+            </div>
+            <h2 style="font-size:1.5rem;margin-bottom:var(--space-3)">FinNova — AI-Powered Digital Banking</h2>
+            <p>A next-generation digital banking platform with AI-powered spending insights, instant P2P transfers, investment portfolios, and multi-currency support for 40+ countries.</p>
+            <div class="case-detail-metrics">
+              <div class="case-detail-metric"><div class="case-detail-metric-value">2M+</div><div class="case-detail-metric-label">Active Users</div></div>
+              <div class="case-detail-metric"><div class="case-detail-metric-value">4.9★</div><div class="case-detail-metric-label">App Store Rating</div></div>
+              <div class="case-detail-metric"><div class="case-detail-metric-value">340%</div><div class="case-detail-metric-label">Revenue Growth</div></div>
+            </div>
+            <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-bottom:var(--space-4)">
+              <span class="tag">Swift</span><span class="tag">Kotlin</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">AWS</span><span class="tag">Plaid API</span>
+            </div>
+            <blockquote style="border-left:3px solid var(--primary);padding-left:var(--space-4);color:var(--text-secondary);font-style:italic;font-size:.9375rem">"AppForge delivered our complex FinTech app in 12 weeks — ahead of schedule and beyond our expectations. The client portal made collaboration effortless." <br><strong style="font-style:normal;color:var(--text-primary)">— Sarah Mitchell, CEO FinNova</strong></blockquote>
+          </div>
+        </div>
+        <div class="challenge-solution">
+          <div class="cs-box">
+            <div class="cs-box-label" style="color:var(--danger)">🎯 The Challenge</div>
+            <ul>
+              <li>Bank-grade security requirements while maintaining UX simplicity</li>
+              <li>Real-time transaction processing at scale</li>
+              <li>Complex regulatory compliance across 40+ countries</li>
+              <li>AI model integration for spending predictions</li>
+            </ul>
+          </div>
+          <div class="cs-box">
+            <div class="cs-box-label" style="color:var(--success)">✅ Our Solution</div>
+            <ul>
+              <li>Zero-knowledge architecture with biometric auth</li>
+              <li>Event-driven microservices on AWS with 99.99% uptime</li>
+              <li>Automated compliance workflows with Plaid & Stripe</li>
+              <li>Custom ML pipeline for spending categorization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- MedCare -->
+      <div class="case-detail reveal" data-category="healthcare">
+        <div class="case-detail-header">
+          <div class="case-detail-visual" style="background:linear-gradient(135deg,#064e3b,#059669)">
+            <div>🏥</div>
+          </div>
+          <div class="case-detail-meta">
+            <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap">
+              <span class="badge badge-success">Healthcare</span>
+              <span class="badge badge-primary">HIPAA Compliant</span>
+              <span class="badge badge-accent">Flutter</span>
+            </div>
+            <h2 style="font-size:1.5rem;margin-bottom:var(--space-3)">MedCare — Telemedicine Platform</h2>
+            <p>A HIPAA-compliant telemedicine platform enabling video consultations, prescription management, lab results, and real-time health monitoring for 500,000+ patients.</p>
+            <div class="case-detail-metrics">
+              <div class="case-detail-metric"><div class="case-detail-metric-value">500K+</div><div class="case-detail-metric-label">Patients</div></div>
+              <div class="case-detail-metric"><div class="case-detail-metric-value">90%</div><div class="case-detail-metric-label">Retention Rate</div></div>
+              <div class="case-detail-metric"><div class="case-detail-metric-value">4.8★</div><div class="case-detail-metric-label">Rating</div></div>
+            </div>
+            <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-bottom:var(--space-4)">
+              <span class="tag">Flutter</span><span class="tag">Python/Django</span><span class="tag">WebRTC</span><span class="tag">AWS HIPAA</span><span class="tag">ML</span>
+            </div>
+            <blockquote style="border-left:3px solid var(--success);padding-left:var(--space-4);color:var(--text-secondary);font-style:italic;font-size:.9375rem">"The prototype review system saved us weeks of rework. AppForge's Flutter expertise delivered a HIPAA-compliant app our medical professionals actually love." <br><strong style="font-style:normal;color:var(--text-primary)">— Dr. James Rodriguez, CTO MedCare</strong></blockquote>
+          </div>
+        </div>
+        <div class="challenge-solution">
+          <div class="cs-box">
+            <div class="cs-box-label" style="color:var(--danger)">🎯 The Challenge</div>
+            <ul>
+              <li>HIPAA compliance across all data touchpoints</li>
+              <li>Reliable video calls in low-bandwidth environments</li>
+              <li>Integration with 15+ EHR systems</li>
+              <li>Real-time patient vitals monitoring</li>
+            </ul>
+          </div>
+          <div class="cs-box">
+            <div class="cs-box-label" style="color:var(--success)">✅ Our Solution</div>
+            <ul>
+              <li>End-to-end encrypted data with HIPAA BAA on AWS</li>
+              <li>Adaptive WebRTC with automatic quality adjustment</li>
+              <li>HL7 FHIR integration layer for EHR systems</li>
+              <li>IoT device SDK for wearable health monitors</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- QuickBite -->
+      <div class="case-detail reveal" data-category="food">
+        <div class="case-detail-header">
+          <div class="case-detail-visual" style="background:linear-gradient(135deg,#7c1d0e,#ef4444)">
+            <div>🍕</div>
+          </div>
+          <div class="case-detail-meta">
+            <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap">
+              <span class="badge badge-warning">Food Delivery</span>
+              <span class="badge badge-primary">React Native</span>
+              <span class="badge badge-success">1M+ Orders/Month</span>
+            </div>
+            <h2 style="font-size:1.5rem;margin-bottom:var(--space-3)">QuickBite — Food Delivery Platform</h2>
+            <p>End-to-end food delivery ecosystem with customer app, restaurant dashboard, driver app, and admin portal. 1,000+ restaurant partners, AI-powered recommendations.</p>
+            <div class="case-detail-metrics">
+              <div class="case-detail-metric"><div class="case-detail-metric-value">1M+</div><div class="case-detail-metric-label">Orders/Month</div></div>
+              <div class="case-detail-metric"><div class="case-detail-metric-value">28min</div><div class="case-detail-metric-label">Avg Delivery</div></div>
+              <div class="case-detail-metric"><div class="case-detail-metric-value">$50M</div><div class="case-detail-metric-label">GMV Processed</div></div>
+            </div>
+            <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-bottom:var(--space-4)">
+              <span class="tag">React Native</span><span class="tag">Go</span><span class="tag">Redis</span><span class="tag">Kafka</span><span class="tag">GCP</span><span class="tag">Stripe</span>
+            </div>
+            <blockquote style="border-left:3px solid var(--warning);padding-left:var(--space-4);color:var(--text-secondary);font-style:italic;font-size:.9375rem">"From idea to App Store in 8 weeks. AppForge understood our complex 3-sided marketplace and built it flawlessly." <br><strong style="font-style:normal;color:var(--text-primary)">— Aisha Kumar, Founder QuickBite</strong></blockquote>
+          </div>
+        </div>
+        <div class="challenge-solution">
+          <div class="cs-box">
+            <div class="cs-box-label" style="color:var(--danger)">🎯 The Challenge</div>
+            <ul>
+              <li>3-sided marketplace: customers, restaurants, drivers</li>
+              <li>Real-time order tracking with &lt;500ms latency</li>
+              <li>Dynamic pricing during peak demand</li>
+              <li>Payment processing across 15 countries</li>
+            </ul>
+          </div>
+          <div class="cs-box">
+            <div class="cs-box-label" style="color:var(--success)">✅ Our Solution</div>
+            <ul>
+              <li>Microservices with event-driven Kafka architecture</li>
+              <li>WebSocket + Redis pub/sub for real-time tracking</li>
+              <li>ML-based surge pricing algorithm</li>
+              <li>Stripe Connect with multi-currency support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ShopWave E-commerce -->
+      <div class="case-detail reveal" data-category="ecommerce">
+        <div class="case-detail-header">
+          <div class="case-detail-visual" style="background:linear-gradient(135deg,#1e1b4b,#7c3aed)">
+            <div>🛒</div>
+          </div>
+          <div class="case-detail-meta">
+            <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap">
+              <span class="badge badge-info">E-commerce</span>
+              <span class="badge badge-primary">Flutter</span>
+              <span class="badge badge-success">$120M GMV</span>
+            </div>
+            <h2 style="font-size:1.5rem;margin-bottom:var(--space-3)">ShopWave — Multi-Vendor E-commerce</h2>
+            <p>A powerful multi-vendor marketplace app with AR product preview, AI styling recommendations, social commerce features, and same-day delivery integration.</p>
+            <div class="case-detail-metrics">
+              <div class="case-detail-metric"><div class="case-detail-metric-value">3M+</div><div class="case-detail-metric-label">App Users</div></div>
+              <div class="case-detail-metric"><div class="case-detail-metric-value">$120M</div><div class="case-detail-metric-label">Annual GMV</div></div>
+              <div class="case-detail-metric"><div class="case-detail-metric-value">42%</div><div class="case-detail-metric-label">Conversion Rate</div></div>
+            </div>
+            <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-bottom:var(--space-4)">
+              <span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">Elasticsearch</span><span class="tag">ARCore</span><span class="tag">AWS</span>
+            </div>
+            <blockquote style="border-left:3px solid var(--info);padding-left:var(--space-4);color:var(--text-secondary);font-style:italic;font-size:.9375rem">"The AR try-on feature doubled our conversion rate. AppForge's team pushed boundaries beyond what we thought was possible." <br><strong style="font-style:normal;color:var(--text-primary)">— Michael Chang, CTO ShopWave</strong></blockquote>
+          </div>
+        </div>
+        <div class="challenge-solution">
+          <div class="cs-box">
+            <div class="cs-box-label" style="color:var(--danger)">🎯 The Challenge</div>
+            <ul><li>AR product visualization in mobile app</li><li>Search across 5M+ products in &lt;200ms</li><li>Multi-vendor payout system</li><li>Personalized recommendations at scale</li></ul>
+          </div>
+          <div class="cs-box">
+            <div class="cs-box-label" style="color:var(--success)">✅ Our Solution</div>
+            <ul><li>ARCore/ARKit integration with 3D model streaming</li><li>Elasticsearch with custom ranking algorithms</li><li>Stripe Connect for automated vendor payouts</li><li>Collaborative filtering recommendation engine</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- FitLife -->
+      <div class="case-detail reveal" data-category="fitness">
+        <div class="case-detail-header">
+          <div class="case-detail-visual" style="background:linear-gradient(135deg,#14532d,#16a34a)">
+            <div>💪</div>
+          </div>
+          <div class="case-detail-meta">
+            <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap">
+              <span class="badge badge-success">Fitness</span>
+              <span class="badge badge-primary">iOS + Android</span>
+              <span class="badge badge-accent">AI Coaching</span>
+            </div>
+            <h2 style="font-size:1.5rem;margin-bottom:var(--space-3)">FitLife — AI Personal Fitness Coach</h2>
+            <p>An AI-powered fitness app with personalized workout plans, real-time form correction via computer vision, nutrition tracking, and Apple Health / Google Fit integration.</p>
+            <div class="case-detail-metrics">
+              <div class="case-detail-metric"><div class="case-detail-metric-value">800K+</div><div class="case-detail-metric-label">Active Users</div></div>
+              <div class="case-detail-metric"><div class="case-detail-metric-value">4.9★</div><div class="case-detail-metric-label">Rating</div></div>
+              <div class="case-detail-metric"><div class="case-detail-metric-value">85%</div><div class="case-detail-metric-label">Goal Achievement</div></div>
+            </div>
+            <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-bottom:var(--space-4)">
+              <span class="tag">Swift</span><span class="tag">Kotlin</span><span class="tag">CoreML</span><span class="tag">TensorFlow</span><span class="tag">HealthKit</span>
+            </div>
+            <blockquote style="border-left:3px solid var(--success);padding-left:var(--space-4);color:var(--text-secondary);font-style:italic;font-size:.9375rem">"AppForge built what 3 previous agencies couldn't — a real-time AI form correction system that actually works on-device." <br><strong style="font-style:normal;color:var(--text-primary)">— Rachel Kim, CEO FitLife</strong></blockquote>
+          </div>
+        </div>
+        <div class="challenge-solution">
+          <div class="cs-box">
+            <div class="cs-box-label" style="color:var(--danger)">🎯 The Challenge</div>
+            <ul><li>Real-time pose detection on mobile devices</li><li>Personalized AI coaching at scale</li><li>Wearable device data synchronization</li><li>Offline workout mode with sync</li></ul>
+          </div>
+          <div class="cs-box">
+            <div class="cs-box-label" style="color:var(--success)">✅ Our Solution</div>
+            <ul><li>On-device CoreML/TensorFlow Lite for 60fps pose detection</li><li>Federated learning for personalization without privacy loss</li><li>Bluetooth SDK integration for 20+ wearables</li><li>Background sync with conflict resolution</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- TravelEasy -->
+      <div class="case-detail reveal" data-category="travel">
+        <div class="case-detail-header">
+          <div class="case-detail-visual" style="background:linear-gradient(135deg,#0c4a6e,#0284c7)">
+            <div>✈️</div>
+          </div>
+          <div class="case-detail-meta">
+            <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap">
+              <span class="badge badge-accent">Travel</span>
+              <span class="badge badge-primary">React Native</span>
+              <span class="badge badge-success">AI Itinerary</span>
+            </div>
+            <h2 style="font-size:1.5rem;margin-bottom:var(--space-3)">TravelEasy — AI Travel Planner</h2>
+            <p>All-in-one AI travel planning app with smart itinerary generation, flight/hotel booking, offline maps, local recommendations, and multi-currency expense tracking.</p>
+            <div class="case-detail-metrics">
+              <div class="case-detail-metric"><div class="case-detail-metric-value">1.2M+</div><div class="case-detail-metric-label">Trips Planned</div></div>
+              <div class="case-detail-metric"><div class="case-detail-metric-value">4.8★</div><div class="case-detail-metric-label">Rating</div></div>
+              <div class="case-detail-metric"><div class="case-detail-metric-value">92%</div><div class="case-detail-metric-label">User Satisfaction</div></div>
+            </div>
+            <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-bottom:var(--space-4)">
+              <span class="tag">React Native</span><span class="tag">Python</span><span class="tag">OpenAI API</span><span class="tag">MapBox</span><span class="tag">GCP</span>
+            </div>
+            <blockquote style="border-left:3px solid var(--accent);padding-left:var(--space-4);color:var(--text-secondary);font-style:italic;font-size:.9375rem">"Our AI itinerary feature — built by AppForge — generates personalized 7-day travel plans in under 3 seconds. Users love it." <br><strong style="font-style:normal;color:var(--text-primary)">— Lucas Bernard, CPO TravelEasy</strong></blockquote>
+          </div>
+        </div>
+        <div class="challenge-solution">
+          <div class="cs-box">
+            <div class="cs-box-label" style="color:var(--danger)">🎯 The Challenge</div>
+            <ul><li>AI itinerary generation with real-time pricing</li><li>Offline-first with 100MB map downloads</li><li>Multi-currency expense tracking</li><li>Integration with 50+ travel APIs</li></ul>
+          </div>
+          <div class="cs-box">
+            <div class="cs-box-label" style="color:var(--success)">✅ Our Solution</div>
+            <ul><li>GPT-4 + custom fine-tuning for travel recommendations</li><li>MapBox SDK with selective offline tile caching</li><li>Open Exchange Rates with real-time sync</li><li>Unified travel API aggregator layer</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container" style="text-align:center">
+    <h2 style="color:#fff">Your App Could Be Our Next Success Story</h2>
+    <p>Let's discuss your project and explore how AppForge can help you achieve similar results.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn btn-white btn-xl">🚀 Start Your Project</a>
+      <a href="contact.html#booking" class="btn btn-outline-white btn-xl">📅 Book Free Consultation</a>
+    </div>
+  </div>
+</section>
+</main>
+<div id="site-footer"></div>
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

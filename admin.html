@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal Dashboard — AppForge</title>
+  <meta name="description" content="Manage AppForge users, track agency revenue, monitor server systems, and oversee client projects.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <style>
+    /* Distinct Orange/Red theme overrides for Admin portal */
+    :root {
+      --primary:        #F97316;
+      --primary-dark:   #EA580C;
+      --primary-light:  #FB923C;
+      --primary-50:     #FFF7ED;
+      --primary-100:    #FFEDD5;
+      --shadow-glow-primary: 0 0 30px rgba(249,115,22,.2);
+    }
+    
+    /* Layout & Component Polishing */
+    .mini-chart { display: flex; align-items: flex-end; gap: 8px; height: 100px; margin-top: var(--space-4); padding-bottom: 8px; border-bottom: 1.5px solid var(--border); }
+    .mini-chart-bar { flex: 1; background: var(--gradient-primary); border-radius: var(--radius-sm) var(--radius-sm) 0 0; transition: height 1s ease; }
+    
+    .sidebar.collapsed { width: 70px; }
+    .sidebar.collapsed .sidebar-logo span,
+    .sidebar.collapsed .project-selector,
+    .sidebar.collapsed .sidebar-nav-label,
+    .sidebar.collapsed .sidebar-nav-badge,
+    .sidebar.collapsed .sidebar-user-name,
+    .sidebar.collapsed .sidebar-user-role,
+    .sidebar.collapsed .sidebar-user-menu,
+    .sidebar.collapsed .sidebar-section-label { display: none !important; }
+    .sidebar.collapsed .sidebar-nav-item { justify-content: center; padding: 10px 0; }
+    .sidebar.collapsed .sidebar-user { justify-content: center; padding: 8px 0; }
+    .dashboard-main.expanded { margin-left: 70px; }
+    [dir="rtl"] .dashboard-main.expanded { margin-right: 70px; margin-left: 0; }
+    
+    /* CSS Bar chart styling */
+    .chart-container {
+      margin-top: 20px;
+    }
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 180px;
+      padding-top: 20px;
+      border-bottom: 2px solid var(--border);
+      gap: 12px;
+    }
+    .chart-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .chart-bar {
+      width: 100%;
+      background: linear-gradient(to top, var(--primary-dark), var(--primary-light));
+      border-radius: 4px 4px 0 0;
+      transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .chart-bar:hover {
+      opacity: 0.9;
+    }
+    .chart-tooltip {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--text-primary);
+      color: var(--bg);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    .chart-bar:hover .chart-tooltip {
+      opacity: 1;
+    }
+    .chart-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+    
+    /* Live Log Monitor */
+    .log-monitor {
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.8125rem;
+      color: #38bdf8;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+    .log-entry {
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .log-entry.error { color: #f87171; }
+    .log-entry.warn { color: #fbbf24; }
+    .log-entry.success { color: #4ade80; }
+    
+    /* Quick status indicators */
+    .status-dot-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      display: inline-block;
+      position: relative;
+    }
+    .status-dot-pulse::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--success);
+      top: 0;
+      left: 0;
+      animation: pulse-ring 1.5s infinite;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="dashboard-body">
+
+<!-- Left Sidebar Navigation -->
+<aside class="sidebar" role="navigation" aria-label="Admin Navigation">
+  <div class="sidebar-header">
+    <a href="index.html" class="sidebar-logo">
+      <div class="sidebar-logo-icon" style="background:linear-gradient(135deg, #f97316, #ea580c)">⚡</div>
+      <span>AppForge Admin</span>
+    </a>
+    <button class="sidebar-collapse-btn" id="sidebar-collapse-toggle" aria-label="Collapse sidebar">◀</button>
+  </div>
+
+  <div class="project-selector">
+    <div class="project-select-label">Portal Authority</div>
+    <div class="project-select-btn">
+      <div class="project-icon" style="background:linear-gradient(135deg, #f97316, #ea580c)">🛠️</div>
+      <div class="project-name">Agency Manager</div>
+      <div class="project-status">● Administrator</div>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav" aria-label="Admin pages">
+    <div class="sidebar-section-label">Management</div>
+    <a href="#" class="sidebar-nav-item active" data-page="users">
+      <span class="sidebar-nav-icon">👥</span>
+      <span class="sidebar-nav-label">User Management</span>
+    </a>
+    <a href="#" class="sidebar-nav-item" data-page="projects">
+      <span class="sidebar-nav-icon">📁</span>
+      <span class="sidebar-nav-label">Client Projects</span>
+    </a>
+    <a href="#" class="sidebar-nav-item" data-page="revenue">
+      <span class="sidebar-nav-icon">💳</span>
+      <span class="sidebar-nav-label">Revenue & Invoices</span>
+    </a>
+    
+    <div class="sidebar-section-label">Monitoring</div>
+    <a href="#" class="sidebar-nav-item" data-page="system">
+      <span class="sidebar-nav-icon">🩺</span>
+      <span class="sidebar-nav-label">System Health</span>
+      <span class="sidebar-nav-badge" style="background:var(--success)">OK</span>
+    </a>
+    <a href="#" class="sidebar-nav-item" data-page="settings">
+      <span class="sidebar-nav-icon">⚙️</span>
+      <span class="sidebar-nav-label">Portal Settings</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-user">
+      <div class="sidebar-user-avatar" style="background:#ea580c">AD</div>
+      <div class="sidebar-user-name">
+        <div class="sidebar-user-name">Admin Director</div>
+        <div class="sidebar-user-role">Super Admin</div>
+      </div>
+      <div class="sidebar-user-menu" data-action="logout" title="Sign Out">✖</div>
+    </div>
+  </div>
+</aside>
+
+<!-- Sidebar Overlay for Mobile -->
+<div class="modal-overlay" id="sidebar-overlay" style="z-index: 150;"></div>
+
+<!-- Main Section Area -->
+<div class="dashboard-main">
+  <!-- Topbar Header -->
+  <header class="dashboard-topbar">
+    <div class="topbar-left">
+      <button class="sidebar-toggle-btn" aria-label="Toggle sidebar menu">☰</button>
+      <h1 class="topbar-page-title">User Management</h1>
+      <div class="topbar-search">
+        <span class="topbar-search-icon">🔍</span>
+        <input type="text" id="admin-global-search" placeholder="Search users, client workspaces, logs..." aria-label="Search items">
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button class="topbar-action-btn" id="notif-btn" aria-label="Notifications Panel">
+        🔔
+        <span class="notif-dot" style="background:var(--primary)"></span>
+      </button>
+      
+      <!-- Notifications Dropdown Box -->
+      <div class="card hidden" id="notif-panel" style="position: absolute; top: 60px; right: 20px; width: 320px; z-index: 110; box-shadow: var(--shadow-xl);">
+        <h3 style="font-size: 0.9375rem; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 8px;">Agency Alerts</h3>
+        <div class="notif-list">
+          <div class="notif-item unread">
+            <span class="notif-icon">💳</span>
+            <div class="notif-text">
+              <strong>EatY Corp</strong> initiated payment of $8,500.
+              <div class="notif-time">5 mins ago</div>
+            </div>
+          </div>
+          <div class="notif-item unread">
+            <span class="notif-icon">🆕</span>
+            <div class="notif-text">
+              New client registration: <strong>Sarah Connor (CyberDyne)</strong>.
+              <div class="notif-time">2 hrs ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="theme-toggle topbar-action-btn" style="border: 1px solid var(--border); font-size:1.125rem">🌙</button>
+    </div>
+  </header>
+
+  <!-- Page Content Viewports -->
+  <main class="dashboard-content" id="main">
+
+    <!-- ── PAGE 1: USER MANAGEMENT ── -->
+    <div class="dash-page active" id="page-users">
+      <div class="dash-page-header">
+        <div>
+          <h2 class="dash-page-title">User Registry</h2>
+          <p class="dash-page-subtitle">Track agency clients, designers, and developer role privileges.</p>
+        </div>
+        <div class="dash-page-actions" style="display:flex; gap:10px;">
+          <select id="user-role-filter" class="form-control" style="width: auto; padding: 6px 12px; height: auto;">
+            <option value="all">All Roles</option>
+            <option value="client">Clients</option>
+            <option value="developer">Developers</option>
+            <option value="designer">Designers</option>
+            <option value="admin">Administrators</option>
+          </select>
+          <button class="btn btn-primary btn-sm" id="btn-add-user">➕ Add New User</button>
+        </div>
+      </div>
+
+      <div class="widget-grid">
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(249,115,22,.1);color:var(--primary)">👥</div>
+          <div class="widget-info">
+            <div class="widget-label">Total Users</div>
+            <div class="widget-value">124</div>
+            <div class="widget-change up">▲ 4 registered this week</div>
+          </div>
+        </div>
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(34,197,94,.1);color:var(--success)">💼</div>
+          <div class="widget-info">
+            <div class="widget-label">Active Clients</div>
+            <div class="widget-value">16 Companies</div>
+            <div class="widget-change up">▲ 2 new contracts</div>
+          </div>
+        </div>
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(139,92,246,.1);color:#8b5cf6">🛡️</div>
+          <div class="widget-info">
+            <div class="widget-label">Developers & PMs</div>
+            <div class="widget-value">28 staff</div>
+            <div class="widget-change neutral">● Full occupancy</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Users Table -->
+      <div class="card" style="padding: 0; overflow-x: auto; margin-top: 24px;">
+        <table class="invoice-table" style="width: 100%; min-width: 700px;" id="users-table">
+          <thead>
+            <tr>
+              <th style="width: 40px; text-align: center;"><input type="checkbox" id="user-bulk-select"></th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Workspace Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-role="client" data-name="john dowson">
+              <td style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
+              <td><strong>John Dowson</strong></td>
+              <td>john@finnova.com</td>
+              <td><span class="badge badge-primary">Client</span></td>
+              <td><span class="badge badge-success">Active Workspace</span></td>
+              <td><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
+            </tr>
+            <tr data-role="client" data-name="marcus reed">
+              <td style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
+              <td><strong>Marcus Reed</strong></td>
+              <td>marcus@finnova.com</td>
+              <td><span class="badge badge-primary">Client</span></td>
+              <td><span class="badge badge-success">Active Workspace</span></td>
+              <td><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
+            </tr>
+            <tr data-role="developer" data-name="priya rajan">
+              <td style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
+              <td><strong>Priya Rajan</strong></td>
+              <td>priya@appforge.io</td>
+              <td><span class="badge badge-info" style="background:#8b5cf6">Developer</span></td>
+              <td><span class="badge badge-success">Available</span></td>
+              <td><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
+            </tr>
+            <tr data-role="designer" data-name="lena novak">
+              <td style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
+              <td><strong>Lena Novak</strong></td>
+              <td>lena@appforge.io</td>
+              <td><span class="badge badge-accent">Designer</span></td>
+              <td><span class="badge badge-success">Available</span></td>
+              <td><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
+            </tr>
+            <tr data-role="admin" data-name="sarah connor">
+              <td style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
+              <td><strong>Sarah Connor</strong></td>
+              <td>sarah@appforge.io</td>
+              <td><span class="badge badge-danger">Admin</span></td>
+              <td><span class="badge badge-success">Root Authority</span></td>
+              <td><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <!-- Bulk Actions footer -->
+        <div style="padding: 16px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 12px; font-size: 0.8125rem;">
+          <span style="color: var(--text-secondary)"><span id="selected-users-count">0</span> users selected</span>
+          <select class="form-control" style="width: auto; height: auto; padding: 4px 8px;" id="bulk-action-select">
+            <option value="">Bulk Actions</option>
+            <option value="deactivate">Deactivate Accounts</option>
+            <option value="notify">Send Bulk Notification</option>
+          </select>
+          <button class="btn btn-secondary btn-sm" style="padding: 4px 12px" id="btn-apply-bulk">Apply</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE 2: CLIENT PROJECTS ── -->
+    <div class="dash-page" id="page-projects">
+      <div class="dash-page-header">
+        <div>
+          <h2 class="dash-page-title">Active Agency Projects</h2>
+          <p class="dash-page-subtitle">Track app delivery status, assigned leads, and milestone completion percentages.</p>
+        </div>
+      </div>
+
+      <div class="widget-grid">
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(59,130,246,.1);color:var(--primary-light)">📱</div>
+          <div class="widget-info">
+            <div class="widget-label">Mobile App Drafts</div>
+            <div class="widget-value">14 Projects</div>
+            <div class="widget-change neutral">● 10 Cross-platform</div>
+          </div>
+        </div>
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(34,197,94,.1);color:var(--success)">🎯</div>
+          <div class="widget-info">
+            <div class="widget-label">On-Time Velocity</div>
+            <div class="widget-value">92.4%</div>
+            <div class="widget-change up">▲ 2.1% this month</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sprint-grid" style="margin-top:24px">
+        <!-- Project 1 -->
+        <div class="card" style="padding: 20px">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 12px;">
+            <div>
+              <span class="badge badge-primary" style="margin-bottom:6px">FinNova Banking</span>
+              <h3 style="font-size:1.125rem; font-weight:700">iOS & Android Fintech Platform</h3>
+            </div>
+            <span class="badge badge-success">Sprint 4 Active</span>
+          </div>
+          <p style="font-size:0.875rem; color:var(--text-secondary); margin-bottom:16px;">Integrating Plaid balance aggregate APIs and secure biometric FaceID login modules.</p>
+          <div style="display:flex; justify-content:space-between; font-size:0.8125rem; margin-bottom:6px;">
+            <span>Delivery progress</span>
+            <strong>78%</strong>
+          </div>
+          <div class="progress" style="margin-bottom:16px"><div class="progress-bar" style="width: 78%"></div></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.8125rem; color:var(--text-muted)">
+            <span>Lead: Sophia Chen (CTO)</span>
+            <span>Est. Launch: Jan 2026</span>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card" style="padding: 20px">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 12px;">
+            <div>
+              <span class="badge badge-accent" style="margin-bottom:6px">TravelEasy</span>
+              <h3 style="font-size:1.125rem; font-weight:700">AI Itinerary & Maps Planner</h3>
+            </div>
+            <span class="badge badge-warning">QA Pending</span>
+          </div>
+          <p style="font-size:0.875rem; color:var(--text-secondary); margin-bottom:16px;">MapBox offline tiles compilation and custom OpenAI GPT travel itinerary generator.</p>
+          <div style="display:flex; justify-content:space-between; font-size:0.8125rem; margin-bottom:6px;">
+            <span>Delivery progress</span>
+            <strong>95%</strong>
+          </div>
+          <div class="progress" style="margin-bottom:16px"><div class="progress-bar success" style="width: 95%"></div></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.8125rem; color:var(--text-muted)">
+            <span>Lead: Priya Rajan (Dev Lead)</span>
+            <span>Est. Launch: Dec 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE 3: REVENUE & INVOICES ── -->
+    <div class="dash-page" id="page-revenue">
+      <div class="dash-page-header">
+        <div>
+          <h2 class="dash-page-title">Agency Revenue Analytics</h2>
+          <p class="dash-page-subtitle">Track agency MRR, ARR, and oversee outstanding client invoices.</p>
+        </div>
+      </div>
+
+      <div class="widget-grid">
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(34,197,94,.1);color:var(--success)">📈</div>
+          <div class="widget-info">
+            <div class="widget-label">Monthly Recurring Revenue (MRR)</div>
+            <div class="widget-value">$148,500</div>
+            <div class="widget-change up">▲ 8.2% vs last month</div>
+          </div>
+        </div>
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(99,102,241,.1);color:#6366f1">💼</div>
+          <div class="widget-info">
+            <div class="widget-label">Annual Recurring Revenue (ARR)</div>
+            <div class="widget-value">$1,782,000</div>
+            <div class="widget-change up">▲ 14.5% YoY Projection</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-grid-main" style="margin-top:24px">
+        <!-- Revenue Bar Chart -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <h3 class="dash-card-title">Monthly Agency Revenue (Last 6 Months)</h3>
+          </div>
+          <div class="dash-card-body">
+            <div class="bar-chart" id="revenue-chart">
+              <div class="chart-col">
+                <div class="chart-bar" style="height: 50%">
+                  <span class="chart-tooltip">$98K</span>
+                </div>
+                <span class="chart-label">Jul</span>
+              </div>
+              <div class="chart-col">
+                <div class="chart-bar" style="height: 62%">
+                  <span class="chart-tooltip">$112K</span>
+                </div>
+                <span class="chart-label">Aug</span>
+              </div>
+              <div class="chart-col">
+                <div class="chart-bar" style="height: 70%">
+                  <span class="chart-tooltip">$125K</span>
+                </div>
+                <span class="chart-label">Sep</span>
+              </div>
+              <div class="chart-col">
+                <div class="chart-bar" style="height: 65%">
+                  <span class="chart-tooltip">$119K</span>
+                </div>
+                <span class="chart-label">Oct</span>
+              </div>
+              <div class="chart-col">
+                <div class="chart-bar" style="height: 80%">
+                  <span class="chart-tooltip">$138K</span>
+                </div>
+                <span class="chart-label">Nov</span>
+              </div>
+              <div class="chart-col">
+                <div class="chart-bar" style="height: 92%">
+                  <span class="chart-tooltip">$148.5K</span>
+                </div>
+                <span class="chart-label">Dec (Active)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Clients Table -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <h3 class="dash-card-title">Agency Top Valued Accounts</h3>
+          </div>
+          <div class="dash-card-body" style="padding:0">
+            <table class="invoice-table" style="width:100%">
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Monthly Retainer</th>
+                  <th>Uptime Target</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>FinNova Banking</strong></td>
+                  <td>$25,000 / mo</td>
+                  <td><span class="badge badge-success">99.99%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>PulseMed Corp</strong></td>
+                  <td>$18,500 / mo</td>
+                  <td><span class="badge badge-success">99.95%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>TravelEasy Ltd</strong></td>
+                  <td>$12,000 / mo</td>
+                  <td><span class="badge badge-primary">99.90%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE 4: SYSTEM HEALTH ── -->
+    <div class="dash-page" id="page-system">
+      <div class="dash-page-header">
+        <div>
+          <h2 class="dash-page-title">Agency Portal System Monitoring</h2>
+          <p class="dash-page-subtitle">Track secure Docker nodes, API callback latencies, and check live system execution logs.</p>
+        </div>
+      </div>
+
+      <div class="widget-grid">
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(34,197,94,.1);color:var(--success)">⚡</div>
+          <div class="widget-info">
+            <div class="widget-label">Gateway Status</div>
+            <div class="widget-value" style="display:flex; align-items:center; gap:8px;">
+              <span class="status-dot-pulse"></span> Online
+            </div>
+            <div class="widget-change neutral">● SSL Certificates Valid</div>
+          </div>
+        </div>
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(59,130,246,.1);color:var(--primary-light)">⏱️</div>
+          <div class="widget-info">
+            <div class="widget-label">DB Latency (AWS RDS)</div>
+            <div class="widget-value">42 ms</div>
+            <div class="widget-change up">▲ Healthy load range</div>
+          </div>
+        </div>
+        <div class="widget-card">
+          <div class="widget-icon" style="background:rgba(139,92,246,.1);color:#8b5cf6">💾</div>
+          <div class="widget-info">
+            <div class="widget-label">VM CPU Usage</div>
+            <div class="widget-value">12.4%</div>
+            <div class="widget-change neutral">● Memory load: 4.8GB / 16GB</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Logs Console -->
+      <div class="card" style="margin-top: 24px;">
+        <div class="dash-card-header" style="padding: 0 0 16px 0; border-bottom: 1px solid var(--border)">
+          <h3 class="dash-card-title">📟 Live System Console Stream</h3>
+          <span style="font-size:0.75rem; color:var(--text-muted)">Live WebSocket Connection</span>
+        </div>
+        <div style="padding-top: 16px;">
+          <div class="log-monitor" id="log-monitor-console">
+            <div class="log-entry success">[12:44:10] CONNECTED: Client portal socket initialized successfully on node #us-east-1.</div>
+            <div class="log-entry">[12:44:15] DB_QUERY: Fetched user profiles catalog (Latency: 12ms).</div>
+            <div class="log-entry warn">[12:44:18] WEBSOCKET_WARN: Client token for user Sarah C. expiring in 48 hours. Refresh token cached.</div>
+            <div class="log-entry">[12:45:01] CRON_TASK: Finished compiling daily agency metrics cache.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGE 5: PORTAL SETTINGS ── -->
+    <div class="dash-page" id="page-settings">
+      <div class="dash-page-header">
+        <div>
+          <h2 class="dash-page-title">Global Portal Configurations</h2>
+          <p class="dash-page-subtitle">Configure agency settings, toggle user registrations, and manage database keys.</p>
+        </div>
+      </div>
+
+      <div class="settings-grid">
+        <div class="settings-nav">
+          <button class="settings-nav-btn active" data-settings="general">🖥️ Portal Systems</button>
+          <button class="settings-nav-btn" data-settings="api">🔑 API Scope Access</button>
+        </div>
+
+        <div class="settings-panel">
+          <!-- General System Configurations -->
+          <div class="settings-subpanel" id="settings-general">
+            <div class="settings-section">
+              <h3 class="settings-section-title">General Portal Systems</h3>
+              
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <div class="settings-row-label">Allow Client Registrations</div>
+                  <div class="settings-row-desc">If active, clients can create portal workspaces via register.html.</div>
+                </div>
+                <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+              </div>
+
+              <div class="settings-row">
+                <div class="settings-row-info">
+                  <div class="settings-row-label">Force SSL Routing</div>
+                  <div class="settings-row-desc">Force all incoming gateway request headers to parse over HTTPS.</div>
+                </div>
+                <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+              </div>
+
+              <button class="btn btn-primary" onclick="showToast('success', 'Configurations Updated', 'Site configurations saved successfully.')">Save settings</button>
+            </div>
+          </div>
+
+          <!-- API Access scope panel -->
+          <div class="settings-subpanel hidden" id="settings-api">
+            <div class="settings-section">
+              <h3 class="settings-section-title">API Keys Configuration</h3>
+              <div class="form-group" style="margin-bottom:var(--space-4)">
+                <label class="form-label" for="plaid-sandbox">Plaid Sandbox Endpoint Key</label>
+                <input type="text" id="plaid-sandbox" class="form-control" value="sb_plaid_key_849fna8efn7awef9awef" disabled>
+              </div>
+              <div class="form-group" style="margin-bottom:var(--space-6)">
+                <label class="form-label" for="google-maps-api">Google Maps API Embed Signature</label>
+                <input type="text" id="google-maps-api" class="form-control" value="gmaps_sec_token_94afna984nf98" disabled>
+              </div>
+              <button class="btn btn-primary" onclick="showToast('success', 'Scopes Locked', 'Agency scopes updated successfully.')">Update API Scopes</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/main.js"></script>
+<script>
+  /* ============================================================
+     ADMIN.JS — Admin Dashboard Interactivity
+     ============================================================ */
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // Tab switching navigation logic
+    const navItems = document.querySelectorAll('.sidebar-nav-item[data-page]');
+    const pages = document.querySelectorAll('.dash-page');
+    const pageTitle = document.querySelector('.topbar-page-title');
+
+    function navigateAdminTo(pageId) {
+      navItems.forEach(item => item.classList.toggle('active', item.dataset.page === pageId));
+      
+      pages.forEach(p => {
+        if (p.id === `page-${pageId}`) {
+          p.classList.add('active');
+        } else {
+          p.classList.remove('active');
+        }
+      });
+
+      if (pageTitle) {
+        const activeNav = document.querySelector(`.sidebar-nav-item[data-page="${pageId}"]`);
+        pageTitle.textContent = activeNav ? activeNav.querySelector('.sidebar-nav-label').textContent : pageId;
+      }
+    }
+
+    navItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetPage = item.dataset.page;
+        navigateAdminTo(targetPage);
+      });
+    });
+
+    // Mobile sidebar hamburger
+    const burgerBtn = document.querySelector('.sidebar-toggle-btn');
+    const sidebarEl = document.querySelector('.sidebar');
+    const sidebarOverlayEl = document.getElementById('sidebar-overlay');
+
+    burgerBtn?.addEventListener('click', function() {
+      sidebarEl.classList.toggle('open');
+      sidebarOverlayEl.classList.toggle('open');
+    });
+
+    sidebarOverlayEl?.addEventListener('click', function() {
+      sidebarEl.classList.remove('open');
+      sidebarOverlayEl.classList.remove('open');
+    });
+
+    // Sidebar Collapse
+    const collapseToggle = document.getElementById('sidebar-collapse-toggle');
+    const dashMainEl = document.querySelector('.dashboard-main');
+
+    collapseToggle?.addEventListener('click', () => {
+      const isCollapsed = sidebarEl.classList.toggle('collapsed');
+      dashMainEl.classList.toggle('expanded', isCollapsed);
+      collapseToggle.textContent = isCollapsed ? '▶' : '◀';
+    });
+
+    // User table filter
+    const roleFilter = document.getElementById('user-role-filter');
+    const tableRows = document.querySelectorAll('#users-table tbody tr');
+
+    roleFilter?.addEventListener('change', function() {
+      const selected = roleFilter.value;
+      tableRows.forEach(row => {
+        if (selected === 'all' || row.dataset.role === selected) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+
+    // User table search
+    const globalSearch = document.getElementById('admin-global-search');
+    globalSearch?.addEventListener('input', function() {
+      const query = globalSearch.value.trim().toLowerCase();
+      tableRows.forEach(row => {
+        const name = row.dataset.name.toLowerCase();
+        if (name.includes(query)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+
+    // Bulk Select User checkboxes
+    const masterCheckbox = document.getElementById('user-bulk-select');
+    const rowCheckboxes = document.querySelectorAll('.user-select-check');
+    const selectedCountSpan = document.getElementById('selected-users-count');
+
+    function updateSelectedCount() {
+      const count = document.querySelectorAll('.user-select-check:checked').length;
+      if (selectedCountSpan) selectedCountSpan.textContent = count;
+    }
+
+    masterCheckbox?.addEventListener('change', function() {
+      rowCheckboxes.forEach(cb => {
+        cb.checked = masterCheckbox.checked;
+      });
+      updateSelectedCount();
+    });
+
+    rowCheckboxes.forEach(cb => {
+      cb.addEventListener('change', function() {
+        updateSelectedCount();
+      });
+    });
+
+    // Settings subpanel tabs
+    const settingsNavBtns = document.querySelectorAll('.settings-nav-btn');
+    const settingsSubpanels = document.querySelectorAll('.settings-subpanel');
+
+    settingsNavBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        settingsNavBtns.forEach(b => b.classList.remove('active'));
+        settingsSubpanels.forEach(p => p.classList.add('hidden'));
+        
+        btn.classList.add('active');
+        const target = document.getElementById(`settings-${btn.dataset.settings}`);
+        if (target) target.classList.remove('hidden');
+      });
+    });
+
+    // Add user button demo
+    const btnAddUser = document.getElementById('btn-add-user');
+    btnAddUser?.addEventListener('click', function() {
+      showToast('info', 'Feature Demo', 'In production, this launches the user provisioning modal.');
+    });
+
+    // Bulk apply actions demo
+    const btnApplyBulk = document.getElementById('btn-apply-bulk');
+    btnApplyBulk?.addEventListener('click', function() {
+      const action = document.getElementById('bulk-action-select').value;
+      const selectedChecked = document.querySelectorAll('.user-select-check:checked');
+      if (!action) {
+        showToast('error', 'Select Action', 'Please select a bulk action first.');
+        return;
+      }
+      if (selectedChecked.length === 0) {
+        showToast('error', 'Select Users', 'Please check at least one user checkbox.');
+        return;
+      }
+      showToast('success', 'Action Initiated', `Bulk ${action} requested for ${selectedChecked.length} user(s).`);
+    });
+
+    // Notification dropdown toggle
+    const notifBtn = document.getElementById('notif-btn');
+    const notifPanel = document.getElementById('notif-panel');
+    
+    notifBtn?.addEventListener('click', function(e) {
+      e.stopPropagation();
+      notifPanel?.classList.toggle('hidden');
+      notifBtn.querySelector('.notif-dot')?.remove();
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!notifPanel?.contains(e.target) && e.target !== notifBtn) {
+        notifPanel?.classList.add('hidden');
+      }
+    });
+
+    // Simulate appending live log console lines in real-time
+    const logConsole = document.getElementById('log-monitor-console');
+    const testLogs = [
+      { type: 'info', text: 'DB_QUERY: Aggregated MRR charts cache loaded (5ms).' },
+      { type: 'success', text: 'DEPLOY_STATUS: Docker container node #us-east-1a successfully provisioned.' },
+      { type: 'warn', text: 'SECURITY_ALERT: Unauthorized API query header attempted on port:8080. Ignored.' },
+      { type: 'info', text: 'SYNC_TASK: Syncing customer repository branches with main server.' }
+    ];
+
+    let logIndex = 0;
+    setInterval(function() {
+      if (!logConsole) return;
+      const log = testLogs[logIndex];
+      const entry = document.createElement('div');
+      entry.className = `log-entry ${log.type === 'success' ? 'success' : (log.type === 'warn' ? 'warn' : '')}`;
+      const time = new Date().toLocaleTimeString();
+      entry.innerHTML = `[${time}] ${log.text}`;
+      logConsole.appendChild(entry);
+      logConsole.scrollTop = logConsole.scrollHeight;
+      
+      logIndex = (logIndex + 1) % testLogs.length;
+    }, 4500);
+
+    // Logout Action
+    document.querySelector('[data-action="logout"]')?.addEventListener('click', function() {
+      showToast('info', 'Signing Out', 'Signing out of administrator session...');
+      setTimeout(() => { window.location.href = 'login.html'; }, 1200);
+    });
+
+    // Welcome notification
+    setTimeout(() => {
+      showToast('success', 'Admin Session Active 🛠️', 'Total active connections: 18 nodes.');
+    }, 500);
+  });
+
+  // Global showToast helper
+  function showToast(type, title, msg) {
+    if (window.MADA && window.MADA.showToast) {
+      window.MADA.showToast(type, title, msg);
+    } else {
+      console.log(`[${type.toUpperCase()}] ${title}: ${msg}`);
+    }
+  }
+
+  // Deactivate User toggle status helper function
+  window.toggleUserStatus = function(btn) {
+    const row = btn.closest('tr');
+    const badge = row.querySelector('td:nth-child(5) .badge');
+    const isDeactivated = btn.textContent === 'Activate';
+    
+    if (isDeactivated) {
+      btn.textContent = 'Deactivate';
+      badge.textContent = 'Active Workspace';
+      badge.className = 'badge badge-success';
+      showToast('success', 'Account Activated', 'User workspace has been restored.');
+    } else {
+      btn.textContent = 'Activate';
+      badge.textContent = 'Deactivated';
+      badge.className = 'badge badge-danger';
+      showToast('warning', 'Account Deactivated', 'User workspace has been locked.');
+    }
+  }
+</script>
+</body>
+</html>

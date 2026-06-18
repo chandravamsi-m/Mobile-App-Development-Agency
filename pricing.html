@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Plans & ROI Calculator — Mobile App Development | AppForge</title>
+  <meta name="description" content="Transparent pricing plans for iOS, Android, and cross-platform app development. Use our interactive ROI calculator to estimate your returns.">
+  <meta property="og:title" content="App Development Pricing & ROI | AppForge">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .comparison-wrapper { margin-top: var(--space-16); overflow-x: auto; }
+    .comparison-table { width: 100%; border-collapse: collapse; text-align: left; min-width: 800px; }
+    .comparison-table th, .comparison-table td { padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--border); }
+    .comparison-table th { background: var(--bg-secondary); font-weight: 700; font-family: var(--font-heading); }
+    .comparison-table tr:hover td { background: var(--bg-secondary); }
+    .check-icon { color: var(--success); font-weight: 700; }
+    .dash-icon { color: var(--text-muted); }
+
+    /* ROI Calc Styles */
+    .roi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-lg);
+      margin-top: var(--space-12);
+    }
+    .roi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); }
+    .roi-output-box {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      border: 1.5px solid var(--border);
+    }
+    .roi-metric { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: var(--space-3); }
+    .roi-metric:last-child { border-bottom: none; padding-bottom: 0; }
+    .roi-metric-val { font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem; color: var(--primary); }
+    
+    @media (max-width: 768px) { .roi-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<main id="main">
+
+<section class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <span>Pricing</span></div>
+    <h1>Transparent, Predictable <br>App Development Pricing</h1>
+    <p>Select a pre-packaged sprint structure to validate your MVP, scale your startup, or engineer custom enterprise solutions.</p>
+  </div>
+</section>
+
+<!-- Pricing Grid Section -->
+<section class="section">
+  <div class="container">
+    <div class="pricing-grid">
+      <!-- MVP -->
+      <article class="pricing-card reveal reveal-delay-1">
+        <div class="pricing-tier">Starter</div>
+        <h2 class="pricing-name" style="font-size:1.5rem">MVP Package</h2>
+        <div class="pricing-price"><span class="pricing-currency">$</span><span class="pricing-amount">15K</span><span class="pricing-period">project</span></div>
+        <p class="pricing-desc">Validate your core value proposition in 6–8 weeks with a focused, production-ready app.</p>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>1 Platform (iOS or Android)</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>Core Features Only</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>Clean UX/UI Wireframes</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>App Store Submission</li>
+          <li class="pricing-feature excluded"><div class="pricing-feature-icon">–</div>Dedicated Client Portal</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline-primary pricing-cta">Get Started</a>
+      </article>
+
+      <!-- Startup -->
+      <article class="pricing-card reveal reveal-delay-2">
+        <div class="pricing-tier">Growth</div>
+        <h2 class="pricing-name" style="font-size:1.5rem">Startup Package</h2>
+        <div class="pricing-price"><span class="pricing-currency">$</span><span class="pricing-amount">35K</span><span class="pricing-period">project</span></div>
+        <p class="pricing-desc">Deploy dual-platform (iOS + Android) capabilities with custom dashboards and user paths.</p>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>iOS + Android Deployment</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>Custom Integrations</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>Premium Interactive UI/UX</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>Dedicated Client Portal</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>3 Months Support</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline-primary pricing-cta">Get Started</a>
+      </article>
+
+      <!-- Business -->
+      <article class="pricing-card popular reveal reveal-delay-3">
+        <div class="popular-badge">Most Popular</div>
+        <div class="pricing-tier">Scale</div>
+        <h2 class="pricing-name" style="font-size:1.5rem">Business Package</h2>
+        <div class="pricing-price"><span class="pricing-currency">$</span><span class="pricing-amount">65K</span><span class="pricing-period">project</span></div>
+        <p class="pricing-desc">Engineered for scaling businesses needing multi-platform web sync and complex features.</p>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>iOS + Android + Web Sync</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>AI & Payment APIs</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>Custom Shared Design System</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>Priority Dashboard Support</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>6 Months SLA Support</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary pricing-cta">Get Started</a>
+      </article>
+
+      <!-- Enterprise -->
+      <article class="pricing-card reveal reveal-delay-4">
+        <div class="pricing-tier">Enterprise</div>
+        <h2 class="pricing-name" style="font-size:1.5rem">Enterprise Package</h2>
+        <div class="pricing-price"><span class="pricing-currency">$</span><span class="pricing-amount">Custom</span></div>
+        <p class="pricing-desc">SLA-guaranteed security and custom modules built for complex corporate requirements.</p>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>Full Native + Web Framework</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>SOC2/HIPAA Bank-Grade Security</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>On-site Strategy Workshops</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>Dedicated Developer Squad</li>
+          <li class="pricing-feature"><div class="pricing-feature-icon">✓</div>12 Months Support SLA</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline-primary pricing-cta">Contact Sales</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ROI Calculator Section -->
+<section class="section" style="background:var(--bg-secondary)">
+  <div class="container" style="max-width:960px">
+    <div class="section-header reveal">
+      <span class="section-label">📊 Financial ROI Calculator</span>
+      <h2>Calculate Your App's <span class="text-gradient">Financial ROI</span></h2>
+      <p>Enter your planned budget and user acquisition goals to estimate potential monthly revenues, return percentages, and break-even timelines.</p>
+    </div>
+
+    <div class="roi-card reveal">
+      <form id="roi-form" class="roi-grid">
+        <div style="display:flex; flex-direction:column; gap:var(--space-4)">
+          <div class="form-group">
+            <label class="form-label" for="roi-investment">Initial Investment ($)</label>
+            <input type="number" id="roi-investment" class="form-control" value="35000" min="5000" step="1000">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="roi-users">Projected Active Users</label>
+            <input type="number" id="roi-users" class="form-control" value="10000" min="100" step="100">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="roi-arpu">Monthly Average Revenue Per User (ARPU) ($)</label>
+            <input type="number" id="roi-arpu" class="form-control" value="4.50" min="0.1" step="0.1" max="1000">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="roi-months">Timeframe (Months)</label>
+            <select id="roi-months" class="form-control">
+              <option value="6">6 Months</option>
+              <option value="12" selected>12 Months</option>
+              <option value="18">18 Months</option>
+              <option value="24">24 Months</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="roi-output-box" id="roi-result">
+          <h3 style="font-size:1.125rem; margin-bottom:var(--space-2)">📈 Estimated Return Projections</h3>
+          <div class="roi-metric">
+            <span style="font-size:0.875rem; color:var(--text-secondary)">Monthly Revenue:</span>
+            <div class="roi-metric-val" id="roi-monthly-rev">$45,000</div>
+          </div>
+          <div class="roi-metric">
+            <span style="font-size:0.875rem; color:var(--text-secondary)">Annual Revenue:</span>
+            <div class="roi-metric-val" id="roi-annual-rev">$540,000</div>
+          </div>
+          <div class="roi-metric">
+            <span style="font-size:0.875rem; color:var(--text-secondary)">Total Revenue Over Timeframe:</span>
+            <div class="roi-metric-val" id="roi-projected-rev">$540,000</div>
+          </div>
+          <div class="roi-metric">
+            <span style="font-size:0.875rem; color:var(--text-secondary)">ROI Percentage:</span>
+            <div class="roi-metric-val" id="roi-percentage" style="color:var(--success)">1442.9%</div>
+          </div>
+          <div class="roi-metric">
+            <span style="font-size:0.875rem; color:var(--text-secondary)">Break-Even Timeframe:</span>
+            <div class="roi-metric-val" id="roi-break-even" style="color:var(--primary)">0.8 months</div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison Table Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">🔍 Detail Grid</span>
+      <h2>Feature Comparison Table</h2>
+      <p>Compare our core sprints side-by-side to find the right fit for your budget.</p>
+    </div>
+
+    <div class="comparison-wrapper card reveal">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>MVP</th>
+            <th>Startup</th>
+            <th>Business</th>
+            <th>Enterprise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Platforms Supported</td>
+            <td>1 (iOS or Android)</td>
+            <td>2 (iOS + Android)</td>
+            <td>3 (iOS + Android + Web)</td>
+            <td>All + Custom Native</td>
+          </tr>
+          <tr>
+            <td>UI/UX Design</td>
+            <td>Core Wireframes</td>
+            <td>Premium Custom</td>
+            <td>Design System Sync</td>
+            <td>Enterprise Workshops</td>
+          </tr>
+          <tr>
+            <td>Client Collaboration Portal</td>
+            <td><span class="dash-icon">–</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span> (Priority)</td>
+            <td><span class="check-icon">✓</span> (Dedicated Node)</td>
+          </tr>
+          <tr>
+            <td>API & Payment Integration</td>
+            <td>Basic</td>
+            <td>Medium (Stripe)</td>
+            <td>Advanced APIs</td>
+            <td>Custom Integrations</td>
+          </tr>
+          <tr>
+            <td>Security Compliance</td>
+            <td>HTTPS Only</td>
+            <td>HTTPS + Encryption</td>
+            <td>SOC2 / ISO Ready</td>
+            <td>HIPAA / GDPR SLA</td>
+          </tr>
+          <tr>
+            <td>Support SLA</td>
+            <td>1 Month</td>
+            <td>3 Months</td>
+            <td>6 Months</td>
+            <td>12 Months + On-Call</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section" style="background:var(--bg-secondary)">
+  <div class="container" style="max-width:800px">
+    <div class="section-header reveal">
+      <span class="section-label">❓ FAQs</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <div class="accordion reveal" data-accordion>
+      <div class="accordion-item open">
+        <button class="accordion-header" aria-expanded="true">
+          <span>How accurate is the Project Cost Estimator?</span>
+          <span class="accordion-icon"></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Our instant estimators provide a rough budget window based on our historical baseline averages for sprint durations. We generate exact quotes only after a thorough 30-minute discovery call and scope outline.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Do we own 100% of the intellectual property (IP)?</span>
+          <span class="accordion-icon"></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Yes. Upon completion of payment milestones, the intellectual property and full access to repository codebases are transferred directly to you. We retain zero licensing or IP rights to your app.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>How does the Client Collaboration Portal work?</span>
+          <span class="accordion-icon"></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Once a project is active, you receive access credentials. Through the dashboard, you can track daily tasks, review interactive UI mockups, approve milestones, share assets, and live-chat with your project lead.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Which cross-platform framework do you recommend?</span>
+          <span class="accordion-icon"></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>It depends. Flutter is ideal for highly animated, graphic-intensive apps requiring absolute layout consistency across web and mobile. React Native works best when leveraging JavaScript ecosystems or extending web libraries.</p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Do you help with App Store & Google Play deployments?</span>
+          <span class="accordion-icon"></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Yes. We compile binary assets, navigation compliance requirements, screenshots, and age ratings to handle submission pipelines completely, including addressing App Store review feedback.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/tools.js"></script>
+<script>
+  // Auto-calculate ROI on page load so users see real values immediately
+  document.addEventListener('DOMContentLoaded', function() {
+    const roiForm = document.getElementById('roi-form');
+    if (roiForm) {
+      roiForm.querySelectorAll('input, select').forEach(function(el) {
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+      });
+    }
+  });
+</script>
+</body>
+</html>

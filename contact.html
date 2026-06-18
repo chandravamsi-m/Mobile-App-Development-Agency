@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us & Book Consultation — Mobile App Development | AppForge</title>
+  <meta name="description" content="Get in touch with AppForge's mobile app specialists. Book a discovery call, submit your project requirements, and kickstart your app journey.">
+  <meta property="og:title" content="Contact AppForge | Book Discovery Call">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    .contact-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-10); margin-bottom: var(--space-16); }
+    .contact-info-cards { display: flex; flex-direction: column; gap: var(--space-4); }
+    .contact-info-card { padding: var(--space-5); background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-lg); display: flex; gap: var(--space-4); align-items: flex-start; }
+    .contact-info-icon { font-size: 1.5rem; }
+
+    /* Calendar Grid */
+    .cal-grid-wrapper { margin-top: var(--space-4); }
+    .cal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); margin-bottom: var(--space-4); }
+    .cal-day-btn {
+      padding: var(--space-3) var(--space-2);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      font-size: .75rem;
+      font-weight: 600;
+      transition: all var(--transition-fast);
+      cursor: pointer;
+      text-align: center;
+      color: var(--text-primary);
+    }
+    .cal-day-btn:hover { border-color: var(--primary); background: var(--primary-50); }
+    [data-theme="dark"] .cal-day-btn:hover { background: rgba(37,99,235,.15); }
+    .cal-day-btn.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* Map Placeholder */
+    .map-placeholder {
+      height: 250px;
+      background: linear-gradient(135deg, var(--primary-50), var(--bg-tertiary));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      margin-top: var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--text-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    @media (max-width: 1024px) { .contact-layout { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<main id="main">
+
+<section class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <span>Contact</span></div>
+    <h1>Let's Connect and Build <br>Something Exceptional</h1>
+    <p>Submit a request for proposal or instantly schedule a consultation meeting with our solutions architects.</p>
+  </div>
+</section>
+
+<section class="section" id="booking">
+  <div class="container">
+    <div class="contact-layout">
+      <!-- Project Inquiry Form -->
+      <div class="card reveal">
+        <h2 style="font-size:1.5rem; margin-bottom:var(--space-2)">📬 Send Project Inquiry</h2>
+        <p style="font-size:.875rem; color:var(--text-secondary); margin-bottom:var(--space-6)">Tell us about your app concept. Our scope engineers will reply within 24 hours.</p>
+        
+        <form data-validate id="inquiry-form">
+          <div class="form-row form-row-2" style="margin-bottom:var(--space-4)">
+            <div class="form-group">
+              <label class="form-label required" for="inq-name">Your Name</label>
+              <input type="text" id="inq-name" class="form-control" placeholder="Jane Doe" required>
+              <div class="form-error"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label required" for="inq-email">Email Address</label>
+              <input type="email" id="inq-email" class="form-control" placeholder="jane@company.com" required>
+              <div class="form-error"></div>
+            </div>
+          </div>
+          
+          <div class="form-row form-row-2" style="margin-bottom:var(--space-4)">
+            <div class="form-group">
+              <label class="form-label" for="inq-platform">Platform Goal</label>
+              <select id="inq-platform" class="form-control">
+                <option value="both">iOS + Android Dual</option>
+                <option value="ios">iOS Swift Only</option>
+                <option value="android">Android Kotlin Only</option>
+                <option value="web">React/Web Application</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inq-budget">Estimated Budget</label>
+              <select id="inq-budget" class="form-control">
+                <option value="Starter">$15K – $35K</option>
+                <option value="Scale">$35K – $65K</option>
+                <option value="Enterprise">$65K – $150K+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom:var(--space-4)">
+            <label class="form-label required" for="inq-desc">Project Details</label>
+            <textarea id="inq-desc" class="form-control" placeholder="Outline user flows, feature checklist, or backend APIs needed..." required></textarea>
+            <div class="form-error"></div>
+          </div>
+
+          <div class="form-group" style="margin-bottom:var(--space-6)">
+            <label class="form-label">Upload RFP or Wireframes (optional)</label>
+            <div class="file-drop-zone upload-area" style="padding:var(--space-6)">
+              <div class="upload-icon">📂</div>
+              <div class="upload-text">Drag files here or click to select</div>
+              <div class="upload-hint">Support PDF, PNG, JPG, ZIP (max 10MB)</div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary full-width">🚀 Submit Inquiry Request</button>
+        </form>
+      </div>
+
+      <!-- Information & Discovery Scheduler -->
+      <div style="display:flex; flex-direction:column; gap:var(--space-6)">
+        <div class="card reveal">
+          <h2 style="font-size:1.5rem; margin-bottom:var(--space-2)">📅 Book Discovery Call</h2>
+          <p style="font-size:.875rem; color:var(--text-secondary); margin-bottom:var(--space-4)">Select a date and book a 30-minute scoping session directly with our engineering architects.</p>
+
+          <form id="booking-form">
+            <div class="form-group">
+              <label class="form-label">1. Choose Date</label>
+              <input type="hidden" id="booking-date" required>
+              <div class="cal-grid-wrapper">
+                <div class="cal-grid" id="cal-grid">
+                  <!-- JS generated elements -->
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-row form-row-2" style="margin-bottom:var(--space-5)">
+              <div class="form-group">
+                <label class="form-label" for="booking-time">2. Choose Time</label>
+                <select id="booking-time" class="form-control" required>
+                  <option value="09:00 AM">09:00 AM EST</option>
+                  <option value="11:30 AM">11:30 AM EST</option>
+                  <option value="02:00 PM">02:00 PM EST</option>
+                  <option value="04:30 PM">04:30 PM EST</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="booking-name">3. Your Name</label>
+                <input type="text" id="booking-name" class="form-control" placeholder="Alex" required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary full-width">📅 Confirm Scoping Appointment</button>
+          </form>
+        </div>
+
+        <div class="contact-info-cards reveal">
+          <div class="contact-info-card">
+            <div class="contact-info-icon">📍</div>
+            <div>
+              <div style="font-weight:700">HQ Office</div>
+              <p style="font-size:0.875rem">548 Market St, Suite 48200, San Francisco, CA 94104</p>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon">📞</div>
+            <div>
+              <div style="font-weight:700">Phone Support</div>
+              <p style="font-size:0.875rem">+1 (800) APP-FORGE (Mon-Fri 9am-6pm EST)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Styled Map Placeholder -->
+        <div class="map-placeholder reveal" style="padding: 0; background: none; overflow: hidden; height: 320px;">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0863878036577!2d-122.40426802345091!3d37.78917897198275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808b8b9a1eb7%3A0x67c29fb1e3d36e2f!2s548%20Market%20St%2C%20San%20Francisco%2C%20CA%2094104!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+            width="100%" 
+            height="100%" 
+            style="border:0; display:block;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="AppForge SF HQ Location">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/tools.js"></script>
+</body>
+</html>
