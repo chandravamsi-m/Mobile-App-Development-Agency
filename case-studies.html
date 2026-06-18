@@ -11,9 +11,42 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <style>
-    .case-detail { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-2xl); overflow: hidden; margin-bottom: var(--space-6); }
-    .case-detail-header { display: grid; grid-template-columns: 1fr 1fr; }
-    .case-detail-visual { display: flex; align-items: center; justify-content: center; font-size: 5rem; min-height: 280px; }
+    .case-detail { 
+      background: var(--surface); 
+      border: 1px solid var(--border); 
+      border-radius: var(--radius-2xl); 
+      overflow: hidden; 
+      margin-bottom: var(--space-8); 
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .case-detail:hover {
+      border-color: rgba(37, 99, 235, 0.2);
+      box-shadow: var(--shadow-md);
+    }
+    .case-detail-header { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      align-items: stretch;
+    }
+    .case-detail-visual { 
+      position: relative;
+      overflow: hidden; 
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+    }
+    .case-detail-visual img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform var(--transition-base);
+    }
+    .case-detail:hover .case-detail-visual img {
+      transform: scale(1.04);
+    }
     .case-detail-meta { padding: var(--space-8); }
     .case-detail-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin: var(--space-5) 0; }
     .case-detail-metric { background: var(--bg-secondary); border-radius: var(--radius-lg); padding: var(--space-4); text-align: center; }
@@ -25,7 +58,11 @@
     .cs-box ul { display: flex; flex-direction: column; gap: var(--space-2); }
     .cs-box li { font-size: .875rem; color: var(--text-secondary); display: flex; align-items: flex-start; gap: var(--space-2); }
     .cs-box li::before { content: '→'; color: var(--primary); font-weight: 700; flex-shrink: 0; }
-    @media (max-width: 768px) { .case-detail-header { grid-template-columns: 1fr; } .case-detail-metrics { grid-template-columns: repeat(2, 1fr); } .challenge-solution { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { 
+      .case-detail-header { grid-template-columns: 1fr; } 
+      .case-detail-metrics { grid-template-columns: repeat(2, 1fr); } 
+      .challenge-solution { grid-template-columns: 1fr; } 
+    }
   </style>
 </head>
 <body>
@@ -65,8 +102,8 @@
       <!-- FinNova -->
       <div class="case-detail reveal" data-category="fintech">
         <div class="case-detail-header">
-          <div class="case-detail-visual" style="background:linear-gradient(135deg,#1e3a5f,#2563eb)">
-            <div>🏦</div>
+          <div class="case-detail-visual">
+            <img src="assets/images/showcase-finnova.png" alt="FinNova digital banking mobile app mockup" loading="lazy">
           </div>
           <div class="case-detail-meta">
             <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap">
@@ -112,8 +149,8 @@
       <!-- MedCare -->
       <div class="case-detail reveal" data-category="healthcare">
         <div class="case-detail-header">
-          <div class="case-detail-visual" style="background:linear-gradient(135deg,#064e3b,#059669)">
-            <div>🏥</div>
+          <div class="case-detail-visual">
+            <img src="assets/images/showcase-medcare.png" alt="MedCare telemedicine platform mockup" loading="lazy">
           </div>
           <div class="case-detail-meta">
             <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap">
@@ -159,8 +196,8 @@
       <!-- QuickBite -->
       <div class="case-detail reveal" data-category="food">
         <div class="case-detail-header">
-          <div class="case-detail-visual" style="background:linear-gradient(135deg,#7c1d0e,#ef4444)">
-            <div>🍕</div>
+          <div class="case-detail-visual">
+            <img src="assets/images/showcase-quickbite.png" alt="QuickBite food delivery app mockup" loading="lazy">
           </div>
           <div class="case-detail-meta">
             <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap">
@@ -206,8 +243,8 @@
       <!-- ShopWave E-commerce -->
       <div class="case-detail reveal" data-category="ecommerce">
         <div class="case-detail-header">
-          <div class="case-detail-visual" style="background:linear-gradient(135deg,#1e1b4b,#7c3aed)">
-            <div>🛒</div>
+          <div class="case-detail-visual">
+            <img src="assets/images/showcase-shopwave.png" alt="ShopWave e-commerce app mockup" loading="lazy">
           </div>
           <div class="case-detail-meta">
             <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap">
@@ -243,8 +280,8 @@
       <!-- FitLife -->
       <div class="case-detail reveal" data-category="fitness">
         <div class="case-detail-header">
-          <div class="case-detail-visual" style="background:linear-gradient(135deg,#14532d,#16a34a)">
-            <div>💪</div>
+          <div class="case-detail-visual">
+            <img src="assets/images/showcase-fitlife.png" alt="FitLife personal coaching app mockup" loading="lazy">
           </div>
           <div class="case-detail-meta">
             <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap">
@@ -280,8 +317,8 @@
       <!-- TravelEasy -->
       <div class="case-detail reveal" data-category="travel">
         <div class="case-detail-header">
-          <div class="case-detail-visual" style="background:linear-gradient(135deg,#0c4a6e,#0284c7)">
-            <div>✈️</div>
+          <div class="case-detail-visual">
+            <img src="assets/images/showcase-traveleasy.png" alt="TravelEasy AI planner app mockup" loading="lazy">
           </div>
           <div class="case-detail-meta">
             <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-4);flex-wrap:wrap">
