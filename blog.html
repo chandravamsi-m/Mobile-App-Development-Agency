@@ -130,48 +130,330 @@
       .bl-grid-container { grid-template-columns: 1fr; gap: 3rem; }
     }
 
-    /* ── Featured Post Card ────────────────────────────── */
+    /* ══════════════════════════════════════════════════════
+       MAGAZINE EDITORIAL SHOWCASE — Premium Redesign
+    ══════════════════════════════════════════════════════ */
+
+    /* ── Section Wrapper ───────────────────────────────── */
     .bl-featured-section {
       margin-bottom: 3.5rem;
       border-bottom: 1px solid var(--border);
       padding-bottom: 3.5rem;
     }
-    .bl-featured-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
+
+    /* ── Editorial Section Label ───────────────────────── */
+    .bl-editorial-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+    .bl-editorial-label-text {
+      font-size: .6875rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--text-muted);
+    }
+    .bl-editorial-label-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Hero Feature Card (full-width cinematic) ────────── */
+    .bl-hero-feature {
+      position: relative;
       border-radius: var(--radius-2xl);
       overflow: hidden;
-      display: grid;
-      grid-template-columns: 1.25fr 1fr;
-      transition: all var(--transition-base);
-      box-shadow: var(--shadow-md);
-    }
-    .bl-featured-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-2xl);
-      border-color: rgba(37,99,235,.2);
-    }
-    .bl-feat-img-wrap {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 16/10;
+      aspect-ratio: 21/9;
       background: var(--bg-secondary);
+      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 1.25rem;
+      display: block;
+      text-decoration: none;
+      transition: box-shadow var(--transition-base);
     }
-    .bl-feat-img {
+    .bl-hero-feature:hover {
+      box-shadow: 0 28px 64px rgba(0,0,0,.22);
+    }
+    .bl-hero-feature-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform var(--transition-base);
+      transition: transform .65s cubic-bezier(.25,.46,.45,.94);
     }
-    .bl-featured-card:hover .bl-feat-img {
-      transform: scale(1.03);
+    .bl-hero-feature:hover .bl-hero-feature-img {
+      transform: scale(1.04);
     }
-    .bl-feat-body {
-      padding: 2.5rem;
+    /* Multi-layer gradient overlay for text legibility */
+    .bl-hero-feature-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(5,10,24,.92) 0%, rgba(5,10,24,.55) 40%, rgba(5,10,24,.05) 70%, transparent 100%);
+      pointer-events: none;
+    }
+    /* Editorial content anchored to bottom */
+    .bl-hero-feature-body {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: clamp(1.5rem, 3vw, 2.75rem);
+      z-index: 2;
+    }
+    .bl-hero-feature-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: .875rem;
+    }
+    .bl-editorial-badge {
+      font-size: .65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: #fff;
+      background: var(--primary);
+      padding: 4px 12px;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 8px rgba(37,99,235,.45);
+    }
+    .bl-editorial-badge.badge-featured {
+      background: linear-gradient(135deg, #7c3aed, #db2777);
+      box-shadow: 0 2px 8px rgba(124,58,237,.4);
+    }
+    .bl-hero-readtime {
+      font-size: .75rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.65);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .bl-hero-feature-title {
+      font-size: clamp(1.375rem, 2.8vw, 2.25rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -.03em;
+      margin-bottom: .875rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,.3);
+      max-width: 720px;
+      transition: color var(--transition-fast);
+    }
+    .bl-hero-feature:hover .bl-hero-feature-title {
+      color: rgba(255,255,255,.9);
+    }
+    .bl-hero-feature-desc {
+      font-size: .9375rem;
+      color: rgba(255,255,255,.7);
+      line-height: 1.6;
+      max-width: 560px;
+      margin-bottom: 1.5rem;
+      display: none; /* shown on larger screens */
+    }
+    @media (min-width: 760px) {
+      .bl-hero-feature-desc { display: block; }
+    }
+    .bl-hero-author-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .bl-hero-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c3aed, #db2777);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .8125rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,.25);
+      flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,.2);
+    }
+    .bl-hero-author-name {
+      font-size: .875rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .bl-hero-author-role {
+      font-size: .6875rem;
+      color: rgba(255,255,255,.55);
+    }
+    /* Bookmark / share pill — top right */
+    .bl-hero-actions {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      z-index: 3;
+      display: flex;
+      gap: 8px;
+    }
+    .bl-hero-action-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.2);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+    .bl-hero-action-btn:hover {
+      background: rgba(255,255,255,.28);
+    }
+    /* Issue / date stamp — top left */
+    .bl-hero-issue {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      z-index: 3;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      background: rgba(5,10,24,.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+    }
+
+    /* ── Two Supporting Story Cards ────────────────────── */
+    .bl-story-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .bl-story-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      transition: all var(--transition-base);
+      text-decoration: none;
+      position: relative;
     }
+    .bl-story-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+      border-color: rgba(37,99,235,.18);
+    }
+    .bl-story-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: var(--bg-secondary);
+    }
+    .bl-story-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+    }
+    .bl-story-card:hover .bl-story-img {
+      transform: scale(1.055);
+    }
+    /* Soft color tint overlay */
+    .bl-story-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5,10,24,.35) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity var(--transition-base);
+      pointer-events: none;
+    }
+    .bl-story-card:hover .bl-story-img-wrap::after {
+      opacity: 1;
+    }
+    /* Category pill floating over image */
+    .bl-story-cat-pill {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
+      font-size: .6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255,255,255,.25);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .bl-story-cat-pill.cat-mobile  { background: rgba(37,99,235,.75); color: #fff; }
+    .bl-story-cat-pill.cat-ux      { background: rgba(124,58,237,.75); color: #fff; }
+    .bl-story-cat-pill.cat-tutorial{ background: rgba(5,150,105,.75); color: #fff; }
+    .bl-story-cat-pill.cat-marketing{ background: rgba(239,68,68,.75); color: #fff; }
+    .bl-story-cat-pill.cat-case    { background: rgba(245,158,11,.75); color: #fff; }
+    /* Body */
+    .bl-story-body {
+      padding: 1.25rem 1.375rem 1.375rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .bl-story-title {
+      font-size: 1rem;
+      font-weight: 750;
+      color: var(--text-primary);
+      line-height: 1.35;
+      margin-bottom: .5rem;
+      transition: color var(--transition-fast);
+    }
+    .bl-story-card:hover .bl-story-title {
+      color: var(--primary);
+    }
+    .bl-story-desc {
+      font-size: .8125rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+    .bl-story-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: .875rem;
+      border-top: 1px solid var(--border);
+    }
+    .bl-story-author {
+      font-size: .75rem;
+      font-weight: 650;
+      color: var(--text-secondary);
+    }
+    .bl-story-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bl-story-readtime {
+      font-size: .7rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      background: var(--bg-secondary);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    @media (max-width: 620px) {
+      .bl-hero-feature { aspect-ratio: 4/3; }
+      .bl-story-duo { grid-template-columns: 1fr; }
+    }
+
+    /* ── Meta shared styles (used in bl-layout too) ───── */
     .bl-meta-row {
       display: flex;
       align-items: center;
@@ -198,24 +480,6 @@
       color: var(--text-muted);
       font-weight: 500;
     }
-    .bl-feat-title {
-      font-size: 1.625rem;
-      font-weight: 800;
-      color: var(--text-primary);
-      line-height: 1.25;
-      letter-spacing: -.02em;
-      margin-bottom: 1rem;
-      transition: color var(--transition-fast);
-    }
-    .bl-feat-title:hover {
-      color: var(--primary);
-    }
-    .bl-feat-desc {
-      font-size: .9375rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      margin-bottom: 2rem;
-    }
     .bl-author-bar {
       display: flex;
       align-items: center;
@@ -239,11 +503,6 @@
     .bl-author-role {
       font-size: .75rem;
       color: var(--text-muted);
-    }
-
-    @media (max-width: 900px) {
-      .bl-featured-card { grid-template-columns: 1fr; }
-      .bl-feat-body { padding: 2rem; }
     }
 
     /* ── Category Filters ──────────────────────────────── */
@@ -589,38 +848,117 @@
         <!-- Left Column: Featured & Grid -->
         <div class="bl-main-content">
 
-          <!-- Featured Article -->
+          <!-- ══ MAGAZINE EDITORIAL SHOWCASE ══ -->
           <div class="bl-featured-section">
-            <article class="bl-featured-card reveal">
-              <div class="bl-feat-img-wrap">
-                <img
-                  src="assets/images/blog-sprints.png"
-                  alt="Agile mobile product design sprint workshop workspace"
-                  class="bl-feat-img"
-                  loading="eager"
-                  width="700"
-                  height="438"
-                >
+
+            <!-- Section label -->
+            <div class="bl-editorial-label reveal">
+              <span class="bl-editorial-label-text">Editor's Pick</span>
+              <span class="bl-editorial-label-line"></span>
+            </div>
+
+            <!-- ── Cinematic Hero Feature ── -->
+            <a href="#" class="bl-hero-feature reveal" aria-label="Read: Designing Mobile Sprints — How We Cut Time-To-Market by 40%">
+              <img
+                src="assets/images/blog-featured-hero.png"
+                alt="Product design sprint workspace with Figma wireframes and mobile prototypes on monitors"
+                class="bl-hero-feature-img"
+                loading="eager"
+                width="1400"
+                height="600"
+              >
+              <div class="bl-hero-feature-overlay"></div>
+
+              <!-- Issue stamp top-left -->
+              <span class="bl-hero-issue">June 2026 · Issue #24</span>
+
+              <!-- Actions top-right -->
+              <div class="bl-hero-actions">
+                <button class="bl-hero-action-btn" aria-label="Bookmark article" onclick="event.preventDefault()">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                </button>
+                <button class="bl-hero-action-btn" aria-label="Share article" onclick="event.preventDefault()">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                </button>
               </div>
-              <div class="bl-feat-body">
-                <div class="bl-meta-row">
-                  <span class="bl-card-category">Mobile Trends</span>
-                  <span class="bl-card-readtime">8 min read</span>
+
+              <!-- Editorial body over image -->
+              <div class="bl-hero-feature-body">
+                <div class="bl-hero-feature-meta">
+                  <span class="bl-editorial-badge badge-featured">✦ Featured</span>
+                  <span class="bl-editorial-badge" style="background:rgba(37,99,235,.85);">Mobile Trends</span>
+                  <span class="bl-hero-readtime">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    8 min read
+                  </span>
                 </div>
-                <a href="#" style="text-decoration:none;">
-                  <h2 class="bl-feat-title">Designing Mobile Sprints: How We Reduced Time-To-Market by 40%</h2>
-                </a>
-                <p class="bl-feat-desc">A detailed walkthrough of our standard design system integration pipeline and cross-platform synchronization scripts, enabling startups to deploy dual-platform codebases ahead of schedules.</p>
-                <div class="bl-author-bar">
-                  <div class="bl-author-avatar" style="background:linear-gradient(135deg,#7c3aed,#db2777);">SC</div>
+                <h2 class="bl-hero-feature-title">Designing Mobile Sprints: How We Cut Time-To-Market by 40%</h2>
+                <p class="bl-hero-feature-desc">A detailed walkthrough of our design system integration pipeline and cross-platform synchronization scripts — enabling startups to ship dual-platform codebases ahead of schedule.</p>
+                <div class="bl-hero-author-bar">
+                  <div class="bl-hero-avatar">SC</div>
                   <div>
-                    <div class="bl-author-name">Sophia Chen</div>
-                    <div class="bl-author-role">CTO &amp; Co-Founder</div>
+                    <div class="bl-hero-author-name">Sophia Chen</div>
+                    <div class="bl-hero-author-role">CTO &amp; Co-Founder · AppForge</div>
                   </div>
                 </div>
               </div>
-            </article>
-          </div>
+            </a>
+
+            <!-- ── Two Supporting Story Cards ── -->
+            <div class="bl-story-duo">
+
+              <!-- Story Card A: Flutter -->
+              <a href="#" class="bl-story-card reveal" data-category="mobile-trends" aria-label="Is Flutter Still King in 2026?">
+                <div class="bl-story-img-wrap">
+                  <span class="bl-story-cat-pill cat-mobile">Mobile</span>
+                  <img
+                    src="assets/images/blog-editorial-flutter.png"
+                    alt="Developer hands on keyboard with Flutter mobile UI glowing in neon blue and purple"
+                    class="bl-story-img"
+                    loading="lazy"
+                    width="620"
+                    height="414"
+                  >
+                </div>
+                <div class="bl-story-body">
+                  <h3 class="bl-story-title">Is Flutter Still King in 2026? Framework Benchmarks Revealed</h3>
+                  <p class="bl-story-desc">Dart's GPU rendering capabilities vs React Native's new Architecture — an analytical deep-dive into real-world performance metrics.</p>
+                  <div class="bl-story-footer">
+                    <span class="bl-story-author">Priya Rajan</span>
+                    <div class="bl-story-meta">
+                      <span class="bl-story-readtime">5 min</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Story Card B: WCAG Accessibility -->
+              <a href="#" class="bl-story-card reveal reveal-delay-1" data-category="ui-ux" aria-label="Designing Touch Targets for WCAG Compliance">
+                <div class="bl-story-img-wrap">
+                  <span class="bl-story-cat-pill cat-ux">UI/UX</span>
+                  <img
+                    src="assets/images/blog-editorial-accessibility.png"
+                    alt="iMac showing Figma accessibility audit with contrast ratio checks and color swatches"
+                    class="bl-story-img"
+                    loading="lazy"
+                    width="620"
+                    height="414"
+                  >
+                </div>
+                <div class="bl-story-body">
+                  <h3 class="bl-story-title">Designing Touch Targets for WCAG 2.2 Compliance</h3>
+                  <p class="bl-story-desc">Why 48×48 dp spacing is essential for target sizing, accessible layouts, and keyboard focus states in production apps.</p>
+                  <div class="bl-story-footer">
+                    <span class="bl-story-author">Lena Novak</span>
+                    <div class="bl-story-meta">
+                      <span class="bl-story-readtime">6 min</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+            </div><!-- /.bl-story-duo -->
+          </div><!-- /.bl-featured-section -->
 
           <!-- Category Filters Row -->
           <div class="filter-bar bl-filters-bar reveal" data-target="#blog-grid">

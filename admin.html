@@ -24,19 +24,10 @@
     .mini-chart { display: flex; align-items: flex-end; gap: 8px; height: 100px; margin-top: var(--space-4); padding-bottom: 8px; border-bottom: 1.5px solid var(--border); }
     .mini-chart-bar { flex: 1; background: var(--gradient-primary); border-radius: var(--radius-sm) var(--radius-sm) 0 0; transition: height 1s ease; }
     
-    .sidebar.collapsed { width: 70px; }
-    .sidebar.collapsed .sidebar-logo span,
-    .sidebar.collapsed .project-selector,
-    .sidebar.collapsed .sidebar-nav-label,
-    .sidebar.collapsed .sidebar-nav-badge,
-    .sidebar.collapsed .sidebar-user-name,
-    .sidebar.collapsed .sidebar-user-role,
-    .sidebar.collapsed .sidebar-user-menu,
-    .sidebar.collapsed .sidebar-section-label { display: none !important; }
-    .sidebar.collapsed .sidebar-nav-item { justify-content: center; padding: 10px 0; }
-    .sidebar.collapsed .sidebar-user { justify-content: center; padding: 8px 0; }
-    .dashboard-main.expanded { margin-left: 70px; }
-    [dir="rtl"] .dashboard-main.expanded { margin-right: 70px; margin-left: 0; }
+    /* Collapsed sidebar — handled by dashboard.css */
+    /* Inline override: accent bar uses orange primary for admin */
+    .sidebar-nav-item.active::before { background: var(--primary); }
+    .sidebar-nav-badge { background: var(--primary); }
     
     /* CSS Bar chart styling */
     .chart-container {
@@ -191,7 +182,7 @@
   <div class="sidebar-footer">
     <div class="sidebar-user">
       <div class="sidebar-user-avatar" style="background:#ea580c">AD</div>
-      <div class="sidebar-user-name">
+      <div class="sidebar-user-info">
         <div class="sidebar-user-name">Admin Director</div>
         <div class="sidebar-user-role">Super Admin</div>
       </div>
