@@ -54,14 +54,117 @@
     .case-detail-metric-label { font-size: .75rem; color: var(--text-muted); margin-top: 2px; }
     .challenge-solution { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); padding: var(--space-6) var(--space-8) var(--space-8); border-top: 1px solid var(--border); }
     .cs-box { }
-    .cs-box-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: var(--space-3); }
+    .cs-box-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: var(--space-3); display: flex; align-items: center; gap: var(--space-2); }
     .cs-box ul { display: flex; flex-direction: column; gap: var(--space-2); }
     .cs-box li { font-size: .875rem; color: var(--text-secondary); display: flex; align-items: flex-start; gap: var(--space-2); }
     .cs-box li::before { content: '→'; color: var(--primary); font-weight: 700; flex-shrink: 0; }
+
+    /* Filter Bar Styles */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      justify-content: center;
+      margin: 2rem 0 3.5rem;
+    }
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+    .filter-btn i, .filter-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2.2;
+    }
+
+    /* Hero */
+    .cs-hero {
+      padding: calc(var(--nav-height) + 72px) 0 64px;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .cs-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% -10%, rgba(37,99,235,.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cs-hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .cs-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--primary);
+      background: var(--primary-50);
+      border: 1px solid var(--primary-100);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 1.25rem;
+    }
+    [data-theme="dark"] .cs-hero-eyebrow {
+      background: rgba(37,99,235,.15);
+      border-color: rgba(37,99,235,.3);
+    }
+    .cs-hero-title {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      color: var(--text-primary);
+      margin: 0 auto 1.125rem;
+    }
+    .cs-hero-sub {
+      font-size: 1.0625rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
     @media (max-width: 768px) { 
       .case-detail-header { grid-template-columns: 1fr; } 
-      .case-detail-metrics { grid-template-columns: repeat(2, 1fr); } 
-      .challenge-solution { grid-template-columns: 1fr; } 
+      .case-detail-metrics { grid-template-columns: repeat(3, 1fr); } 
+      .challenge-solution { grid-template-columns: 1fr; padding: var(--space-6); } 
+      .filter-bar { margin: 1.5rem 0 2rem; gap: .375rem; }
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-2);
+      }
+      .stats-grid .stat-item {
+        border-radius: var(--radius-lg) !important;
+      }
     }
   </style>
   <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
@@ -70,22 +173,39 @@
 <div id="site-nav"></div>
 <main id="main">
 
-<section class="page-header">
+<section class="cs-hero">
   <div class="container">
-    <div class="breadcrumb"><a href="index.html">Home</a> / <span>Case Studies</span></div>
-    <h1>200+ Apps Delivered. <br>Real Results. Real Impact.</h1>
-    <p>Explore our portfolio of successful mobile applications across diverse industries. From startup MVPs to enterprise-grade platforms.</p>
+    <div class="cs-hero-inner">
+      <span class="cs-hero-eyebrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Our Portfolio
+      </span>
+      <h1 class="cs-hero-title">200+ Apps. <span class="text-gradient">Real Results.</span> Real Impact.</h1>
+      <p class="cs-hero-sub">Explore our portfolio of successful mobile applications across diverse industries — from startup MVPs to enterprise-grade platforms.</p>
+    </div>
   </div>
 </section>
 
-<section class="section">
+<section class="section section-alt" id="stats">
   <div class="container">
-    <!-- Stats -->
-    <div class="stats-grid reveal" style="margin-bottom:var(--space-12)">
+    <div class="stats-grid reveal">
       <div class="stat-item"><div class="stat-number" data-target="200" data-suffix="+">200+</div><div class="stat-label">Apps Delivered</div></div>
       <div class="stat-item"><div class="stat-number" data-target="50" data-suffix="M+">50M+</div><div class="stat-label">Total App Downloads</div></div>
       <div class="stat-item"><div class="stat-number" data-target="15" data-suffix="+">15+</div><div class="stat-label">Industries Served</div></div>
       <div class="stat-item"><div class="stat-number" data-target="4.8" data-suffix="★">4.8★</div><div class="stat-label">Average App Rating</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cases">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Case Studies
+      </span>
+      <h2>Award-Winning <span class="text-gradient">Apps We've Built</span></h2>
+      <p>Explore our portfolio of successful applications. Filter by industry to find relevant case studies.</p>
     </div>
 
     <!-- Filters -->

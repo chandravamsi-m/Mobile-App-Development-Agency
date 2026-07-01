@@ -41,6 +41,81 @@
     .roi-metric { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: var(--space-3); }
     .roi-metric:last-child { border-bottom: none; padding-bottom: 0; }
     .roi-metric-val { font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem; color: var(--primary); }
+
+    /* Hero */
+    .pri-hero {
+      padding: calc(var(--nav-height) + 72px) 0 64px;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .pri-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% -10%, rgba(37,99,235,.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pri-hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .pri-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--primary);
+      background: var(--primary-50);
+      border: 1px solid var(--primary-100);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 1.25rem;
+    }
+    [data-theme="dark"] .pri-hero-eyebrow {
+      background: rgba(37,99,235,.15);
+      border-color: rgba(37,99,235,.3);
+    }
+    .pri-hero-title {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      color: var(--text-primary);
+      margin: 0 auto 1.125rem;
+    }
+    .pri-hero-sub {
+      font-size: 1.0625rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto 2rem;
+    }
+    .pri-hero-badges {
+      display: flex;
+      gap: var(--space-3);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .pri-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+    }
     
     @media (max-width: 768px) { .roi-grid { grid-template-columns: 1fr; } }
   </style>
@@ -51,11 +126,30 @@
 
 <main id="main">
 
-<section class="page-header">
+<section class="pri-hero">
   <div class="container">
-    <div class="breadcrumb"><a href="index.html">Home</a> / <span>Pricing</span></div>
-    <h1>Transparent, Predictable <br>App Development Pricing</h1>
-    <p>Select a pre-packaged sprint structure to validate your MVP, scale your startup, or engineer custom enterprise solutions.</p>
+    <div class="pri-hero-inner">
+      <span class="pri-hero-eyebrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        Transparent Pricing
+      </span>
+      <h1 class="pri-hero-title">Simple, <span class="text-gradient">Predictable Pricing</span> for Every Stage</h1>
+      <p class="pri-hero-sub">No hidden fees. Choose a package that fits your stage and scale as you grow. All packages include App Store submission.</p>
+      <div class="pri-hero-badges">
+        <span class="pri-hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          No Hidden Fees
+        </span>
+        <span class="pri-hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Full IP Ownership
+        </span>
+        <span class="pri-hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Fixed-Price Sprints
+        </span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -198,8 +292,11 @@
 <section class="section">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">🔍 Detail Grid</span>
-      <h2>Feature Comparison Table</h2>
+      <span class="section-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Detail Grid
+      </span>
+      <h2>Feature <span class="text-gradient">Comparison Table</span></h2>
       <p>Compare our core sprints side-by-side to find the right fit for your budget.</p>
     </div>
 
@@ -267,8 +364,11 @@
 <section class="section section-alt">
   <div class="container" style="max-width:800px">
     <div class="section-header reveal">
-      <span class="section-label"><i data-lucide="help-circle"></i> FAQs</span>
-      <h2>Frequently Asked Questions</h2>
+      <span class="section-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        FAQs
+      </span>
+      <h2>Frequently Asked <span class="text-gradient">Questions</span></h2>
     </div>
 
     <div class="accordion reveal" data-accordion>

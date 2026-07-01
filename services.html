@@ -39,21 +39,14 @@
     .services-hero {
       position: relative;
       overflow: hidden;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: calc(var(--nav-height) + 40px) 0 60px;
+      padding: calc(var(--nav-height) + 72px) 0 72px;
       background:
-        radial-gradient(circle at top left, rgba(6, 182, 212, .16), transparent 34%),
-        radial-gradient(circle at 85% 20%, rgba(37, 99, 235, .18), transparent 30%),
+        radial-gradient(circle at top left, rgba(6, 182, 212, .14), transparent 34%),
+        radial-gradient(circle at 85% 20%, rgba(37, 99, 235, .16), transparent 30%),
         linear-gradient(180deg, #0f172a 0%, #0a0f1d 100%);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(255,255,255,.06);
       box-sizing: border-box;
       text-align: center;
-      --text-primary: #ffffff;
-      --border: rgba(255, 255, 255, 0.25);
-      --bg-secondary: rgba(255, 255, 255, 0.08);
     }
 
     .services-hero::before {
@@ -64,18 +57,12 @@
         linear-gradient(rgba(255, 255, 255, .04) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, .04) 1px, transparent 1px);
       background-size: 44px 44px;
-      mask-image: linear-gradient(180deg, rgba(0, 0, 0, .9), rgba(0, 0, 0, 0));
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,0));
       pointer-events: none;
     }
 
-    .services-hero .breadcrumb {
-      display: flex;
-      justify-content: center;
-      margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
-    }
-
     .services-hero-content {
-      max-width: 800px;
+      max-width: 720px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -88,100 +75,129 @@
       display: inline-flex;
       align-items: center;
       gap: var(--space-2);
-      margin-bottom: clamp(1rem, 3vh, 1.5rem);
-      padding: 6px 14px;
+      margin-bottom: 1.25rem;
+      padding: 5px 14px;
       border-radius: var(--radius-full);
       border: 1px solid rgba(147, 197, 253, .25);
-      background: rgba(15, 23, 42, .45);
+      background: rgba(255,255,255,.08);
       color: #bfdbfe;
       font-size: .75rem;
       font-weight: 700;
       letter-spacing: .14em;
       text-transform: uppercase;
-      backdrop-filter: blur(10px);
     }
 
     .services-hero-title {
       background: linear-gradient(135deg, #fff 30%, #93c5fd 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
       line-height: 1.1;
       letter-spacing: -.03em;
-      margin-bottom: clamp(1rem, 3vh, 1.5rem);
+      margin-bottom: 1.125rem;
       font-weight: 800;
     }
 
     .services-hero-desc {
-      color: rgba(255, 255, 255, .76);
-      font-size: clamp(1rem, 2vw, 1.15rem);
-      line-height: 1.65;
-      margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
-      max-width: 580px;
+      color: rgba(255, 255, 255, .72);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 540px;
     }
 
     .services-hero-actions {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: var(--space-4);
-      margin-bottom: 0;
+      gap: var(--space-3);
     }
 
+    /* ── Services Jump Cards ─────────────────────────── */
     .services-jump {
-      position: relative;
-      margin-top: -44px;
-      z-index: 2;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: var(--space-16) 0;
     }
 
     .services-jump-grid {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: var(--space-4);
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
     }
 
     .services-jump-card {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      min-height: 138px;
-      padding: 1.15rem;
+      gap: var(--space-3);
+      padding: 1.5rem;
       border-radius: var(--radius-xl);
-      border: 1px solid var(--jump-card-border);
-      background: var(--jump-card-bg);
-      box-shadow: var(--jump-card-shadow);
-      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
-      height: 100%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-base);
+      text-decoration: none;
     }
 
     .services-jump-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--jump-card-hover-shadow);
-      border-color: rgba(37, 99, 235, .24);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(37, 99, 235, .25);
+    }
+
+    .services-jump-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-md);
+      background: var(--primary-50);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    [data-theme="dark"] .services-jump-icon {
+      background: rgba(37,99,235,.15);
     }
 
     .services-jump-label {
       color: var(--primary);
-      font-size: .75rem;
+      font-size: .7rem;
       font-weight: 700;
       letter-spacing: .12em;
       text-transform: uppercase;
-      margin-bottom: .75rem;
+      margin-bottom: .25rem;
     }
 
     .services-jump-card strong {
       display: block;
       color: var(--text-primary);
-      font-size: 0.925rem;
+      font-size: .9375rem;
+      font-weight: 700;
       line-height: 1.3;
-      margin-bottom: 0.35rem;
+      margin-bottom: .25rem;
     }
 
     .services-jump-card span {
       color: var(--text-secondary);
-      font-size: .875rem;
+      font-size: .8125rem;
       line-height: 1.55;
     }
+
+    .services-jump-arrow {
+      margin-top: auto;
+      padding-top: .75rem;
+      color: var(--primary);
+      font-size: .8125rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 900px)  { .services-jump-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 540px)  { .services-jump-grid { grid-template-columns: 1fr; } }
 
     .service-frameworks {
       padding: var(--space-20) 0;
@@ -237,10 +253,6 @@
 
     .service-slab {
       padding: var(--space-20) 0;
-    }
-
-    .service-slab.alt {
-      background: linear-gradient(180deg, var(--bg-secondary), rgba(37, 99, 235, .03));
     }
 
     .service-detail-card {
@@ -468,56 +480,52 @@
       font-weight: 600;
     }
 
-    .svc-ecosystem {
-      background: linear-gradient(180deg, rgba(37, 99, 235, .02), var(--bg-secondary));
-    }
-
     .service-ecosystem-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-6);
+      gap: var(--space-5);
+      margin-top: var(--space-10);
     }
 
     .service-ecosystem-card {
       display: flex;
       flex-direction: column;
-      height: 100%;
-      padding: 1.4rem;
-      border-radius: 24px;
+      padding: 1.5rem;
+      border-radius: var(--radius-xl);
       border: 1px solid var(--border);
-      background: var(--gradient-card);
+      background: var(--surface);
       box-shadow: var(--shadow-sm);
-      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+      transition: all var(--transition-base);
     }
 
     .service-ecosystem-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-xl);
-      border-color: rgba(37, 99, 235, .18);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(37, 99, 235, .2);
     }
 
     .service-eco-top {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: var(--space-4);
-      margin-bottom: 0.75rem;
-      min-height: 68px;
+      gap: var(--space-3);
+      margin-bottom: .875rem;
     }
 
     .service-eco-mark {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
       background: var(--primary-50);
       color: var(--primary);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: .875rem;
+      font-size: .8125rem;
       font-weight: 800;
       letter-spacing: .04em;
       text-transform: uppercase;
+      flex-shrink: 0;
     }
 
     [data-theme="dark"] .service-eco-mark {
@@ -527,58 +535,57 @@
 
     .service-eco-kicker {
       color: var(--primary);
-      font-size: .75rem;
+      font-size: .7rem;
       font-weight: 700;
       letter-spacing: .12em;
       text-transform: uppercase;
-      margin-bottom: .5rem;
+      margin-bottom: .3rem;
     }
 
     .service-ecosystem-card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.35rem;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0;
+      line-height: 1.3;
     }
 
     .service-ecosystem-card p {
       color: var(--text-secondary);
-      font-size: .9375rem;
-      line-height: 1.65;
-      margin-bottom: .75rem;
-      min-height: 74px;
-    }
-
-    .service-ecosystem-list {
-      display: grid;
-      gap: .5rem;
-      margin-bottom: 1rem;
-      min-height: 110px;
-    }
-
-    .service-ecosystem-list li {
-      position: relative;
-      padding-left: 1.15rem;
-      color: var(--text-secondary);
       font-size: .875rem;
-      line-height: 1.55;
+      line-height: 1.6;
+      margin: .625rem 0 .875rem;
     }
 
-    .service-ecosystem-list li::before {
-      content: "";
-      position: absolute;
-      top: .55rem;
-      left: 0;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--primary);
+    .service-eco-chips {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      margin-bottom: 1.125rem;
+    }
+
+    .service-eco-chip {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .8125rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .service-eco-chip svg {
+      color: var(--primary);
+      flex-shrink: 0;
     }
 
     .service-ecosystem-card .service-link {
       margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding-top: .875rem;
     }
 
     .svc-tools {
-      background: var(--bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
     .service-tools-grid {
@@ -875,21 +882,14 @@
   <main id="main">
     <section class="services-hero">
       <div class="container">
-        <div class="breadcrumb">
-          <a href="index.html">Home</a>
-          <span>/</span>
-          <span>Services</span>
-        </div>
-
         <div class="services-hero-content reveal">
           <span class="services-eyebrow">Services Architecture</span>
-          <h1 class="services-hero-title">Mobile product delivery designed for clarity, speed, and scale.</h1>
-          <p class="services-hero-desc">We partner with startups and enterprise leaders to design, build, and scale
-            premium iOS, Android, Flutter, and React Native mobile applications.</p>
+          <h1 class="services-hero-title">Mobile product delivery designed for <span style="-webkit-text-fill-color:transparent; background:linear-gradient(135deg,#93c5fd,#06b6d4); -webkit-background-clip:text;">clarity, speed, and scale.</span></h1>
+          <p class="services-hero-desc">We partner with startups and enterprise leaders to design, build, and scale premium iOS, Android, Flutter, and React Native mobile applications.</p>
 
           <div class="services-hero-actions">
             <a href="contact.html#booking" class="btn btn-primary btn-lg">Book a discovery call</a>
-            <a href="#feature-planner" class="btn btn-secondary btn-lg">Plan your feature set</a>
+            <a href="#feature-planner" class="btn btn-outline-white btn-lg">Plan your feature set</a>
           </div>
         </div>
       </div>
@@ -897,58 +897,93 @@
 
     <section class="services-jump">
       <div class="container">
+        <div class="section-header reveal" style="margin-bottom:var(--space-10)">
+          <span class="section-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            What We Build
+          </span>
+          <h2>Every service you need, <span class="text-gradient">under one roof</span></h2>
+          <p>From native mobile development to strategic planning tools — click any service to jump directly to the details.</p>
+        </div>
         <div class="services-jump-grid">
           <a class="services-jump-card reveal reveal-delay-1" href="#ios">
-            <div class="services-jump-label">Native</div>
+            <div class="services-jump-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 1.44S8.22 5 6 5a4.9 4.9 0 0 0-5 4.78C1 14 4 22 7 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></svg>
+            </div>
             <div>
+              <div class="services-jump-label">Native iOS</div>
               <strong>iOS Development</strong>
               <span>Premium Swift and SwiftUI apps for the Apple ecosystem.</span>
             </div>
+            <div class="services-jump-arrow">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </a>
           <a class="services-jump-card reveal reveal-delay-2" href="#android">
-            <div class="services-jump-label">Native</div>
+            <div class="services-jump-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="16" width="14" height="6" rx="2"/><path d="M8 16v-6a4 4 0 0 1 8 0v6"/><path d="M6 8l-2-2M18 8l2-2"/></svg>
+            </div>
             <div>
+              <div class="services-jump-label">Native Android</div>
               <strong>Android Development</strong>
               <span>Kotlin and Compose experiences built for modern Android devices.</span>
             </div>
+            <div class="services-jump-arrow">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </a>
           <a class="services-jump-card reveal reveal-delay-3" href="#flutter">
-            <div class="services-jump-label">Cross-platform</div>
+            <div class="services-jump-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
             <div>
+              <div class="services-jump-label">Cross-Platform</div>
               <strong>Flutter Delivery</strong>
               <span>Unified product builds with speed, consistency, and scale.</span>
             </div>
+            <div class="services-jump-arrow">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </a>
           <a class="services-jump-card reveal reveal-delay-1" href="#react-native">
-            <div class="services-jump-label">Extended stack</div>
+            <div class="services-jump-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+            </div>
             <div>
+              <div class="services-jump-label">Extended Stack</div>
               <strong>Product Ecosystem</strong>
               <span>React Native, backend systems, QA, launch, and maintenance.</span>
             </div>
+            <div class="services-jump-arrow">Learn more <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </a>
           <a class="services-jump-card reveal reveal-delay-2" href="#feature-planner">
-            <div class="services-jump-label">Planning</div>
+            <div class="services-jump-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
             <div>
+              <div class="services-jump-label">Planning</div>
               <strong>Feature Planner</strong>
               <span>Shape scope and timeline before the first sprint begins.</span>
             </div>
+            <div class="services-jump-arrow">Try tool <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </a>
           <a class="services-jump-card reveal reveal-delay-3" href="contact.html">
-            <div class="services-jump-label">Consultation</div>
+            <div class="services-jump-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
             <div>
+              <div class="services-jump-label">Consultation</div>
               <strong>Talk with our team</strong>
               <span>Get a recommended delivery path matched to your product goals.</span>
             </div>
+            <div class="services-jump-arrow">Book a call <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </a>
         </div>
       </div>
     </section>
 
-    <section class="section service-frameworks">
+    <section class="section section-alt service-frameworks">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-label">How We Work</span>
-          <h2>A cleaner engagement model from strategy to long-term scale</h2>
+          <span class="section-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            How We Work
+          </span>
+          <h2>A cleaner engagement model from <span class="text-gradient">strategy to scale</span></h2>
           <p>Every service line plugs into the same operating system: structured discovery, polished design execution,
             disciplined engineering, and launch support that keeps momentum high.</p>
         </div>
@@ -985,8 +1020,11 @@
       <div class="container">
         <div class="service-detail-card reveal">
           <div class="service-copy">
-            <span class="section-label">iOS Development</span>
-            <h2>Premium Apple experiences built for trust, speed, and platform polish.</h2>
+            <span class="section-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 1.44S8.22 5 6 5a4.9 4.9 0 0 0-5 4.78C1 14 4 22 7 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></svg>
+              iOS Development
+            </span>
+            <h2>Premium Apple experiences built for <span class="text-gradient">trust and polish</span>.</h2>
             <p>Our iOS delivery track is built for teams that need a refined native experience from day one. We design
               and engineer applications that feel at home on iPhone, iPad, and the broader Apple ecosystem while keeping
               the codebase scalable for future features.</p>
@@ -1062,12 +1100,15 @@
       </div>
     </section>
 
-    <section class="service-slab alt" id="android">
+    <section class="service-slab section-alt" id="android">
       <div class="container">
         <div class="service-detail-card alt-layout reveal">
           <div class="service-copy">
-            <span class="section-label">Android Development</span>
-            <h2>Modern Android engineering with clean architecture and broad device support.</h2>
+            <span class="section-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="16" width="14" height="6" rx="2"/><path d="M8 16v-6a4 4 0 0 1 8 0v6"/><path d="M6 8l-2-2M18 8l2-2"/></svg>
+              Android Development
+            </span>
+            <h2>Scalable Android apps built for <span class="text-gradient">performance and reach</span>.</h2>
             <p>Our Android teams focus on clarity, speed, and resilience across the fragmented Android ecosystem. We
               create products that feel fast, aligned to Material guidance, and ready for long-term iteration.</p>
 
@@ -1146,8 +1187,11 @@
       <div class="container">
         <div class="service-detail-card reveal">
           <div class="service-copy">
-            <span class="section-label">Flutter Delivery</span>
-            <h2>Cross-platform execution without sacrificing product cohesion.</h2>
+            <span class="section-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              Flutter Delivery
+            </span>
+            <h2>One codebase. <span class="text-gradient">Every platform.</span> Zero compromise.</h2>
             <p>Flutter is a strong fit when product teams need one coordinated interface language across platforms with
               faster delivery and tighter design consistency. We use it to ship polished experiences while keeping
               timelines and budgets efficient.</p>
@@ -1223,11 +1267,14 @@
       </div>
     </section>
 
-    <section class="section svc-ecosystem" id="react-native">
+    <section class="section section-alt svc-ecosystem" id="react-native">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-label">Extended Services</span>
-          <h2>The rest of the product ecosystem, aligned around the same quality bar</h2>
+          <span class="section-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+            Extended Services
+          </span>
+          <h2>Every capability your app needs — <span class="text-gradient">under one roof</span></h2>
           <p>When the core app build is only one part of the challenge, we extend the same design and engineering
             discipline into supporting capabilities that keep the whole product strong.</p>
         </div>
@@ -1241,13 +1288,12 @@
               </div>
               <div class="service-eco-mark">RN</div>
             </div>
-            <p>Shared-code mobile delivery for teams with JavaScript and TypeScript strengths, fast iteration cycles,
-              and a need for efficient multi-platform rollout.</p>
-            <ul class="service-ecosystem-list">
-              <li>TypeScript-first architecture and clean navigation flows</li>
-              <li>Native module integration for deeper device capabilities</li>
-              <li>Release strategy tuned for long-term maintainability</li>
-            </ul>
+            <p>Shared-code mobile delivery for teams with JavaScript strengths, fast iteration cycles, and efficient multi-platform rollout.</p>
+            <div class="service-eco-chips">
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>TypeScript-first architecture & clean navigation</div>
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Native module integration for device capabilities</div>
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Release strategy for long-term maintainability</div>
+            </div>
             <a href="contact.html" class="service-link">Talk about React Native</a>
           </article>
 
@@ -1255,17 +1301,16 @@
             <div class="service-eco-top">
               <div>
                 <div class="service-eco-kicker">Experience design</div>
-                <h3>UI and UX design systems</h3>
+                <h3>UI/UX Design Systems</h3>
               </div>
               <div class="service-eco-mark">UX</div>
             </div>
-            <p>Design work grounded in user flows, conversion logic, accessibility, and components that can be handed
-              off cleanly to engineering.</p>
-            <ul class="service-ecosystem-list">
-              <li>Wireframes, journey maps, prototypes, and usability testing</li>
-              <li>Figma design systems built for real implementation</li>
-              <li>Responsive patterns across app states and edge cases</li>
-            </ul>
+            <p>Design grounded in user flows, conversion logic, and accessibility — built to hand off cleanly to engineering.</p>
+            <div class="service-eco-chips">
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Wireframes, prototypes & usability testing</div>
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Figma design systems built for implementation</div>
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Responsive patterns across states & edge cases</div>
+            </div>
             <a href="contact.html" class="service-link">Plan your design track</a>
           </article>
 
@@ -1273,17 +1318,16 @@
             <div class="service-eco-top">
               <div>
                 <div class="service-eco-kicker">Platform foundation</div>
-                <h3>Backend development</h3>
+                <h3>Backend Development</h3>
               </div>
               <div class="service-eco-mark">API</div>
             </div>
-            <p>Secure, scalable backend systems that support mobile logic, user data, payments, notifications,
-              analytics, and third-party integrations.</p>
-            <ul class="service-ecosystem-list">
-              <li>REST and GraphQL APIs with resilient data models</li>
-              <li>Authentication, real-time events, storage, and admin logic</li>
-              <li>Architecture built for growth, observability, and uptime</li>
-            </ul>
+            <p>Secure, scalable backend systems supporting mobile logic, payments, notifications, analytics, and third-party integrations.</p>
+            <div class="service-eco-chips">
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>REST & GraphQL APIs with resilient data models</div>
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Auth, real-time events, storage & admin logic</div>
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Architecture built for growth and uptime</div>
+            </div>
             <a href="contact.html" class="service-link">Design your backend</a>
           </article>
 
@@ -1291,17 +1335,16 @@
             <div class="service-eco-top">
               <div>
                 <div class="service-eco-kicker">Quality</div>
-                <h3>QA and release assurance</h3>
+                <h3>QA & Release Assurance</h3>
               </div>
               <div class="service-eco-mark">QA</div>
             </div>
-            <p>Quality control that covers behavior, performance, and release readiness across the environments and
-              devices that matter most.</p>
-            <ul class="service-ecosystem-list">
-              <li>Functional, regression, performance, and device testing</li>
-              <li>Bug triage workflows tied closely to engineering delivery</li>
-              <li>Launch validation before App Store and Play submission</li>
-            </ul>
+            <p>Quality control covering behavior, performance, and release readiness across the environments that matter most.</p>
+            <div class="service-eco-chips">
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Functional, regression & performance testing</div>
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Bug triage tied closely to engineering delivery</div>
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Launch validation before App Store submission</div>
+            </div>
             <a href="contact.html" class="service-link">Improve QA coverage</a>
           </article>
 
@@ -1309,17 +1352,16 @@
             <div class="service-eco-top">
               <div>
                 <div class="service-eco-kicker">Go to market</div>
-                <h3>Store launch and optimization</h3>
+                <h3>Store Launch & Optimization</h3>
               </div>
               <div class="service-eco-mark">ASO</div>
             </div>
-            <p>Submission support, listing strategy, and release planning to help your app land smoothly and present
-              clearly from the first impression.</p>
-            <ul class="service-ecosystem-list">
-              <li>App Store and Play submission packaging and review support</li>
-              <li>Metadata, screenshots, listing clarity, and phased rollout planning</li>
-              <li>Post-launch analytics hooks for performance monitoring</li>
-            </ul>
+            <p>Submission support, listing strategy, and release planning to help your app land smoothly from the first impression.</p>
+            <div class="service-eco-chips">
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>App Store & Play submission packaging</div>
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Metadata, screenshots & phased rollout planning</div>
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Post-launch analytics for performance monitoring</div>
+            </div>
             <a href="contact.html" class="service-link">Prepare your launch</a>
           </article>
 
@@ -1327,17 +1369,16 @@
             <div class="service-eco-top">
               <div>
                 <div class="service-eco-kicker">Long-term support</div>
-                <h3>Maintenance and product growth</h3>
+                <h3>Maintenance & Growth</h3>
               </div>
               <div class="service-eco-mark">Ops</div>
             </div>
-            <p>We stay involved after release to keep your application current, performant, monitored, and ready for the
-              next milestone.</p>
-            <ul class="service-ecosystem-list">
-              <li>OS compatibility updates, monitoring, and performance tuning</li>
-              <li>Feature roadmap delivery tied to real product data</li>
-              <li>Support coverage that keeps the product stable while it grows</li>
-            </ul>
+            <p>We stay involved after release to keep your app current, performant, monitored, and ready for the next milestone.</p>
+            <div class="service-eco-chips">
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>OS updates, monitoring & performance tuning</div>
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Feature roadmap tied to real product data</div>
+              <div class="service-eco-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Support coverage that keeps the product stable</div>
+            </div>
             <a href="contact.html" class="service-link">Set up ongoing support</a>
           </article>
         </div>
@@ -1347,8 +1388,11 @@
     <section class="section svc-tools">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-label">Planning Tools</span>
-          <h2>Useful planning tools, presented with the same clarity as the service experience</h2>
+          <span class="section-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Planning Tools
+          </span>
+          <h2>Free tools to <span class="text-gradient">plan your project</span></h2>
           <p>Use these interactive tools to shape scope, compare delivery approaches, and create better conversations
             before your product build begins.</p>
         </div>

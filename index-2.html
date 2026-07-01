@@ -338,38 +338,36 @@
       font-size: .875rem;
     }
 
-    /* ── How It Works ──────────────────────────────────── */
-    .h2-process-section {
-      background: var(--bg-secondary);
-      border-bottom: 1px solid var(--border);
-    }
     .h2-process-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
+      gap: 1.25rem;
       margin-top: 3.5rem;
     }
     .h2-process-step {
-      padding: 2.5rem 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
       position: relative;
-      transition: background var(--transition-base);
+      transition: all var(--transition-base);
+      box-shadow: var(--shadow-sm);
     }
-    .h2-process-step:not(:last-child) {
-      border-right: 1px solid var(--border);
+    .h2-process-step:hover {
+      border-color: rgba(37,99,235,.2);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
     }
-    .h2-process-step:hover { background: var(--surface); }
     .h2-step-num {
       font-family: var(--font-heading);
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 900;
-      color: var(--border);
+      color: var(--primary-100);
       line-height: 1;
       margin-bottom: .75rem;
       letter-spacing: -.04em;
     }
+    [data-theme="dark"] .h2-step-num { color: rgba(37,99,235,.2); }
     .h2-step-icon {
       width: 44px; height: 44px;
       background: var(--gradient-primary);
@@ -394,14 +392,9 @@
 
     @media (max-width: 900px) {
       .h2-process-grid { grid-template-columns: 1fr 1fr; }
-      .h2-process-step:nth-child(2) { border-right: none; }
-      .h2-process-step:nth-child(1),
-      .h2-process-step:nth-child(2) { border-bottom: 1px solid var(--border); }
     }
     @media (max-width: 540px) {
       .h2-process-grid { grid-template-columns: 1fr; }
-      .h2-process-step:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border); }
-      .h2-process-step:nth-child(2) { border-right: none; }
     }
 
     /* ── Capabilities / Features ───────────────────────── */
@@ -661,25 +654,32 @@
 
     /* ── Metrics / Results ─────────────────────────────── */
     .h2-metrics-section {
-      background: var(--secondary);
-      color: #fff;
+      background:
+        radial-gradient(ellipse 80% 60% at 30% 50%, rgba(37,99,235,.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(6,182,212,.12) 0%, transparent 55%),
+        linear-gradient(160deg, #0f172a 0%, #0a0f1d 100%);
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
     .h2-metrics-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,.07);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
+      gap: 1.5rem;
       margin-top: 3.5rem;
     }
     .h2-metric-cell {
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-xl);
       padding: 2.5rem 2rem;
       text-align: center;
-      transition: background var(--transition-base);
+      transition: all var(--transition-base);
     }
-    .h2-metric-cell:hover { background: rgba(255,255,255,.07); }
+    .h2-metric-cell:hover {
+      background: rgba(255,255,255,.07);
+      border-color: rgba(37,99,235,.3);
+      transform: translateY(-4px);
+    }
     .h2-metric-num {
       font-family: var(--font-heading);
       font-size: clamp(2rem, 4vw, 3rem);
@@ -694,7 +694,7 @@
     }
     .h2-metric-lbl {
       font-size: .875rem;
-      color: rgba(255,255,255,.6);
+      color: rgba(255,255,255,.55);
       font-weight: 500;
       line-height: 1.4;
     }
@@ -763,15 +763,23 @@
 
     /* ── CTA ───────────────────────────────────────────── */
     .h2-cta {
-      background: var(--secondary);
+      background:
+        radial-gradient(ellipse 70% 80% at 20% 50%, rgba(37,99,235,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 70% at 80% 30%, rgba(6,182,212,.15) 0%, transparent 55%),
+        linear-gradient(160deg, #0f172a 0%, #0a0f1d 100%);
       position: relative;
       overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,.06);
     }
     .h2-cta::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(37,99,235,.3) 0%, transparent 70%);
+      background-image:
+        linear-gradient(rgba(37,99,235,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 80%);
       pointer-events: none;
     }
     .h2-cta-inner {
@@ -1033,7 +1041,7 @@
   <!-- ══════════════════════════════════════════════════════
        HOW IT WORKS
   ══════════════════════════════════════════════════════ -->
-  <section class="section h2-process-section" aria-labelledby="h2-process-heading">
+  <section class="section" aria-labelledby="h2-process-heading">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-label">

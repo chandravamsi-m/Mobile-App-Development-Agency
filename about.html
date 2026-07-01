@@ -225,7 +225,9 @@
     }
 
     /* ── Mission & Vision ──────────────────────────────── */
-    .ab-mv-section { background: var(--secondary); }
+    .ab-mv-section {
+      /* Defaults to standard section background */
+    }
     .ab-mv-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -243,9 +245,9 @@
       color: #fff;
     }
     .ab-mv-card.vision {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.1);
-      color: rgba(255,255,255,.9);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
     }
     .ab-mv-icon {
       width: 52px; height: 52px;
@@ -254,13 +256,14 @@
       margin-bottom: 1.5rem;
     }
     .mission .ab-mv-icon { background: rgba(255,255,255,.2); color: #fff; }
-    .vision  .ab-mv-icon { background: rgba(255,255,255,.08); color: rgba(255,255,255,.8); }
+    .vision  .ab-mv-icon { background: var(--primary-50); color: var(--primary); }
+    [data-theme="dark"] .vision .ab-mv-icon { background: rgba(37,99,235,.15); color: #93c5fd; }
     .ab-mv-title { font-size: 1.375rem; font-weight: 700; margin-bottom: 1rem; }
     .mission .ab-mv-title { color: #fff; }
-    .vision  .ab-mv-title { color: #fff; }
+    .vision  .ab-mv-title { color: var(--text-primary); }
     .ab-mv-text { font-size: .9375rem; line-height: 1.75; }
     .mission .ab-mv-text { color: rgba(255,255,255,.85); }
-    .vision  .ab-mv-text { color: rgba(255,255,255,.65); }
+    .vision  .ab-mv-text { color: var(--text-secondary); }
 
     @media (max-width: 700px) { .ab-mv-grid { grid-template-columns: 1fr; } }
 
@@ -311,7 +314,7 @@
     @media (max-width: 560px) { .ab-values-grid { grid-template-columns: 1fr; } }
 
     /* ── Timeline / Journey ────────────────────────────── */
-    .ab-timeline-section { background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .ab-timeline-section { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .ab-timeline {
       position: relative;
       max-width: 780px;
@@ -324,7 +327,7 @@
       top: 0; bottom: 0;
       left: 96px;
       width: 2px;
-      background: var(--border);
+      background: linear-gradient(to bottom, var(--primary), rgba(37, 99, 235, 0.1));
     }
     .ab-tl-item {
       display: grid;
@@ -365,8 +368,9 @@
       transition: all var(--transition-base);
     }
     .ab-tl-content:hover {
-      border-color: rgba(37,99,235,.2);
-      box-shadow: var(--shadow-sm);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
     .ab-tl-badge {
       display: inline-block;
@@ -589,78 +593,7 @@
       .ab-culture-item:not(:last-child) { border-right: none; border-bottom: 1px solid var(--border); }
     }
 
-    /* ── CTA ───────────────────────────────────────────── */
-    .ab-cta {
-      background: var(--secondary);
-      position: relative;
-      overflow: hidden;
-    }
-    .ab-cta::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(37,99,235,.28) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .ab-cta-inner {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-    }
-    .ab-cta-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: .75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      color: rgba(255,255,255,.65);
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.1);
-      padding: 5px 14px;
-      border-radius: var(--radius-full);
-      margin-bottom: 1.5rem;
-    }
-    .ab-cta-title {
-      font-size: clamp(1.875rem, 3.5vw, 2.75rem);
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -.03em;
-      line-height: 1.15;
-      max-width: 620px;
-      margin: 0 auto 1rem;
-    }
-    .ab-cta-sub {
-      font-size: 1.0625rem;
-      color: rgba(255,255,255,.6);
-      max-width: 480px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.65;
-    }
-    .ab-cta-actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .ab-cta-trust {
-      margin-top: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .ab-cta-trust-item {
-      font-size: .8125rem;
-      color: rgba(255,255,255,.45);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .ab-cta-trust-item svg { color: rgba(255,255,255,.35); }
+
   </style>
   <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
 </head>
@@ -687,26 +620,6 @@
         <p class="ab-hero-subtitle reveal">
           We are a team of 50+ engineers, designers, and strategists united by one mission — to build apps that create real-world impact and drive measurable growth for our clients.
         </p>
-
-        <!-- Stat bar -->
-        <div class="ab-hero-stats reveal">
-          <div class="ab-hero-stat">
-            <div class="ab-stat-num">200+</div>
-            <div class="ab-stat-lbl">Apps Delivered</div>
-          </div>
-          <div class="ab-hero-stat">
-            <div class="ab-stat-num">50+</div>
-            <div class="ab-stat-lbl">Team Members</div>
-          </div>
-          <div class="ab-hero-stat">
-            <div class="ab-stat-num">12yrs</div>
-            <div class="ab-stat-lbl">In Business</div>
-          </div>
-          <div class="ab-hero-stat">
-            <div class="ab-stat-num">98%</div>
-            <div class="ab-stat-lbl">Satisfaction</div>
-          </div>
-        </div>
       </div>
 
       <!-- Team office photo -->
@@ -807,15 +720,15 @@
   <!-- ══════════════════════════════════════════════════════
        MISSION & VISION
   ══════════════════════════════════════════════════════ -->
-  <section class="section ab-mv-section" aria-labelledby="about-mv-heading">
+  <section class="section section-alt ab-mv-section" aria-labelledby="about-mv-heading">
     <div class="container">
-      <div class="section-header reveal" style="text-align:center; color:#fff;">
-        <span class="section-label" style="background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.12); color:rgba(255,255,255,.75);">
+      <div class="section-header reveal">
+        <span class="section-label">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
           What Drives Us
         </span>
-        <h2 id="about-mv-heading" style="color:#fff;">Mission, Vision <span class="text-gradient">&amp; Values</span></h2>
-        <p style="color:rgba(255,255,255,.6);">The principles that guide every decision we make and every line of code we write.</p>
+        <h2 id="about-mv-heading">Mission, Vision <span class="text-gradient">&amp; Values</span></h2>
+        <p>The principles that guide every decision we make and every line of code we write.</p>
       </div>
 
       <div class="ab-mv-grid">
@@ -835,22 +748,22 @@
         </div>
       </div>
 
-      <!-- Culture strip inside dark section -->
-      <div class="ab-culture-strip reveal" style="margin-top:3rem; background:rgba(255,255,255,.03); border-color:rgba(255,255,255,.08);">
-        <div class="ab-culture-item" style="border-color:rgba(255,255,255,.08);">
+      <!-- Culture strip -->
+      <div class="ab-culture-strip reveal" style="margin-top:3rem;">
+        <div class="ab-culture-item">
           <div class="ab-culture-num">15+</div>
-          <div class="ab-culture-lbl" style="color:#fff;">Industries Served</div>
-          <div class="ab-culture-desc" style="color:rgba(255,255,255,.45);">FinTech, HealthTech, E-commerce, EdTech, PropTech, and more</div>
+          <div class="ab-culture-lbl">Industries Served</div>
+          <div class="ab-culture-desc">FinTech, HealthTech, E-commerce, EdTech, PropTech, and more</div>
         </div>
-        <div class="ab-culture-item" style="border-color:rgba(255,255,255,.08);">
+        <div class="ab-culture-item">
           <div class="ab-culture-num">3</div>
-          <div class="ab-culture-lbl" style="color:#fff;">Global Offices</div>
-          <div class="ab-culture-desc" style="color:rgba(255,255,255,.45);">San Francisco · London · Singapore</div>
+          <div class="ab-culture-lbl">Global Offices</div>
+          <div class="ab-culture-desc">San Francisco · London · Singapore</div>
         </div>
         <div class="ab-culture-item">
           <div class="ab-culture-num">20%</div>
-          <div class="ab-culture-lbl" style="color:#fff;">R&D Time Budget</div>
-          <div class="ab-culture-desc" style="color:rgba(255,255,255,.45);">Every engineer dedicates 20% of working time to learning new technologies</div>
+          <div class="ab-culture-lbl">R&D Time Budget</div>
+          <div class="ab-culture-desc">Every engineer dedicates 20% of working time to learning new technologies</div>
         </div>
       </div>
     </div>
@@ -920,7 +833,7 @@
   <!-- ══════════════════════════════════════════════════════
        COMPANY JOURNEY / TIMELINE
   ══════════════════════════════════════════════════════ -->
-  <section class="section ab-timeline-section" aria-labelledby="about-timeline-heading">
+  <section class="section section-alt ab-timeline-section" aria-labelledby="about-timeline-heading">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-label">
@@ -1197,36 +1110,14 @@
   <!-- ══════════════════════════════════════════════════════
        CTA
   ══════════════════════════════════════════════════════ -->
-  <section class="section ab-cta" aria-labelledby="about-cta-heading">
-    <div class="container">
-      <div class="ab-cta-inner reveal">
-        <span class="ab-cta-label">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          Ready to Start?
-        </span>
-        <h2 class="ab-cta-title" id="about-cta-heading">Ready to Work With a Team That Truly Cares?</h2>
-        <p class="ab-cta-sub">Join 150+ companies that trust AppForge. Let's build something extraordinary together — on time, on budget, and beyond expectations.</p>
-        <div class="ab-cta-actions">
-          <a href="contact.html" class="btn btn-white btn-xl" id="about-cta-start-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            Start Your Project
-          </a>
-          <a href="case-studies.html" class="btn btn-outline-white btn-xl" id="about-cta-work-btn">View Our Work</a>
-        </div>
-        <div class="ab-cta-trust">
-          <div class="ab-cta-trust-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Free discovery call
-          </div>
-          <div class="ab-cta-trust-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            No upfront commitment
-          </div>
-          <div class="ab-cta-trust-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Response within 24 hours
-          </div>
-        </div>
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container" style="text-align:center">
+      <h2 style="color:#fff">Ready to Work With a Team That Truly Cares?</h2>
+      <p>Join 150+ companies that trust AppForge. Let's build something extraordinary together.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-white btn-xl">Start Your Project</a>
+        <a href="case-studies.html" class="btn btn-outline-white btn-xl">View Our Work</a>
       </div>
     </div>
   </section>

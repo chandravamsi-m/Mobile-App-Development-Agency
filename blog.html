@@ -644,6 +644,22 @@
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
+      position: sticky;
+      top: calc(var(--nav-height) + 24px);
+    }
+    
+    /* ── Stats Strip ─────────────────────────────────── */
+    .bl-stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .bl-stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+      }
     }
     .bl-sidebar-widget {
       background: var(--surface);
@@ -834,6 +850,30 @@
         <div class="bl-search-wrap reveal reveal-delay-1">
           <svg class="bl-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" class="bl-search-input" placeholder="Search insights, frameworks, guides..." aria-label="Search articles">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Strip (Alternative Background) -->
+  <section class="section section-alt" style="padding: var(--space-10) 0; border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="bl-stats-strip reveal">
+        <div>
+          <div style="font-size: 2.25rem; font-weight: 800; color: var(--primary); font-family: var(--font-heading); line-height: 1;">50K+</div>
+          <div style="font-size: .6875rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-top: 6px;">Monthly Readers</div>
+        </div>
+        <div>
+          <div style="font-size: 2.25rem; font-weight: 800; color: var(--primary); font-family: var(--font-heading); line-height: 1;">120+</div>
+          <div style="font-size: .6875rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-top: 6px;">Technical Guides</div>
+        </div>
+        <div>
+          <div style="font-size: 2.25rem; font-weight: 800; color: var(--primary); font-family: var(--font-heading); line-height: 1;">100%</div>
+          <div style="font-size: .6875rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-top: 6px;">Developer Written</div>
+        </div>
+        <div>
+          <div style="font-size: 2.25rem; font-weight: 800; color: var(--primary); font-family: var(--font-heading); line-height: 1;">Weekly</div>
+          <div style="font-size: .6875rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-top: 6px;">Updated Insights</div>
         </div>
       </div>
     </div>
@@ -1116,13 +1156,6 @@
 
           </div>
 
-          <!-- Pagination -->
-          <div class="bl-pagination reveal">
-            <button class="bl-page-btn active">1</button>
-            <button class="bl-page-btn">2</button>
-            <button class="bl-page-btn">»</button>
-          </div>
-
         </div>
 
         <!-- Right Column: Sidebar -->
@@ -1192,6 +1225,18 @@
 
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container" style="text-align:center">
+      <h2 style="color:#fff">Want insights tailored to your stack?</h2>
+      <p>Subscribe to our developers newsletter or schedule a scoping call to map out your own architecture path.</p>
+      <div class="cta-actions">
+        <a href="contact.html#booking" class="btn btn-white btn-xl">Book Free Scoping Call</a>
+        <a href="contact.html" class="btn btn-outline-white btn-xl">Subscribe to Newsletter</a>
       </div>
     </div>
   </section>
