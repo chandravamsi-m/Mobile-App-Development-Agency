@@ -37,8 +37,8 @@
             Home <span style="font-size:0.6rem;margin-left:2px;">▼</span>
           </a>
           <div class="nav-dropdown" role="menu">
-            <a href="index.html" class="nav-dropdown-item" role="menuitem">🏠 Home 1 (Split Hero)</a>
-            <a href="index-2.html" class="nav-dropdown-item" role="menuitem">✨ Home 2 (SaaS Premium)</a>
+            <a href="index.html" class="nav-dropdown-item" role="menuitem"><i data-lucide="layout"></i> Home 1 (Split Hero)</a>
+            <a href="index-2.html" class="nav-dropdown-item" role="menuitem"><i data-lucide="sparkles"></i> Home 2 (SaaS Premium)</a>
           </div>
         </div>
       <a href="services.html"     class="nav-link ${isActive('services.html')}"     role="menuitem">Services</a>
@@ -51,14 +51,14 @@
           Dashboard <span style="font-size:0.6rem;margin-left:2px;">▼</span>
         </a>
         <div class="nav-dropdown" role="menu">
-          <a href="dashboard.html" class="nav-dropdown-item" role="menuitem">📊 Client Dashboard</a>
-          <a href="admin.html" class="nav-dropdown-item" role="menuitem">🛠️ Admin Dashboard</a>
+          <a href="dashboard.html" class="nav-dropdown-item" role="menuitem"><i data-lucide="layout-dashboard"></i> Client Dashboard</a>
+          <a href="admin.html" class="nav-dropdown-item" role="menuitem"><i data-lucide="settings"></i> Admin Dashboard</a>
         </div>
       </div>
     </div>
     <div class="nav-actions">
       <button class="rtl-toggle" aria-label="Toggle RTL layout">RTL</button>
-      <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+      <button class="theme-toggle" aria-label="Toggle theme"><i data-lucide="moon"></i></button>
       <a href="login.html"   class="btn btn-primary btn-sm">Login</a>
     </div>
     <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -70,33 +70,33 @@
 
 <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
 <div class="mobile-nav-item">
-  <button class="mobile-dropdown-toggle" aria-expanded="false">🏠 Home <span class="arrow" style="font-size:0.7rem;">▼</span></button>
+  <button class="mobile-dropdown-toggle" aria-expanded="false"><i data-lucide="home"></i> Home <span class="arrow" style="font-size:0.7rem;">▼</span></button>
   <div class="mobile-dropdown-menu">
-    <a href="index.html"   class="mobile-nav-link">🏠 Home 1 (Split Hero)</a>
-    <a href="index-2.html" class="mobile-nav-link">✨ Home 2 (SaaS Premium)</a>
+    <a href="index.html"   class="mobile-nav-link"><i data-lucide="layout"></i> Home 1 (Split Hero)</a>
+    <a href="index-2.html" class="mobile-nav-link"><i data-lucide="sparkles"></i> Home 2 (SaaS Premium)</a>
   </div>
 </div>
-<a href="services.html"     class="mobile-nav-link ${isActive('services.html')}">⚙️ Services</a>
-<a href="case-studies.html" class="mobile-nav-link ${isActive('case-studies.html')}">💼 Case Studies</a>
-<a href="blog.html"         class="mobile-nav-link ${isActive('blog.html')}">📝 Blog</a>
-<a href="about.html"        class="mobile-nav-link ${isActive('about.html')}">👥 About</a>
-<a href="contact.html"      class="mobile-nav-link ${isActive('contact.html')}">📬 Contact</a>
+<a href="services.html"     class="mobile-nav-link ${isActive('services.html')}"><i data-lucide="settings"></i> Services</a>
+<a href="case-studies.html" class="mobile-nav-link ${isActive('case-studies.html')}"><i data-lucide="briefcase"></i> Case Studies</a>
+<a href="blog.html"         class="mobile-nav-link ${isActive('blog.html')}"><i data-lucide="file-text"></i> Blog</a>
+<a href="about.html"        class="mobile-nav-link ${isActive('about.html')}"><i data-lucide="users"></i> About</a>
+<a href="contact.html"      class="mobile-nav-link ${isActive('contact.html')}"><i data-lucide="mail"></i> Contact</a>
 <div class="mobile-nav-item">
-  <button class="mobile-dropdown-toggle" aria-expanded="false">📊 Dashboard <span class="arrow" style="font-size:0.7rem;">▼</span></button>
+  <button class="mobile-dropdown-toggle" aria-expanded="false"><i data-lucide="layout-dashboard"></i> Dashboard <span class="arrow" style="font-size:0.7rem;">▼</span></button>
   <div class="mobile-dropdown-menu">
-    <a href="dashboard.html" class="mobile-nav-link ${isActive('dashboard.html')}">📊 Client Dashboard</a>
-    <a href="admin.html"     class="mobile-nav-link ${isActive('admin.html')}">🛠️ Admin Dashboard</a>
+    <a href="dashboard.html" class="mobile-nav-link ${isActive('dashboard.html')}"><i data-lucide="layout-dashboard"></i> Client Dashboard</a>
+    <a href="admin.html"     class="mobile-nav-link ${isActive('admin.html')}"><i data-lucide="settings"></i> Admin Dashboard</a>
   </div>
 </div>
 <div class="mobile-nav-divider"></div>
 <div class="mobile-menu-controls">
   <button class="mobile-control-btn theme-toggle" aria-label="Toggle theme">
-    <span class="theme-icon">🌙</span>
+    <span class="theme-icon"><i data-lucide="moon"></i></span>
     <span class="theme-text">Dark Mode</span>
   </button>
   <button class="mobile-control-btn rtl-toggle" aria-label="Toggle RTL layout">
-    <span class="rtl-icon">🌐</span>
-    <span class="rtl-text">RTL Layout</span>
+    <span class="rtl-icon"><i data-lucide="globe"></i></span>
+    <span class="theme-text rtl-text">RTL Layout</span>
   </button>
 </div>
 <div class="mobile-nav-divider"></div>

@@ -21,12 +21,15 @@
       const iconSpan = btn.querySelector('.theme-icon');
       const textSpan = btn.querySelector('.theme-text');
       if (iconSpan && textSpan) {
-        iconSpan.textContent = theme === 'dark' ? '☀️' : '🌙';
+        iconSpan.innerHTML = theme === 'dark' ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
         textSpan.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
       } else {
-        btn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+        btn.innerHTML = theme === 'dark' ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
       }
     });
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
   }
 
   function toggleTheme() {
@@ -442,5 +445,15 @@
 
   /* ── Expose utilities ──────────────────────────────────── */
   window.MADA = { showToast, openModal, closeModal, toggleTheme, toggleDir };
+
+  // Load Lucide Icons CDN dynamically
+  const script = document.createElement('script');
+  script.src = 'https://unpkg.com/lucide@latest';
+  script.onload = () => {
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  };
+  document.head.appendChild(script);
 
 })();

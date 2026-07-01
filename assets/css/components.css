@@ -335,39 +335,69 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: var(--space-4);
+  padding: 12px 18px;
   box-shadow: var(--shadow-xl);
   display: flex;
   align-items: center;
   gap: var(--space-3);
   white-space: nowrap;
   animation: float 5s ease-in-out infinite;
+  transition: all var(--transition-base);
 }
 
 .hero-float-card.top-left {
-  top: 12%;
-  left: -150px;
+  top: 15%;
+  left: -80px;
   animation-delay: -2s;
 }
 
 .hero-float-card.bottom-right {
-  bottom: 15%;
-  right: -130px;
+  bottom: 18%;
+  right: -60px;
   animation-delay: -4s;
 }
 
+@media (max-width: 1200px) {
+  .hero-float-card.top-left { left: -40px; }
+  .hero-float-card.bottom-right { right: -20px; }
+}
+
 @media (max-width: 1024px) {
-  .hero-float-card.top-left {
-    left: -110px;
-  }
-  .hero-float-card.bottom-right {
-    right: -100px;
-  }
+  .hero-float-card.top-left { left: -20px; }
+  .hero-float-card.bottom-right { right: -10px; }
 }
 
 @media (max-width: 992px) {
+  .hero-float-card.top-left { left: 0; top: 10%; }
+  .hero-float-card.bottom-right { right: 0; bottom: 12%; }
+}
+
+@media (max-width: 768px) {
   .hero-float-card {
-    display: none !important;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  .hero-float-card.top-left { 
+    top: 20px;
+    left: 20px; 
+  }
+  .hero-float-card.bottom-right { 
+    bottom: 20px;
+    right: 20px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-float-card {
+    padding: 6px 10px;
+  }
+  .hero-float-card.top-left { 
+    top: 15px;
+    left: 15px; 
+  }
+  .hero-float-card.bottom-right { 
+    bottom: 15px;
+    right: 15px; 
   }
 }
 
@@ -753,12 +783,12 @@
 
 .brands-marquee-wrapper::before {
   left: 0;
-  background: linear-gradient(to right, var(--bg-primary, var(--bg-body, #fff)) 0%, transparent 100%);
+  background: linear-gradient(to right, var(--bg-secondary) 0%, transparent 100%);
 }
 
 .brands-marquee-wrapper::after {
   right: 0;
-  background: linear-gradient(to left, var(--bg-primary, var(--bg-body, #fff)) 0%, transparent 100%);
+  background: linear-gradient(to left, var(--bg-secondary) 0%, transparent 100%);
 }
 
 .brands-marquee {
@@ -1912,7 +1942,6 @@
 
 /* Section wrapper — inherits .section padding */
 .est-section {
-  background: var(--bg-secondary);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -2487,9 +2516,7 @@
     gap: var(--space-12);
   }
 
-  .hero-visual {
-    order: -1;
-  }
+
 
   .contact-grid {
     grid-template-columns: 1fr;

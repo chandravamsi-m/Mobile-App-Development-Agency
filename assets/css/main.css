@@ -65,14 +65,14 @@
   --space-2:  8px;
   --space-3:  12px;
   --space-4:  16px;
-  --space-5:  20px;
-  --space-6:  24px;
-  --space-8:  32px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --space-16: 64px;
-  --space-20: 80px;
-  --space-24: 96px;
+  --space-5:  16px;
+  --space-6:  20px;
+  --space-8:  28px;
+  --space-10: 36px;
+  --space-12: 44px;
+  --space-16: 56px;
+  --space-20: 72px;
+  --space-24: 80px;
 
   /* Transitions */
   --transition-fast:   150ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -262,8 +262,11 @@ strong { font-weight: 600; color: var(--text-primary); }
   overflow-x: hidden;
 }
 .section-lg {
-  padding: 120px 0;
+  padding: 80px 0;
   overflow-x: hidden;
+}
+.section-alt {
+  background: var(--bg-secondary);
 }
 
 .grid { display: grid; }
@@ -1384,3 +1387,24 @@ select.form-control {
 
 /* ── Reduced Motion ───────────────────────────────────────── */
 
+/* ── Lucide Icons Alignment ──────────────────────────────── */
+.lucide {
+  width: 1.1em;
+  height: 1.1em;
+  stroke-width: 2.25;
+  display: inline-block;
+  vertical-align: -0.18em;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+[dir="rtl"] .lucide {
+  margin-right: 0;
+  margin-left: 6px;
+}
+.btn .lucide {
+  margin-right: 8px;
+}
+[dir="rtl"] .btn .lucide {
+  margin-right: 0;
+  margin-left: 8px;
+}

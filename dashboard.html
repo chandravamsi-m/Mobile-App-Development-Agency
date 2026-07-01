@@ -42,38 +42,38 @@
   <nav class="sidebar-nav" aria-label="Primary pages">
     <div class="sidebar-section-label">Collaboration</div>
     <a href="#" class="sidebar-nav-item active" data-page="overview">
-      <span class="sidebar-nav-icon">📊</span>
+      <span class="sidebar-nav-icon"><i data-lucide="bar-chart-2"></i></span>
       <span class="sidebar-nav-label">Overview</span>
     </a>
     <a href="#" class="sidebar-nav-item" data-page="milestones">
-      <span class="sidebar-nav-icon">🏁</span>
+      <span class="sidebar-nav-icon"><i data-lucide="flag"></i></span>
       <span class="sidebar-nav-label">Milestones</span>
     </a>
     <a href="#" class="sidebar-nav-item" data-page="requirements">
-      <span class="sidebar-nav-icon">📋</span>
+      <span class="sidebar-nav-icon"><i data-lucide="clipboard-list"></i></span>
       <span class="sidebar-nav-label">Requirements</span>
     </a>
     <a href="#" class="sidebar-nav-item" data-page="prototypes">
-      <span class="sidebar-nav-icon">🎨</span>
+      <span class="sidebar-nav-icon"><i data-lucide="palette"></i></span>
       <span class="sidebar-nav-label">Prototype Review</span>
       <span class="sidebar-nav-badge">2</span>
     </a>
     <a href="#" class="sidebar-nav-item" data-page="messaging">
-      <span class="sidebar-nav-icon">💬</span>
+      <span class="sidebar-nav-icon"><i data-lucide="message-square"></i></span>
       <span class="sidebar-nav-label">Messaging</span>
     </a>
     <a href="#" class="sidebar-nav-item" data-page="files">
-      <span class="sidebar-nav-icon">📁</span>
+      <span class="sidebar-nav-icon"><i data-lucide="folder"></i></span>
       <span class="sidebar-nav-label">File Manager</span>
     </a>
 
     <div class="sidebar-section-label">Finance & Settings</div>
     <a href="#" class="sidebar-nav-item" data-page="invoices">
-      <span class="sidebar-nav-icon">💳</span>
+      <span class="sidebar-nav-icon"><i data-lucide="credit-card"></i></span>
       <span class="sidebar-nav-label">Invoice Center</span>
     </a>
     <a href="#" class="sidebar-nav-item" data-page="settings">
-      <span class="sidebar-nav-icon">⚙️</span>
+      <span class="sidebar-nav-icon"><i data-lucide="settings"></i></span>
       <span class="sidebar-nav-label">Settings</span>
     </a>
   </nav>
@@ -106,8 +106,8 @@
       </div>
     </div>
     <div class="topbar-right">
-      <button class="topbar-action-btn" id="notif-btn" aria-label="Notifications Panel">
-        🔔
+      <button class="topbar-action-btn" id="notif-btn" aria-label="Notifications Panel" style="font-size:0; display:flex; align-items:center; justify-content:center;">
+        <i data-lucide="bell" style="width:20px; height:20px; margin:0;"></i>
         <span class="notif-dot"></span>
       </button>
       
@@ -116,21 +116,21 @@
         <h3 style="font-size: 0.9375rem; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 8px;">Notifications</h3>
         <div class="notif-list">
           <div class="notif-item unread">
-            <span class="notif-icon" style="background:var(--primary-50)">🎨</span>
+            <span class="notif-icon" style="background:var(--primary-50); font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="palette" style="width:16px; height:16px; stroke:var(--primary); margin:0;"></i></span>
             <div class="notif-text">
               <strong>Lena Novak</strong> uploaded prototype v2.1 (Biometric Screen).
               <div class="notif-time">10 mins ago</div>
             </div>
           </div>
           <div class="notif-item unread">
-            <span class="notif-icon" style="background:var(--primary-50)">💬</span>
+            <span class="notif-icon" style="background:var(--primary-50); font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="message-square" style="width:16px; height:16px; stroke:var(--primary); margin:0;"></i></span>
             <div class="notif-text">
               <strong>Priya Rajan</strong> sent a code push update message.
               <div class="notif-time">1 hr ago</div>
             </div>
           </div>
           <div class="notif-item">
-            <span class="notif-icon" style="background:var(--primary-50)">💳</span>
+            <span class="notif-icon" style="background:var(--primary-50); font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="credit-card" style="width:16px; height:16px; stroke:var(--primary); margin:0;"></i></span>
             <div class="notif-text">
               Invoice #INV-2025-004 has been marked as **Paid**.
               <div class="notif-time">Yesterday</div>
@@ -139,7 +139,7 @@
         </div>
       </div>
       
-      <button class="theme-toggle topbar-action-btn" style="border: 1px solid var(--border); font-size:1.125rem">🌙</button>
+      <button class="theme-toggle topbar-action-btn" style="border: 1px solid var(--border); font-size:0; display:flex; align-items:center; justify-content:center; width:38px; height:38px;"><i data-lucide="moon" style="width:18px; height:18px; margin:0;"></i></button>
     </div>
   </header>
 
@@ -155,13 +155,13 @@
         </div>
         <div class="dash-page-actions">
           <button class="btn btn-secondary btn-sm" id="rtl-toggle">RTL Mode</button>
-          <a href="#" class="btn btn-primary btn-sm" data-page="messaging" onclick="document.querySelector('[data-page=messaging]').click()">💬 Chat With Team</a>
+          <a href="#" class="btn btn-primary btn-sm" data-page="messaging" onclick="document.querySelector('[data-page=messaging]').click()"><i data-lucide="message-square"></i> Chat With Team</a>
         </div>
       </div>
 
       <div class="widget-grid">
         <div class="widget-card">
-          <div class="widget-icon" style="background:rgba(37,99,235,.1);color:var(--primary)">🏁</div>
+          <div class="widget-icon" style="background:rgba(37,99,235,.1);color:var(--primary); font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="flag" style="width:20px; height:20px; stroke:var(--primary); margin:0;"></i></div>
           <div class="widget-info">
             <div class="widget-label">Sprint 4 Complete</div>
             <div class="widget-value">78%</div>
@@ -397,7 +397,7 @@
                 <option value="low">Low Priority</option>
               </select>
             </div>
-            <button type="submit" class="btn btn-primary full-width">🚀 Submit Requirement</button>
+            <button type="submit" class="btn btn-primary full-width"><i data-lucide="rocket"></i> Submit Requirement</button>
           </form>
         </div>
       </div>
@@ -415,8 +415,8 @@
       <div class="prototype-grid">
         <!-- Card 1 -->
         <div class="prototype-card">
-          <div class="prototype-preview" style="background: linear-gradient(135deg, #2563eb, #06b6d4);">
-            📱 FinNova Accounts
+          <div class="prototype-preview" style="background: linear-gradient(135deg, #2563eb, #06b6d4); font-size: 0.9375rem; display: flex; align-items: center; justify-content: center; color: white;">
+            <i data-lucide="smartphone" style="stroke: white; margin-right: 6px;"></i> FinNova Accounts
           </div>
           <div class="prototype-body">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
@@ -450,8 +450,8 @@
 
         <!-- Card 2 -->
         <div class="prototype-card">
-          <div class="prototype-preview" style="background: linear-gradient(135deg, #10b981, #06b6d4);">
-            💳 Payments Form
+          <div class="prototype-preview" style="background: linear-gradient(135deg, #10b981, #06b6d4); font-size: 0.9375rem; display: flex; align-items: center; justify-content: center; color: white;">
+            <i data-lucide="credit-card" style="stroke: white; margin-right: 6px;"></i> Payments Form
           </div>
           <div class="prototype-body">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
@@ -542,28 +542,28 @@
 
       <div class="upload-area">
         <input type="file" id="file-input" style="display:none" multiple>
-        <div class="upload-icon">📁</div>
+        <div class="upload-icon" style="font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="folder-open" style="width:36px; height:36px; stroke:var(--text-muted); margin:0;"></i></div>
         <div class="upload-text">Drag files here or click to upload assets</div>
         <div class="upload-hint">Support PDF, PNG, JSON, ZIP (Max 15MB)</div>
       </div>
 
       <div class="file-grid">
         <div class="file-card">
-          <div class="file-icon">📝</div>
+          <div class="file-icon" style="font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="file-text" style="width:20px; height:20px; stroke:var(--primary); margin:0;"></i></div>
           <div class="file-name">Plaid_API_Keys_Dec.json</div>
           <div class="file-meta">4.2 KB</div>
           <div class="file-actions">
-            <button class="btn btn-ghost btn-sm btn-icon" title="Download">⬇️</button>
-            <button class="btn btn-ghost btn-sm btn-icon" title="Delete">🗑️</button>
+            <button class="btn btn-ghost btn-sm btn-icon" title="Download" style="font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="download" style="width:16px; height:16px; margin:0;"></i></button>
+            <button class="btn btn-ghost btn-sm btn-icon" title="Delete" style="font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="trash-2" style="width:16px; height:16px; margin:0;"></i></button>
           </div>
         </div>
         <div class="file-card">
-          <div class="file-icon">📄</div>
+          <div class="file-icon" style="font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="file-text" style="width:20px; height:20px; stroke:var(--primary); margin:0;"></i></div>
           <div class="file-name">Scope_Sprint_4_FinNova.pdf</div>
           <div class="file-meta">1.5 MB</div>
           <div class="file-actions">
-            <button class="btn btn-ghost btn-sm btn-icon" title="Download">⬇️</button>
-            <button class="btn btn-ghost btn-sm btn-icon" title="Delete">🗑️</button>
+            <button class="btn btn-ghost btn-sm btn-icon" title="Download" style="font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="download" style="width:16px; height:16px; margin:0;"></i></button>
+            <button class="btn btn-ghost btn-sm btn-icon" title="Delete" style="font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="trash-2" style="width:16px; height:16px; margin:0;"></i></button>
           </div>
         </div>
       </div>
@@ -597,7 +597,7 @@
               <td>Dec 10, 2025</td>
               <td>$12,500</td>
               <td><span class="badge badge-success">Paid</span></td>
-              <td><button class="btn btn-outline-primary btn-sm invoice-download">⬇ PDF</button></td>
+              <td><button class="btn btn-outline-primary btn-sm invoice-download"><i data-lucide="download"></i> PDF</button></td>
             </tr>
             <tr>
               <td class="invoice-id">#INV-2025-005</td>
@@ -605,7 +605,7 @@
               <td>Jan 05, 2026</td>
               <td>$12,500</td>
               <td><span class="badge badge-warning">Unpaid</span></td>
-              <td><button class="btn btn-outline-primary btn-sm invoice-download">⬇ PDF</button></td>
+              <td><button class="btn btn-outline-primary btn-sm invoice-download"><i data-lucide="download"></i> PDF</button></td>
             </tr>
           </tbody>
         </table>
@@ -623,9 +623,9 @@
 
       <div class="settings-grid">
         <div class="settings-nav">
-          <button class="settings-nav-btn active" data-settings="profile">👤 Edit Profile</button>
-          <button class="settings-nav-btn" data-settings="security">🔒 Security Settings</button>
-          <button class="settings-nav-btn" data-settings="notifications">🔔 Notifications</button>
+          <button class="settings-nav-btn active" data-settings="profile"><i data-lucide="user"></i> Edit Profile</button>
+          <button class="settings-nav-btn" data-settings="security"><i data-lucide="lock"></i> Security Settings</button>
+          <button class="settings-nav-btn" data-settings="notifications"><i data-lucide="bell"></i> Notifications</button>
         </div>
 
         <div class="settings-panel">

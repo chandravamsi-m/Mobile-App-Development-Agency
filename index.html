@@ -275,71 +275,31 @@
 
           <!-- Right: Visual -->
           <div class="hero-visual" aria-hidden="true">
-            <!-- Phone Mockup with floating cards inside for layout stability -->
-            <div class="hero-mockup">
+            <div class="hero-image-wrap reveal" style="position: relative; max-width: 520px; width: 100%; margin: 0 auto; animation: float 6s ease-in-out infinite;">
               <!-- Float: App Rating -->
-              <div class="hero-float-card top-left">
-                <div class="hero-float-icon" style="background:rgba(34,197,94,.15)">
-                  <svg class="brand-logo-icon-svg" style="stroke:var(--success)" viewBox="0 0 24 24">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3" />
-                  </svg>
+              <div class="hero-float-card top-left" style="z-index: 2;">
+                <div class="hero-float-icon" style="background:rgba(245,158,11,.15); width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center;">
+                  <i data-lucide="star" style="fill:#F59E0B; stroke:#F59E0B; width: 18px; height: 18px; margin: 0;"></i>
                 </div>
-                <div class="hero-float-text">
-                  <div class="hero-float-label">App Store Rating</div>
-                  <div class="hero-float-value">4.9 ★ Average</div>
+                <div class="hero-float-text" style="display: flex; flex-direction: column;">
+                  <span class="hero-float-label" style="font-size: 0.6875rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.2;">App Store Rating</span>
+                  <span class="hero-float-value" style="font-family: var(--font-heading); font-weight: 700; font-size: 0.875rem; color: var(--text-primary); line-height: 1.2;">4.9 ★ Average</span>
                 </div>
               </div>
 
-              <!-- Phone Frame -->
-              <div class="phone-frame">
-                <div class="phone-screen">
-                  <div class="phone-notch"></div>
-                  
-                  <div class="phone-header">
-                    <div class="phone-logo">⚡ AppForge</div>
-                    <div class="badge badge-success">Active</div>
-                  </div>
-
-                  <div class="phone-card">
-                    <div class="phone-card-title">Sprint Progress</div>
-                    <div class="phone-card-value">78% Done</div>
-                  </div>
-
-                  <div class="phone-bar">
-                    <div class="phone-bar-fill" style="width:78%"></div>
-                  </div>
-
-                  <div class="phone-mini-grid">
-                    <div class="phone-mini-card">
-                      <div class="phone-mini-val text-primary-c">24</div>
-                      <div class="phone-mini-label">Tasks</div>
-                    </div>
-                    <div class="phone-mini-card">
-                      <div class="phone-mini-val text-warning">6</div>
-                      <div class="phone-mini-label">Sprints</div>
-                    </div>
-                    <div class="phone-mini-card">
-                      <div class="phone-mini-val text-danger">14d</div>
-                      <div class="phone-mini-label">Launch</div>
-                    </div>
-                    <div class="phone-mini-card">
-                      <div class="phone-mini-val text-success">8</div>
-                      <div class="phone-mini-label">Devs</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <img src="assets/images/hero-mockup.png" alt="AppForge Mobile App Development Mockup" style="width: 100%; height: auto; border-radius: var(--radius-xl); box-shadow: var(--shadow-2xl); border: 1px solid rgba(255,255,255,0.1); display: block;">
+              
+              <!-- Modern background glow -->
+              <div style="position: absolute; inset: 15px; background: var(--gradient-primary); filter: blur(50px); opacity: 0.18; z-index: -1; pointer-events: none; border-radius: var(--radius-xl);"></div>
 
               <!-- Float: Deployment -->
-              <div class="hero-float-card bottom-right">
-                <div class="hero-float-icon" style="background:rgba(37,99,235,.15)">
-                  <svg class="brand-logo-icon-svg" style="stroke:var(--primary)" viewBox="0 0 24 24">
-                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-                  </svg>
+              <div class="hero-float-card bottom-right" style="z-index: 2;">
+                <div class="hero-float-icon" style="background:rgba(37,99,235,.15); width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center;">
+                  <i data-lucide="rocket" style="stroke:var(--primary); width: 18px; height: 18px; margin: 0;"></i>
                 </div>
-                <div class="hero-float-text">
-                  <div class="hero-float-label">Deployment</div>
-                  <div class="hero-float-value">Live in 8 Weeks</div>
+                <div class="hero-float-text" style="display: flex; flex-direction: column;">
+                  <span class="hero-float-label" style="font-size: 0.6875rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.2;">Deployment</span>
+                  <span class="hero-float-value" style="font-family: var(--font-heading); font-weight: 700; font-size: 0.875rem; color: var(--text-primary); line-height: 1.2;">Live in 8 Weeks</span>
                 </div>
               </div>
             </div>
@@ -354,90 +314,66 @@
     <section class="brands-section" aria-label="Trusted by leading brands">
       <div class="container">
         <p class="brands-label">Trusted by 150+ companies worldwide</p>
-        <div class="brands-marquee-wrapper" aria-hidden="true">
-          <div class="brands-marquee">
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <rect x="2" y="2" width="20" height="20" rx="4" />
-                <path d="M12 6v12M8 10h8" />
-              </svg>FinNova</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <path d="M19 12H5M12 19V5" />
-              </svg>MedCare</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <circle cx="10" cy="10" r="7" />
-                <path d="M21 21l-6-6" />
-              </svg>ShopWave</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>LaunchPad</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>QuickBite</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" />
-              </svg>FitLife</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <path
-                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-              </svg>TravelEasy</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <path
-                  d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5v-15z" />
-              </svg>EduPro</div>
-            <!-- Duplicate for seamless loop -->
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <rect x="2" y="2" width="20" height="20" rx="4" />
-                <path d="M12 6v12M8 10h8" />
-              </svg>FinNova</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <path d="M19 12H5M12 19V5" />
-              </svg>MedCare</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <circle cx="10" cy="10" r="7" />
-                <path d="M21 21l-6-6" />
-              </svg>ShopWave</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>LaunchPad</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>QuickBite</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" />
-              </svg>FitLife</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <path
-                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-              </svg>TravelEasy</div>
-            <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
-                <path
-                  d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5v-15z" />
-              </svg>EduPro</div>
-          </div>
-        </div>
       </div>
-    </section>
-
-    <!-- ── Stats ── -->
-    <section class="section-sm" aria-label="Key achievements">
-      <div class="container">
-        <div class="stats-grid reveal">
-          <div class="stat-item">
-            <div class="stat-number" data-target="200" data-suffix="+">200+</div>
-            <div class="stat-label">Apps Delivered</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number" data-target="150" data-suffix="+">150+</div>
-            <div class="stat-label">Happy Clients</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number" data-target="98" data-suffix="%">98%</div>
-            <div class="stat-label">Client Satisfaction</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number" data-target="12" data-suffix="yrs">12yrs</div>
-            <div class="stat-label">Industry Experience</div>
-          </div>
+      <div class="brands-marquee-wrapper" aria-hidden="true">
+        <div class="brands-marquee">
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <rect x="2" y="2" width="20" height="20" rx="4" />
+              <path d="M12 6v12M8 10h8" />
+            </svg>FinNova</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <path d="M19 12H5M12 19V5" />
+            </svg>MedCare</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <circle cx="10" cy="10" r="7" />
+              <path d="M21 21l-6-6" />
+            </svg>ShopWave</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>LaunchPad</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>QuickBite</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>FitLife</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+            </svg>TravelEasy</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <path
+                d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5v-15z" />
+            </svg>EduPro</div>
+          <!-- Duplicate for seamless loop -->
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <rect x="2" y="2" width="20" height="20" rx="4" />
+              <path d="M12 6v12M8 10h8" />
+            </svg>FinNova</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <path d="M19 12H5M12 19V5" />
+            </svg>MedCare</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <circle cx="10" cy="10" r="7" />
+              <path d="M21 21l-6-6" />
+            </svg>ShopWave</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>LaunchPad</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>QuickBite</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>FitLife</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+            </svg>TravelEasy</div>
+          <div class="brand-logo"><svg class="brand-logo-icon-svg" viewBox="0 0 24 24">
+              <path
+                d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5v-15z" />
+            </svg>EduPro</div>
         </div>
       </div>
     </section>
@@ -555,7 +491,7 @@
     </section>
 
     <!-- ── Featured Case Studies ── -->
-    <section class="section" style="background:var(--bg-secondary)" id="portfolio" aria-labelledby="portfolio-heading">
+    <section class="section section-alt" id="portfolio" aria-labelledby="portfolio-heading">
       <div class="container">
         <div class="section-header reveal">
           <span class="section-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -699,7 +635,7 @@
     <section class="section" aria-labelledby="process-heading">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-label">🔄 How We Work</span>
+          <span class="section-label"><i data-lucide="refresh-cw"></i> How We Work</span>
           <h2 id="process-heading">Our <span class="text-gradient">Development Process</span></h2>
           <p>A battle-tested 6-step process that ensures every project is delivered on time, on budget, and exceeds
             expectations.</p>
@@ -1799,7 +1735,7 @@
     </section>
 
     <!-- ── Pricing Snapshot ── -->
-    <section class="section" style="background:var(--bg-secondary)" aria-labelledby="pricing-heading">
+    <section class="section section-alt" aria-labelledby="pricing-heading">
       <div class="container">
         <div class="section-header reveal">
           <span class="section-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
