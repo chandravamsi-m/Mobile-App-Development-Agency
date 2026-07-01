@@ -631,48 +631,152 @@
       </div>
     </section>
 
-    <!-- ── Development Process ── -->
-    <section class="section" aria-labelledby="process-heading">
+    <!-- ── Interactive App Features Showcase (Premium Capability Replacement) ── -->
+    <section class="section features-showcase-section" aria-labelledby="showcase-heading">
       <div class="container">
+        
+        <!-- Section Header -->
         <div class="section-header reveal">
-          <span class="section-label"><i data-lucide="refresh-cw"></i> How We Work</span>
-          <h2 id="process-heading">Our <span class="text-gradient">Development Process</span></h2>
-          <p>A battle-tested 6-step process that ensures every project is delivered on time, on budget, and exceeds
-            expectations.</p>
+          <span class="section-label"><i data-lucide="cpu"></i> Custom Capabilities</span>
+          <h2 id="showcase-heading">What We <span class="text-gradient">Build For You</span></h2>
+          <p>We craft next-generation features designed to scale your user engagement and deliver a premium product experience.</p>
         </div>
-        <div class="process-steps">
-          <div class="process-step reveal reveal-delay-1">
-            <div class="process-step-num" aria-hidden="true">01</div>
-            <div class="step-title" style="margin-top:var(--space-4)">Discovery</div>
-            <div class="step-desc">Deep dive into your business goals, target users, and technical requirements.</div>
-          </div>
-          <div class="process-step reveal reveal-delay-2">
-            <div class="process-step-num" aria-hidden="true">02</div>
-            <div class="step-title" style="margin-top:var(--space-4)">Strategy</div>
-            <div class="step-desc">Define tech stack, architecture, timeline, and detailed project roadmap.</div>
-          </div>
-          <div class="process-step reveal reveal-delay-3">
-            <div class="process-step-num" aria-hidden="true">03</div>
-            <div class="step-title" style="margin-top:var(--space-4)">Design</div>
-            <div class="step-desc">Wireframes, interactive prototypes, and pixel-perfect UI/UX designs.</div>
-          </div>
-          <div class="process-step reveal reveal-delay-4">
-            <div class="process-step-num" aria-hidden="true">04</div>
-            <div class="step-title" style="margin-top:var(--space-4)">Development</div>
-            <div class="step-desc">Agile sprints with weekly demos, transparent progress, and client portal access.
+        
+        <div class="showcase-grid">
+          
+          <!-- Left: Interactive App Mockup -->
+          <div class="showcase-visual reveal">
+            <div class="mockup-frame">
+              <div class="mockup-speaker"></div>
+              <div class="mockup-camera"></div>
+              
+              <!-- Screen Screens -->
+              <div class="mockup-screen">
+                
+                <!-- Screen 1: Biometrics -->
+                <div class="screen-pane active" id="screen-security">
+                  <div class="pane-header">Security Vault</div>
+                  <div class="pane-body security-body">
+                    <div class="fingerprint-icon">
+                      <i data-lucide="shield-check"></i>
+                    </div>
+                    <span class="security-status">Secure Connection Active</span>
+                    <div class="security-bar">
+                      <span>AES-256 Encryption</span>
+                      <div class="bar-fill"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Screen 2: Offline First -->
+                <div class="screen-pane" id="screen-offline">
+                  <div class="pane-header">Sync Manager</div>
+                  <div class="pane-body offline-body">
+                    <div class="offline-status">
+                      <i data-lucide="wifi-off"></i>
+                      <span>Offline Mode Enabled</span>
+                    </div>
+                    <div class="sync-queue">
+                      <div class="queue-item done">
+                        <i data-lucide="check-circle-2"></i>
+                        <span>Local cache saved</span>
+                      </div>
+                      <div class="queue-item pending">
+                        <i data-lucide="refresh-cw" class="spin"></i>
+                        <span>Syncing when online...</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Screen 3: Push Notifications -->
+                <div class="screen-pane" id="screen-push">
+                  <div class="pane-header">Notification Hub</div>
+                  <div class="pane-body push-body">
+                    <div class="mock-notification">
+                      <div class="notif-header">
+                        <i data-lucide="bell"></i>
+                        <span>AppForge Delivery</span>
+                        <span class="notif-time">Just now</span>
+                      </div>
+                      <div class="notif-body">Your order #4829 has been dispatched! Track your delivery here.</div>
+                    </div>
+                    <div class="mock-notification delay">
+                      <div class="notif-header">
+                        <i data-lucide="trending-up"></i>
+                        <span>Market Tracker</span>
+                        <span class="notif-time">5m ago</span>
+                      </div>
+                      <div class="notif-body">Bitcoin broke $102k! View details in your custom analytics tab.</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Screen 4: Analytics -->
+                <div class="screen-pane" id="screen-analytics">
+                  <div class="pane-header">User Analytics</div>
+                  <div class="pane-body analytics-body">
+                    <div class="analytics-metrics">
+                      <div class="metric">
+                        <span class="metric-lbl">Active Users</span>
+                        <span class="metric-val">+24.8%</span>
+                      </div>
+                      <div class="metric">
+                        <span class="metric-lbl">Conv. Rate</span>
+                        <span class="metric-val">4.82%</span>
+                      </div>
+                    </div>
+                    <div class="chart-mockup">
+                      <svg viewBox="0 0 100 40" class="chart-line">
+                        <path d="M0,35 Q15,10 30,25 T60,5 T90,20 L100,20" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
             </div>
           </div>
-          <div class="process-step reveal reveal-delay-5">
-            <div class="process-step-num" aria-hidden="true">05</div>
-            <div class="step-title" style="margin-top:var(--space-4)">QA Testing</div>
-            <div class="step-desc">Rigorous testing across 50+ devices, performance audits, and security reviews.</div>
+          
+          <!-- Right: Interactive Feature Tabs -->
+          <div class="showcase-controls reveal">
+            
+            <div class="showcase-card active" data-target="security">
+              <div class="card-icon"><i data-lucide="fingerprint"></i></div>
+              <div class="card-details">
+                <h3>Biometric Security Vault</h3>
+                <p>We integrate hardware-level FaceID/TouchID protection along with AES-256 local database encryption to safeguard sensitive user data.</p>
+              </div>
+            </div>
+            
+            <div class="showcase-card" data-target="offline">
+              <div class="card-icon"><i data-lucide="database"></i></div>
+              <div class="card-details">
+                <h3>Zero-Latency Offline Sync</h3>
+                <p>Ensure app functions seamlessly offline. Local edits are stored instantly in SQLite/Realm and automatically synced to the server upon recovery.</p>
+              </div>
+            </div>
+            
+            <div class="showcase-card" data-target="push">
+              <div class="card-icon"><i data-lucide="send"></i></div>
+              <div class="card-details">
+                <h3>Contextual Push & Geo-fencing</h3>
+                <p>Target users at the perfect place and time with personalized push messages, automated notification sequences, and location tracking.</p>
+              </div>
+            </div>
+            
+            <div class="showcase-card" data-target="analytics">
+              <div class="card-icon"><i data-lucide="bar-chart-3"></i></div>
+              <div class="card-details">
+                <h3>Behavioral Live Analytics</h3>
+                <p>Track user drop-offs, track retention metrics, and record screen actions out-of-the-box to make data-backed design updates.</p>
+              </div>
+            </div>
+            
           </div>
-          <div class="process-step reveal reveal-delay-6">
-            <div class="process-step-num" aria-hidden="true">06</div>
-            <div class="step-title" style="margin-top:var(--space-4)">Launch & Grow</div>
-            <div class="step-desc">App store submission, launch support, and ongoing maintenance packages.</div>
-          </div>
+          
         </div>
+        
       </div>
     </section>
 
@@ -693,7 +797,7 @@
       </div>
 
       <!-- Carousel Container (Full Width) -->
-      <div class="tech-carousel-wrapper reveal" style="margin-top: var(--space-10);">
+      <div class="tech-carousel-wrapper reveal" style="margin-top: 0;">
         <div class="tech-carousel-fade tech-carousel-fade--left"></div>
         <div class="tech-carousel-fade tech-carousel-fade--right"></div>
 
@@ -1764,13 +1868,7 @@
                 <div class="pricing-feature-icon">✓</div>Basic UI/UX Design
               </li>
               <li class="pricing-feature">
-                <div class="pricing-feature-icon">✓</div>6–8 Week Delivery
-              </li>
-              <li class="pricing-feature">
                 <div class="pricing-feature-icon">✓</div>App Store Submission
-              </li>
-              <li class="pricing-feature excluded">
-                <div class="pricing-feature-icon">–</div>Client Portal Access
               </li>
             </ul>
             <a href="contact.html" class="btn btn-outline-primary pricing-cta" id="pricing-mvp-btn">Get Started</a>
@@ -1790,12 +1888,6 @@
               </li>
               <li class="pricing-feature">
                 <div class="pricing-feature-icon">✓</div>Premium UI/UX Design
-              </li>
-              <li class="pricing-feature">
-                <div class="pricing-feature-icon">✓</div>10–14 Week Delivery
-              </li>
-              <li class="pricing-feature">
-                <div class="pricing-feature-icon">✓</div>Client Portal Access
               </li>
               <li class="pricing-feature">
                 <div class="pricing-feature-icon">✓</div>3 Months Support
@@ -1821,13 +1913,7 @@
                 <div class="pricing-feature-icon">✓</div>Custom Design System
               </li>
               <li class="pricing-feature">
-                <div class="pricing-feature-icon">✓</div>Dedicated Project Manager
-              </li>
-              <li class="pricing-feature">
                 <div class="pricing-feature-icon">✓</div>6 Months Support
-              </li>
-              <li class="pricing-feature">
-                <div class="pricing-feature-icon">✓</div>Priority Client Portal
               </li>
             </ul>
             <a href="contact.html" class="btn btn-primary pricing-cta" id="pricing-business-btn">Get Started</a>
@@ -1849,13 +1935,7 @@
                 <div class="pricing-feature-icon">✓</div>SLA Guarantee
               </li>
               <li class="pricing-feature">
-                <div class="pricing-feature-icon">✓</div>On-site Workshops
-              </li>
-              <li class="pricing-feature">
                 <div class="pricing-feature-icon">✓</div>12 Months Support
-              </li>
-              <li class="pricing-feature">
-                <div class="pricing-feature-icon">✓</div>Enterprise Portal
               </li>
             </ul>
             <a href="contact.html" class="btn btn-outline-primary pricing-cta" id="pricing-enterprise-btn">Contact

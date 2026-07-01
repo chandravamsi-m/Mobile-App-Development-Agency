@@ -443,6 +443,26 @@
     images.forEach(img => imgObserver.observe(img));
   }
 
+  /* ── Interactive Capabilities Showcase ─────────────────── */
+  const showcaseCards = document.querySelectorAll('.showcase-card');
+  if (showcaseCards.length) {
+    showcaseCards.forEach(card => {
+      card.addEventListener('click', function () {
+        showcaseCards.forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+        
+        const target = this.getAttribute('data-target');
+        const panes = document.querySelectorAll('.screen-pane');
+        panes.forEach(pane => pane.classList.remove('active'));
+        
+        const activePane = document.getElementById('screen-' + target);
+        if (activePane) {
+          activePane.classList.add('active');
+        }
+      });
+    });
+  }
+
   /* ── Expose utilities ──────────────────────────────────── */
   window.MADA = { showToast, openModal, closeModal, toggleTheme, toggleDir };
 

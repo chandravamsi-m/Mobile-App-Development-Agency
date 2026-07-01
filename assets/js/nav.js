@@ -37,8 +37,8 @@
             Home <span style="font-size:0.6rem;margin-left:2px;">▼</span>
           </a>
           <div class="nav-dropdown" role="menu">
-            <a href="index.html" class="nav-dropdown-item" role="menuitem"><i data-lucide="layout"></i> Home 1 (Split Hero)</a>
-            <a href="index-2.html" class="nav-dropdown-item" role="menuitem"><i data-lucide="sparkles"></i> Home 2 (SaaS Premium)</a>
+            <a href="index.html" class="nav-dropdown-item" role="menuitem">Home 1 (Split Hero)</a>
+            <a href="index-2.html" class="nav-dropdown-item" role="menuitem">Home 2 (SaaS Premium)</a>
           </div>
         </div>
       <a href="services.html"     class="nav-link ${isActive('services.html')}"     role="menuitem">Services</a>
@@ -51,8 +51,8 @@
           Dashboard <span style="font-size:0.6rem;margin-left:2px;">▼</span>
         </a>
         <div class="nav-dropdown" role="menu">
-          <a href="dashboard.html" class="nav-dropdown-item" role="menuitem"><i data-lucide="layout-dashboard"></i> Client Dashboard</a>
-          <a href="admin.html" class="nav-dropdown-item" role="menuitem"><i data-lucide="settings"></i> Admin Dashboard</a>
+          <a href="dashboard.html" class="nav-dropdown-item" role="menuitem">Client Dashboard</a>
+          <a href="admin.html" class="nav-dropdown-item" role="menuitem">Admin Dashboard</a>
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@
       <button class="theme-toggle" aria-label="Toggle theme"><i data-lucide="moon"></i></button>
       <a href="login.html"   class="btn btn-primary btn-sm">Login</a>
     </div>
-    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" style="z-index: 10000; position: relative;">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -69,39 +69,45 @@
 </nav>
 
 <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
-<div class="mobile-nav-item">
-  <button class="mobile-dropdown-toggle" aria-expanded="false"><i data-lucide="home"></i> Home <span class="arrow" style="font-size:0.7rem;">▼</span></button>
-  <div class="mobile-dropdown-menu">
-    <a href="index.html"   class="mobile-nav-link"><i data-lucide="layout"></i> Home 1 (Split Hero)</a>
-    <a href="index-2.html" class="mobile-nav-link"><i data-lucide="sparkles"></i> Home 2 (SaaS Premium)</a>
+  <div class="mobile-menu-header" style="display: flex; align-items: center; justify-content: space-between; padding-bottom: var(--space-4); border-bottom: 1px solid var(--border); margin-bottom: var(--space-4);">
+    <a href="index.html" class="nav-logo" style="margin: 0; display: flex; align-items: center; gap: 8px;">
+      <div class="nav-logo-icon" style="background:transparent; padding:0; width:34px; height:34px;">
+        <img src="assets/images/logo.svg" alt="" style="width:100%; height:100%; display:block;">
+      </div>
+      <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem;">App<span class="text-gradient">Forge</span></span>
+    </a>
   </div>
-</div>
-<a href="services.html"     class="mobile-nav-link ${isActive('services.html')}"><i data-lucide="settings"></i> Services</a>
-<a href="case-studies.html" class="mobile-nav-link ${isActive('case-studies.html')}"><i data-lucide="briefcase"></i> Case Studies</a>
-<a href="blog.html"         class="mobile-nav-link ${isActive('blog.html')}"><i data-lucide="file-text"></i> Blog</a>
-<a href="about.html"        class="mobile-nav-link ${isActive('about.html')}"><i data-lucide="users"></i> About</a>
-<a href="contact.html"      class="mobile-nav-link ${isActive('contact.html')}"><i data-lucide="mail"></i> Contact</a>
-<div class="mobile-nav-item">
-  <button class="mobile-dropdown-toggle" aria-expanded="false"><i data-lucide="layout-dashboard"></i> Dashboard <span class="arrow" style="font-size:0.7rem;">▼</span></button>
-  <div class="mobile-dropdown-menu">
-    <a href="dashboard.html" class="mobile-nav-link ${isActive('dashboard.html')}"><i data-lucide="layout-dashboard"></i> Client Dashboard</a>
-    <a href="admin.html"     class="mobile-nav-link ${isActive('admin.html')}"><i data-lucide="settings"></i> Admin Dashboard</a>
+
+  <div class="mobile-nav-item">
+    <button class="mobile-dropdown-toggle" aria-expanded="false">Home <span class="arrow" style="font-size:0.7rem;">▼</span></button>
+    <div class="mobile-dropdown-menu">
+      <a href="index.html"   class="mobile-nav-link">Home 1 (Split Hero)</a>
+      <a href="index-2.html" class="mobile-nav-link">Home 2 (SaaS Premium)</a>
+    </div>
   </div>
+  <a href="services.html"     class="mobile-nav-link ${isActive('services.html')}">Services</a>
+  <a href="case-studies.html" class="mobile-nav-link ${isActive('case-studies.html')}">Case Studies</a>
+  <a href="blog.html"         class="mobile-nav-link ${isActive('blog.html')}">Blog</a>
+  <a href="about.html"        class="mobile-nav-link ${isActive('about.html')}">About</a>
+  <a href="contact.html"      class="mobile-nav-link ${isActive('contact.html')}">Contact</a>
+  <div class="mobile-nav-item">
+    <button class="mobile-dropdown-toggle" aria-expanded="false">Dashboard <span class="arrow" style="font-size:0.7rem;">▼</span></button>
+    <div class="mobile-dropdown-menu">
+      <a href="dashboard.html" class="mobile-nav-link ${isActive('dashboard.html')}">Client Dashboard</a>
+      <a href="admin.html"     class="mobile-nav-link ${isActive('admin.html')}">Admin Dashboard</a>
+    </div>
+  </div>
+
+  <div class="mobile-nav-divider" style="margin: var(--space-4) 0 var(--space-2);"></div>
+  
+  <div class="mobile-menu-controls" style="display: flex; gap: 12px; align-items: center; margin: var(--space-2) 0;">
+    <button class="theme-toggle" aria-label="Toggle theme" style="width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; transition: all var(--transition-fast);"><i data-lucide="moon" style="width: 18px; height: 18px; margin: 0;"></i></button>
+    <button class="rtl-toggle" aria-label="Toggle RTL layout" style="height: 42px; padding: 0 16px; border-radius: var(--radius-full); border: 1px solid var(--border); font-size: 0.8125rem; font-weight: 600; display: flex; align-items: center; justify-content: center; background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; transition: all var(--transition-fast);">RTL</button>
+  </div>
+
+  <a href="login.html" class="btn btn-primary full-width" style="justify-content: center; padding: 12px; font-weight: 600; margin-top: var(--space-2);">Login</a>
 </div>
-<div class="mobile-nav-divider"></div>
-<div class="mobile-menu-controls">
-  <button class="mobile-control-btn theme-toggle" aria-label="Toggle theme">
-    <span class="theme-icon"><i data-lucide="moon"></i></span>
-    <span class="theme-text">Dark Mode</span>
-  </button>
-  <button class="mobile-control-btn rtl-toggle" aria-label="Toggle RTL layout">
-    <span class="rtl-icon"><i data-lucide="globe"></i></span>
-    <span class="theme-text rtl-text">RTL Layout</span>
-  </button>
-</div>
-<div class="mobile-nav-divider"></div>
-<a href="login.html"   class="btn btn-primary full-width">Login</a>
-</div>`;
+<div class="mobile-menu-backdrop"></div>`;
 
   /* ── Footer HTML ─────────────────────────────────────────── */
   const FOOTER_HTML = `
