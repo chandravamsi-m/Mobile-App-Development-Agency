@@ -26,8 +26,10 @@
   <div class="container">
     <div class="navbar-inner">
       <a href="index.html" class="nav-logo" aria-label="AppForge home">
-        <div class="nav-logo-icon" aria-hidden="true">⚡</div>
-        AppForge
+        <div class="nav-logo-icon" aria-hidden="true" style="background:transparent;padding:0;width:38px;height:38px;">
+          <img src="assets/images/logo.svg" alt="" style="width:100%;height:100%;display:block;">
+        </div>
+        <span>App<span class="text-gradient">Forge</span></span>
       </a>
       <div class="nav-menu" role="menubar">
         <div class="nav-item">
@@ -108,8 +110,10 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo">
-          <div class="footer-logo-icon" aria-hidden="true">⚡</div>
-          AppForge
+          <div class="footer-logo-icon" aria-hidden="true" style="background:transparent;padding:0;width:38px;height:38px;">
+            <img src="assets/images/logo.svg" alt="" style="width:100%;height:100%;display:block;">
+          </div>
+          <span>App<span class="text-gradient">Forge</span></span>
         </div>
         <p>Premium mobile app development agency helping startups and enterprises build market-leading iOS, Android, and cross-platform applications.</p>
         <div class="social-links" aria-label="Social media links">
