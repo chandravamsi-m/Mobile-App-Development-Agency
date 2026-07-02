@@ -10,6 +10,49 @@
   display: flex;
 }
 
+@media (max-width: 600px) {
+  .invoice-table {
+    min-width: auto !important;
+  }
+  .invoice-table, 
+  .invoice-table tbody, 
+  .invoice-table tr, 
+  .invoice-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .invoice-table thead {
+    display: none;
+  }
+  .invoice-table tr {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 12px;
+    margin-bottom: 12px;
+    background: var(--surface);
+  }
+  .invoice-table td {
+    border: none;
+    border-bottom: 1px dashed var(--border);
+    padding: 8px 0;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .invoice-table td:last-child {
+    border-bottom: none;
+    justify-content: flex-end;
+  }
+  .invoice-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-right: var(--space-3);
+  }
+}
+
 /* ══════════════════════════════════════════════════════════════
    SIDEBAR — Enterprise SaaS Redesign
    Pixel-perfect alignment · Viewport-fit · Modern hierarchy
@@ -399,6 +442,8 @@
   flex-direction: column;
   min-height: 100vh;
   transition: margin var(--transition-base);
+  min-width: 0;
+  max-width: 100%;
 }
 [dir="rtl"] .dashboard-main { margin-left: 0; margin-right: 256px; }
 
@@ -1002,7 +1047,24 @@
   .dashboard-content { padding: var(--space-4); }
   .dash-page-header { flex-direction: column; }
 }
+@media (max-width: 580px) {
+  .milestone-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .req-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+  .req-actions {
+    align-self: flex-end;
+    margin-top: var(--space-1);
+  }
+}
 @media (max-width: 480px) {
   .widget-grid { grid-template-columns: 1fr; }
-  .file-grid   { grid-template-columns: 1fr 1fr; }
+  .file-grid   { grid-template-columns: 1fr; }
 }

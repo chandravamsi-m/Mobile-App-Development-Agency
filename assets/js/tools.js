@@ -150,11 +150,21 @@
       const roi = ((projectedRevenue - investment) / investment * 100).toFixed(1);
       const breakEven = (investment / monthlyRevenue).toFixed(1);
 
-      document.getElementById('roi-monthly-rev')?.textContent = `$${monthlyRevenue.toLocaleString()}`;
-      document.getElementById('roi-annual-rev')?.textContent = `$${annualRevenue.toLocaleString()}`;
-      document.getElementById('roi-projected-rev')?.textContent = `$${projectedRevenue.toLocaleString()}`;
-      document.getElementById('roi-percentage')?.textContent = `${roi}%`;
-      document.getElementById('roi-break-even')?.textContent = `${breakEven} months`;
+      const monthlyRevEl = document.getElementById('roi-monthly-rev');
+      if (monthlyRevEl) monthlyRevEl.textContent = `$${monthlyRevenue.toLocaleString()}`;
+      
+      const annualRevEl = document.getElementById('roi-annual-rev');
+      if (annualRevEl) annualRevEl.textContent = `$${annualRevenue.toLocaleString()}`;
+      
+      const projectedRevEl = document.getElementById('roi-projected-rev');
+      if (projectedRevEl) projectedRevEl.textContent = `$${projectedRevenue.toLocaleString()}`;
+      
+      const pctEl = document.getElementById('roi-percentage');
+      if (pctEl) pctEl.textContent = `${roi}%`;
+      
+      const breakEvenEl = document.getElementById('roi-break-even');
+      if (breakEvenEl) breakEvenEl.textContent = `${breakEven} months`;
+      
       document.getElementById('roi-result')?.classList.add('show');
     }
 

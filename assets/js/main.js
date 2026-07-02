@@ -414,13 +414,18 @@
     }
   });
 
-  /* ── Smooth Scroll for anchor links ───────────────────── */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const href = anchor.getAttribute('href') || '';
+      if (href === '#' || href === '') return;
+      try {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } catch (err) {
+        console.warn('Invalid scroll anchor selector:', href);
       }
     });
   });

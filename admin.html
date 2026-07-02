@@ -25,6 +25,61 @@
     .mini-chart-bar { flex: 1; background: var(--gradient-primary); border-radius: var(--radius-sm) var(--radius-sm) 0 0; transition: height 1s ease; }
     
     /* Collapsed sidebar — handled by dashboard.css */
+    /* Ensure theme-toggle icons are visible even when innerHTML gets replaced */
+    .theme-toggle i, .theme-toggle svg { width: 18px !important; height: 18px !important; display: block; }
+    
+    /* Hide mobile sidebar controls by default on desktop */
+    .sidebar-toggles-mobile { display: none; }
+    
+    @media (max-width: 840px) {
+      .sidebar-toggles-mobile {
+        display: flex;
+        gap: 10px;
+        padding: 10px 16px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .sidebar-ctrl-btn {
+        flex: 1;
+        height: 36px;
+        background: rgba(255,255,255,0.06);
+        border: 1.5px solid rgba(255,255,255,0.1);
+        color: #fff;
+        border-radius: var(--radius-md);
+        font-family: var(--font-body);
+        font-size: 0.78rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transition: all var(--transition-fast);
+      }
+      .sidebar-ctrl-btn:hover {
+        background: rgba(255,255,255,0.12);
+        border-color: var(--primary);
+        color: #fff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      }
+      .sidebar-ctrl-btn:active {
+        transform: translateY(0);
+      }
+      button.sidebar-ctrl-btn.theme-toggle svg,
+      button.sidebar-ctrl-btn.theme-toggle i {
+        width: 14px !important;
+        height: 14px !important;
+      }
+      /* Hide them in topbar on mobile */
+      .dashboard-topbar .rtl-toggle,
+      .dashboard-topbar .theme-toggle {
+        display: none !important;
+      }
+    }
+    
     /* Inline override: accent bar uses orange primary for admin */
     .sidebar-nav-item.active::before { background: var(--primary); }
     .sidebar-nav-badge { background: var(--primary); }
@@ -137,11 +192,12 @@
 <!-- Left Sidebar Navigation -->
 <aside class="sidebar" role="navigation" aria-label="Admin Navigation">
   <div class="sidebar-header">
-    <a href="index.html" class="sidebar-logo">
-      <div class="sidebar-logo-icon" style="background:linear-gradient(135deg, #f97316, #ea580c)">⚡</div>
-      <span>AppForge Admin</span>
+    <a href="index.html" class="sidebar-logo" style="display: flex; align-items: center; gap: 8px;">
+      <div class="sidebar-logo-icon" style="background:transparent; padding:0; width:34px; height:34px; box-shadow:none;">
+        <img src="assets/images/logo.svg" alt="" style="width:100%; height:100%; display:block;">
+      </div>
+      <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem;">App<span class="text-gradient">Forge</span> <span style="font-size:0.75rem; background:var(--primary); color:white; padding:2px 6px; border-radius:4px; margin-left:4px; font-weight:700;">Admin</span></span>
     </a>
-    <button class="sidebar-collapse-btn" id="sidebar-collapse-toggle" aria-label="Collapse sidebar">◀</button>
   </div>
 
   <div class="project-selector">
@@ -181,13 +237,17 @@
   </nav>
 
   <div class="sidebar-footer">
+    <div class="sidebar-toggles-mobile">
+      <button class="rtl-toggle sidebar-ctrl-btn" aria-label="Toggle Layout Direction">RTL</button>
+      <button class="theme-toggle sidebar-ctrl-btn" aria-label="Toggle Theme"><i data-lucide="moon"></i></button>
+    </div>
     <div class="sidebar-user">
       <div class="sidebar-user-avatar" style="background:#ea580c">AD</div>
       <div class="sidebar-user-info">
         <div class="sidebar-user-name">Admin Director</div>
         <div class="sidebar-user-role">Super Admin</div>
       </div>
-      <div class="sidebar-user-menu" data-action="logout" title="Sign Out">✖</div>
+      <div class="sidebar-user-menu" data-action="logout" title="Sign Out" style="cursor:pointer; display:flex; align-items:center; justify-content:center;"><i data-lucide="log-out" style="width:16px; height:16px; stroke:var(--text-muted);"></i></div>
     </div>
   </div>
 </aside>
@@ -234,6 +294,7 @@
         </div>
       </div>
       
+      <button class="rtl-toggle topbar-action-btn" style="border: 1px solid var(--border); font-size: 0.8125rem; font-weight:700; width:38px; height:38px; display:flex; align-items:center; justify-content:center; cursor:pointer;">RTL</button>
       <button class="theme-toggle topbar-action-btn" style="border: 1px solid var(--border); font-size:0; display:flex; align-items:center; justify-content:center; width:38px; height:38px;"><i data-lucide="moon" style="width:18px; height:18px; margin:0;"></i></button>
     </div>
   </header>
@@ -278,7 +339,7 @@
           </div>
         </div>
         <div class="widget-card">
-          <div class="widget-icon" style="background:rgba(139,92,246,.1);color:#8b5cf6">🛡️</div>
+          <div class="widget-icon" style="background:rgba(139,92,246,.1);color:#8b5cf6; font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="shield" style="width:20px; height:20px; stroke:#8b5cf6; margin:0;"></i></div>
           <div class="widget-info">
             <div class="widget-label">Developers & PMs</div>
             <div class="widget-value">28 staff</div>
@@ -302,44 +363,44 @@
           </thead>
           <tbody>
             <tr data-role="client" data-name="john dowson">
-              <td style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
-              <td><strong>John Dowson</strong></td>
-              <td>john@finnova.com</td>
-              <td><span class="badge badge-primary">Client</span></td>
-              <td><span class="badge badge-success">Active Workspace</span></td>
-              <td><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
+              <td data-label="Select" style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
+              <td data-label="Name"><strong>John Dowson</strong></td>
+              <td data-label="Email">john@finnova.com</td>
+              <td data-label="Role"><span class="badge badge-primary">Client</span></td>
+              <td data-label="Workspace Status"><span class="badge badge-success">Active Workspace</span></td>
+              <td data-label="Action"><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
             </tr>
             <tr data-role="client" data-name="marcus reed">
-              <td style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
-              <td><strong>Marcus Reed</strong></td>
-              <td>marcus@finnova.com</td>
-              <td><span class="badge badge-primary">Client</span></td>
-              <td><span class="badge badge-success">Active Workspace</span></td>
-              <td><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
+              <td data-label="Select" style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
+              <td data-label="Name"><strong>Marcus Reed</strong></td>
+              <td data-label="Email">marcus@finnova.com</td>
+              <td data-label="Role"><span class="badge badge-primary">Client</span></td>
+              <td data-label="Workspace Status"><span class="badge badge-success">Active Workspace</span></td>
+              <td data-label="Action"><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
             </tr>
             <tr data-role="developer" data-name="priya rajan">
-              <td style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
-              <td><strong>Priya Rajan</strong></td>
-              <td>priya@appforge.io</td>
-              <td><span class="badge badge-info" style="background:#8b5cf6">Developer</span></td>
-              <td><span class="badge badge-success">Available</span></td>
-              <td><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
+              <td data-label="Select" style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
+              <td data-label="Name"><strong>Priya Rajan</strong></td>
+              <td data-label="Email">priya@appforge.io</td>
+              <td data-label="Role"><span class="badge badge-primary" style="background:#8b5cf6">Developer</span></td>
+              <td data-label="Workspace Status"><span class="badge badge-success">Available</span></td>
+              <td data-label="Action"><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
             </tr>
             <tr data-role="designer" data-name="lena novak">
-              <td style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
-              <td><strong>Lena Novak</strong></td>
-              <td>lena@appforge.io</td>
-              <td><span class="badge badge-accent">Designer</span></td>
-              <td><span class="badge badge-success">Available</span></td>
-              <td><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
+              <td data-label="Select" style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
+              <td data-label="Name"><strong>Lena Novak</strong></td>
+              <td data-label="Email">lena@appforge.io</td>
+              <td data-label="Role"><span class="badge badge-accent">Designer</span></td>
+              <td data-label="Workspace Status"><span class="badge badge-success">Available</span></td>
+              <td data-label="Action"><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
             </tr>
             <tr data-role="admin" data-name="sarah connor">
-              <td style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
-              <td><strong>Sarah Connor</strong></td>
-              <td>sarah@appforge.io</td>
-              <td><span class="badge badge-danger">Admin</span></td>
-              <td><span class="badge badge-success">Root Authority</span></td>
-              <td><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
+              <td data-label="Select" style="text-align: center;"><input type="checkbox" class="user-select-check"></td>
+              <td data-label="Name"><strong>Sarah Connor</strong></td>
+              <td data-label="Email">sarah@appforge.io</td>
+              <td data-label="Role"><span class="badge badge-danger">Admin</span></td>
+              <td data-label="Workspace Status"><span class="badge badge-success">Root Authority</span></td>
+              <td data-label="Action"><button class="btn btn-ghost btn-sm" onclick="toggleUserStatus(this)">Deactivate</button></td>
             </tr>
           </tbody>
         </table>
@@ -511,7 +572,7 @@
           <div class="dash-card-header">
             <h3 class="dash-card-title">Agency Top Valued Accounts</h3>
           </div>
-          <div class="dash-card-body" style="padding:0">
+          <div class="dash-card-body" style="padding:0; overflow-x:auto;">
             <table class="invoice-table" style="width:100%">
               <thead>
                 <tr>
@@ -522,19 +583,19 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>FinNova Banking</strong></td>
-                  <td>$25,000 / mo</td>
-                  <td><span class="badge badge-success">99.99%</span></td>
+                  <td data-label="Client"><strong>FinNova Banking</strong></td>
+                  <td data-label="Monthly Retainer">$25,000 / mo</td>
+                  <td data-label="Uptime Target"><span class="badge badge-success">99.99%</span></td>
                 </tr>
                 <tr>
-                  <td><strong>PulseMed Corp</strong></td>
-                  <td>$18,500 / mo</td>
-                  <td><span class="badge badge-success">99.95%</span></td>
+                  <td data-label="Client"><strong>PulseMed Corp</strong></td>
+                  <td data-label="Monthly Retainer">$18,500 / mo</td>
+                  <td data-label="Uptime Target"><span class="badge badge-success">99.95%</span></td>
                 </tr>
                 <tr>
-                  <td><strong>TravelEasy Ltd</strong></td>
-                  <td>$12,000 / mo</td>
-                  <td><span class="badge badge-primary">99.90%</span></td>
+                  <td data-label="Client"><strong>TravelEasy Ltd</strong></td>
+                  <td data-label="Monthly Retainer">$12,000 / mo</td>
+                  <td data-label="Uptime Target"><span class="badge badge-primary">99.90%</span></td>
                 </tr>
               </tbody>
             </table>
@@ -564,7 +625,7 @@
           </div>
         </div>
         <div class="widget-card">
-          <div class="widget-icon" style="background:rgba(59,130,246,.1);color:var(--primary-light)">⏱️</div>
+          <div class="widget-icon" style="background:rgba(59,130,246,.1);color:var(--primary-light); font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="clock" style="width:20px; height:20px; stroke:var(--primary-light); margin:0;"></i></div>
           <div class="widget-info">
             <div class="widget-label">DB Latency (AWS RDS)</div>
             <div class="widget-value">42 ms</div>
@@ -572,7 +633,7 @@
           </div>
         </div>
         <div class="widget-card">
-          <div class="widget-icon" style="background:rgba(139,92,246,.1);color:#8b5cf6">💾</div>
+          <div class="widget-icon" style="background:rgba(139,92,246,.1);color:#8b5cf6; font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="cpu" style="width:20px; height:20px; stroke:#8b5cf6; margin:0;"></i></div>
           <div class="widget-info">
             <div class="widget-label">VM CPU Usage</div>
             <div class="widget-value">12.4%</div>
@@ -584,7 +645,7 @@
       <!-- Live Logs Console -->
       <div class="card" style="margin-top: 24px;">
         <div class="dash-card-header" style="padding: 0 0 16px 0; border-bottom: 1px solid var(--border)">
-          <h3 class="dash-card-title">📟 Live System Console Stream</h3>
+          <h3 class="dash-card-title" style="display:inline-flex; align-items:center; gap:8px;"><i data-lucide="terminal" style="width:20px; height:20px; stroke:var(--primary);"></i> Live System Console Stream</h3>
           <span style="font-size:0.75rem; color:var(--text-muted)">Live WebSocket Connection</span>
         </div>
         <div style="padding-top: 16px;">
@@ -690,6 +751,17 @@
         const activeNav = document.querySelector(`.sidebar-nav-item[data-page="${pageId}"]`);
         pageTitle.textContent = activeNav ? activeNav.querySelector('.sidebar-nav-label').textContent : pageId;
       }
+      
+      // Auto-close sidebar on mobile
+      if (window.innerWidth <= 1024) {
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        sidebar?.classList.remove('open');
+        overlay?.classList.remove('open');
+      }
+
+      // Reset scroll position to top
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }
 
     navItems.forEach(item => {
@@ -713,16 +785,6 @@
     sidebarOverlayEl?.addEventListener('click', function() {
       sidebarEl.classList.remove('open');
       sidebarOverlayEl.classList.remove('open');
-    });
-
-    // Sidebar Collapse
-    const collapseToggle = document.getElementById('sidebar-collapse-toggle');
-    const dashMainEl = document.querySelector('.dashboard-main');
-
-    collapseToggle?.addEventListener('click', () => {
-      const isCollapsed = sidebarEl.classList.toggle('collapsed');
-      dashMainEl.classList.toggle('expanded', isCollapsed);
-      collapseToggle.textContent = isCollapsed ? '▶' : '◀';
     });
 
     // User table filter

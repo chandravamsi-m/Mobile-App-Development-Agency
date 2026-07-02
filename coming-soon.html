@@ -56,21 +56,44 @@
       letter-spacing: 0.05em;
       color: rgba(255,255,255,0.6);
     }
+
+    @media (max-width: 580px) {
+      .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-3);
+      }
+      .countdown-box {
+        padding: var(--space-4) var(--space-3);
+      }
+      #subscribe-form {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      #subscribe-form .form-group {
+        width: 100%;
+        flex: none !important;
+        min-width: 0 !important;
+      }
+      #subscribe-form button {
+        width: 100%;
+        flex: none !important;
+      }
+    }
   </style>
   <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
-
+ 
 <main id="main">
   <div class="cs-wrapper">
     <!-- Grid Overlay Background -->
     <div style="position:absolute; inset:0; opacity:0.05; background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 24px 24px;" aria-hidden="true"></div>
     
     <div class="cs-card reveal">
-      <a href="index.html" class="sidebar-logo" style="justify-content:center; color:#fff; font-size:1.5rem; margin-bottom:var(--space-6);">
-        <div class="sidebar-logo-icon">⚡</div>
-        AppForge
+      <a href="index.html" class="nav-logo" style="justify-content:center; margin-bottom:var(--space-8); display:flex; align-items:center; gap:var(--space-2); text-decoration:none;">
+        <div class="nav-logo-icon" style="width:34px; height:34px; background:var(--gradient-primary); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(37,99,235,.3);"><img src="assets/images/logo.svg" alt="AppForge Logo" style="width:20px; height:20px;"></div>
+        <span style="font-family:var(--font-heading); font-weight:700; font-size:1.5rem; color:#fff; letter-spacing:-.01em;">AppForge</span>
       </a>
       
       <span class="badge badge-accent" style="margin-bottom:var(--space-3)">Portal v3.0 Release</span>

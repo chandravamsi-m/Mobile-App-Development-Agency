@@ -14,6 +14,61 @@
     .mini-chart { display: flex; align-items: flex-end; gap: 8px; height: 100px; margin-top: var(--space-4); padding-bottom: 8px; border-bottom: 1.5px solid var(--border); }
     .mini-chart-bar { flex: 1; background: var(--gradient-primary); border-radius: var(--radius-sm) var(--radius-sm) 0 0; transition: height 1s ease; }
     
+    /* Ensure theme-toggle icons are visible even when innerHTML gets replaced */
+    .theme-toggle i, .theme-toggle svg { width: 18px !important; height: 18px !important; display: block; }
+    
+    /* Hide mobile sidebar controls by default on desktop */
+    .sidebar-toggles-mobile { display: none; }
+    
+    @media (max-width: 840px) {
+      .sidebar-toggles-mobile {
+        display: flex;
+        gap: 10px;
+        padding: 10px 16px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .sidebar-ctrl-btn {
+        flex: 1;
+        height: 36px;
+        background: rgba(255,255,255,0.06);
+        border: 1.5px solid rgba(255,255,255,0.1);
+        color: #fff;
+        border-radius: var(--radius-md);
+        font-family: var(--font-body);
+        font-size: 0.78rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transition: all var(--transition-fast);
+      }
+      .sidebar-ctrl-btn:hover {
+        background: rgba(255,255,255,0.12);
+        border-color: var(--primary);
+        color: #fff;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      }
+      .sidebar-ctrl-btn:active {
+        transform: translateY(0);
+      }
+      button.sidebar-ctrl-btn.theme-toggle svg,
+      button.sidebar-ctrl-btn.theme-toggle i {
+        width: 14px !important;
+        height: 14px !important;
+      }
+      /* Hide them in topbar on mobile */
+      .dashboard-topbar .rtl-toggle,
+      .dashboard-topbar .theme-toggle {
+        display: none !important;
+      }
+    }
+    
     /* Collapsed sidebar — handled by dashboard.css */
   </style>
   <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
@@ -23,17 +78,18 @@
 <!-- Left Sidebar Navigation -->
 <aside class="sidebar" role="navigation" aria-label="Portal Navigation">
   <div class="sidebar-header">
-    <a href="index.html" class="sidebar-logo">
-      <div class="sidebar-logo-icon">⚡</div>
-      <span>AppForge</span>
+    <a href="index.html" class="sidebar-logo" style="display: flex; align-items: center; gap: 8px;">
+      <div class="sidebar-logo-icon" style="background:transparent; padding:0; width:34px; height:34px; box-shadow:none;">
+        <img src="assets/images/logo.svg" alt="" style="width:100%; height:100%; display:block;">
+      </div>
+      <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem;">App<span class="text-gradient">Forge</span></span>
     </a>
-    <button class="sidebar-collapse-btn" id="sidebar-collapse-toggle" aria-label="Collapse sidebar">◀</button>
   </div>
 
   <div class="project-selector">
     <div class="project-select-label">Active Workspace</div>
     <div class="project-select-btn">
-      <div class="project-icon">🏦</div>
+      <div class="project-icon" style="background:var(--primary-50); font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="building-2" style="width:16px; height:16px; stroke:var(--primary);"></i></div>
       <div class="project-name">FinNova Banking</div>
       <div class="project-status">● Live</div>
     </div>
@@ -79,13 +135,17 @@
   </nav>
 
   <div class="sidebar-footer">
+    <div class="sidebar-toggles-mobile">
+      <button class="rtl-toggle sidebar-ctrl-btn" aria-label="Toggle Layout Direction">RTL</button>
+      <button class="theme-toggle sidebar-ctrl-btn" aria-label="Toggle Theme"><i data-lucide="moon"></i></button>
+    </div>
     <div class="sidebar-user">
       <div class="sidebar-user-avatar">JD</div>
       <div class="sidebar-user-info">
         <div class="sidebar-user-name">John Dowson</div>
         <div class="sidebar-user-role">Product Owner</div>
       </div>
-      <div class="sidebar-user-menu" data-action="logout" title="Sign Out">✖</div>
+      <div class="sidebar-user-menu" data-action="logout" title="Sign Out" style="cursor:pointer; display:flex; align-items:center; justify-content:center;"><i data-lucide="log-out" style="width:16px; height:16px; stroke:var(--text-muted);"></i></div>
     </div>
   </div>
 </aside>
@@ -101,7 +161,7 @@
       <button class="sidebar-toggle-btn" aria-label="Toggle sidebar menu">☰</button>
       <h1 class="topbar-page-title">Overview</h1>
       <div class="topbar-search">
-        <span class="topbar-search-icon">🔍</span>
+        <span class="topbar-search-icon" style="display:flex; align-items:center;"><i data-lucide="search" style="width:16px; height:16px;"></i></span>
         <input type="text" placeholder="Search tasks, uploads, deliverables..." aria-label="Search items">
       </div>
     </div>
@@ -139,6 +199,7 @@
         </div>
       </div>
       
+      <button class="rtl-toggle topbar-action-btn" style="border: 1px solid var(--border); font-size: 0.8125rem; font-weight:700; width:38px; height:38px; display:flex; align-items:center; justify-content:center; cursor:pointer;">RTL</button>
       <button class="theme-toggle topbar-action-btn" style="border: 1px solid var(--border); font-size:0; display:flex; align-items:center; justify-content:center; width:38px; height:38px;"><i data-lucide="moon" style="width:18px; height:18px; margin:0;"></i></button>
     </div>
   </header>
@@ -169,7 +230,7 @@
           </div>
         </div>
         <div class="widget-card">
-          <div class="widget-icon" style="background:rgba(34,197,94,.1);color:var(--success)">✅</div>
+          <div class="widget-icon" style="background:rgba(34,197,94,.1);color:var(--success); font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="check-circle" style="width:20px; height:20px; stroke:var(--success); margin:0;"></i></div>
           <div class="widget-info">
             <div class="widget-label">Tasks Completed</div>
             <div class="widget-value">24 / 30</div>
@@ -177,7 +238,7 @@
           </div>
         </div>
         <div class="widget-card">
-          <div class="widget-icon" style="background:rgba(245,158,11,.1);color:var(--warning)">⏳</div>
+          <div class="widget-icon" style="background:rgba(245,158,11,.1);color:var(--warning); font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="users" style="width:20px; height:20px; stroke:var(--warning); margin:0;"></i></div>
           <div class="widget-info">
             <div class="widget-label">Active Developers</div>
             <div class="widget-value">8</div>
@@ -185,7 +246,7 @@
           </div>
         </div>
         <div class="widget-card">
-          <div class="widget-icon" style="background:rgba(239,68,68,.1);color:var(--danger)">📅</div>
+          <div class="widget-icon" style="background:rgba(239,68,68,.1);color:var(--danger); font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="calendar" style="width:20px; height:20px; stroke:var(--danger); margin:0;"></i></div>
           <div class="widget-info">
             <div class="widget-label">Target Launch</div>
             <div class="widget-value">14d</div>
@@ -344,12 +405,12 @@
 
       <div class="req-list">
         <div class="req-item">
-          <div class="req-icon" style="background:rgba(37,99,235,.1);color:var(--primary)">📋</div>
+          <div class="req-icon" style="background:rgba(37,99,235,.1);color:var(--primary); font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="clipboard-list" style="width:20px; height:20px; stroke:var(--primary); margin:0;"></i></div>
           <div class="req-info">
             <div class="req-title">Plaid Multi-Account Sync API</div>
             <div class="req-desc">Request access scope allowing users to aggregate balances across multiple banks.</div>
             <div class="req-meta">
-              <span class="req-meta-item">📅 Dec 14, 2025</span>
+              <span class="req-meta-item" style="display:inline-flex; align-items:center; gap:4px;"><i data-lucide="calendar" style="width:12px; height:12px;"></i> Dec 14, 2025</span>
               <span class="badge badge-danger">high</span>
             </div>
           </div>
@@ -358,12 +419,12 @@
           </div>
         </div>
         <div class="req-item">
-          <div class="req-icon" style="background:rgba(37,99,235,.1);color:var(--primary)">📋</div>
+          <div class="req-icon" style="background:rgba(37,99,235,.1);color:var(--primary); font-size:0; display:flex; align-items:center; justify-content:center;"><i data-lucide="clipboard-list" style="width:20px; height:20px; stroke:var(--primary); margin:0;"></i></div>
           <div class="req-info">
             <div class="req-title">Biometric Prompt Fallback Option</div>
             <div class="req-desc">Implement passcode lock alternative if biometric scans fail three times.</div>
             <div class="req-meta">
-              <span class="req-meta-item">📅 Dec 10, 2025</span>
+              <span class="req-meta-item" style="display:inline-flex; align-items:center; gap:4px;"><i data-lucide="calendar" style="width:12px; height:12px;"></i> Dec 10, 2025</span>
               <span class="badge badge-warning">medium</span>
             </div>
           </div>
@@ -377,7 +438,7 @@
       <div class="modal-overlay" id="req-modal" style="z-index: 210;">
         <div class="modal-card card" style="max-width: 500px; width: 100%; margin: 60px auto; position: relative;">
           <button class="modal-close" style="position: absolute; right: 16px; top: 16px; font-size:1.25rem;">✕</button>
-          <h3 style="font-size:1.25rem; margin-bottom:var(--space-2)">📋 Submit Requirement</h3>
+          <h3 style="font-size:1.25rem; margin-bottom:var(--space-2); display:inline-flex; align-items:center; gap:8px;"><i data-lucide="clipboard-list" style="width:20px; height:20px; stroke:var(--primary);"></i> Submit Requirement</h3>
           <p style="font-size:0.8125rem; color:var(--text-muted); margin-bottom:var(--space-5)">State details of the scope module or API addition.</p>
           
           <form id="req-form">
@@ -578,7 +639,7 @@
         </div>
       </div>
 
-      <div class="card" style="padding:0">
+      <div class="card" style="padding:0; overflow-x:auto;">
         <table class="invoice-table" style="width:100%">
           <thead>
             <tr>
@@ -592,20 +653,20 @@
           </thead>
           <tbody>
             <tr>
-              <td class="invoice-id">#INV-2025-004</td>
-              <td>Sprint 3 Development Milestone</td>
-              <td>Dec 10, 2025</td>
-              <td>$12,500</td>
-              <td><span class="badge badge-success">Paid</span></td>
-              <td><button class="btn btn-outline-primary btn-sm invoice-download"><i data-lucide="download"></i> PDF</button></td>
+              <td data-label="Invoice ID" class="invoice-id">#INV-2025-004</td>
+              <td data-label="Reference">Sprint 3 Development Milestone</td>
+              <td data-label="Due Date">Dec 10, 2025</td>
+              <td data-label="Amount">$12,500</td>
+              <td data-label="Status"><span class="badge badge-success">Paid</span></td>
+              <td data-label="Actions"><button class="btn btn-outline-primary btn-sm invoice-download"><i data-lucide="download"></i> PDF</button></td>
             </tr>
             <tr>
-              <td class="invoice-id">#INV-2025-005</td>
-              <td>Sprint 4 Plaid Pay Integration</td>
-              <td>Jan 05, 2026</td>
-              <td>$12,500</td>
-              <td><span class="badge badge-warning">Unpaid</span></td>
-              <td><button class="btn btn-outline-primary btn-sm invoice-download"><i data-lucide="download"></i> PDF</button></td>
+              <td data-label="Invoice ID" class="invoice-id">#INV-2025-005</td>
+              <td data-label="Reference">Sprint 4 Plaid Pay Integration</td>
+              <td data-label="Due Date">Jan 05, 2026</td>
+              <td data-label="Amount">$12,500</td>
+              <td data-label="Status"><span class="badge badge-warning">Unpaid</span></td>
+              <td data-label="Actions"><button class="btn btn-outline-primary btn-sm invoice-download"><i data-lucide="download"></i> PDF</button></td>
             </tr>
           </tbody>
         </table>
@@ -710,17 +771,5 @@
 <!-- Scripts -->
 <script src="assets/js/main.js"></script>
 <script src="assets/js/dashboard.js"></script>
-<script>
-  // Setup sidebar collapse
-  const collapseToggle = document.getElementById('sidebar-collapse-toggle');
-  const sidebarEl = document.querySelector('.sidebar');
-  const dashMainEl = document.querySelector('.dashboard-main');
-  
-  collapseToggle?.addEventListener('click', () => {
-    const isCollapsed = sidebarEl.classList.toggle('collapsed');
-    dashMainEl.classList.toggle('expanded', isCollapsed);
-    collapseToggle.textContent = isCollapsed ? '▶' : '◀';
-  });
-</script>
 </body>
 </html>

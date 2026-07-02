@@ -2206,45 +2206,7 @@
   <script src="assets/js/nav.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/tools.js"></script>
-  <script>
-    (function () {
-      function runDebug() {
-        setTimeout(() => {
-          const elements = document.querySelectorAll('*');
-          const bodyWidth = document.documentElement.clientWidth;
-          const overflows = [];
-          elements.forEach(el => {
-            if (el.id === 'overflow-debug' || el.closest('#overflow-debug')) return;
-            const rect = el.getBoundingClientRect();
-            if (rect.right > bodyWidth + 1) {
-              overflows.push({
-                tag: el.tagName,
-                id: el.id,
-                class: el.className,
-                width: rect.width,
-                right: rect.right
-              });
-            }
-          });
-          console.log("OVERFLOW DETECTOR - Viewport Width:", bodyWidth, "Overflows Found:", overflows.length);
-          if (overflows.length > 0) {
-            const div = document.createElement('div');
-            div.id = 'overflow-debug';
-            div.style.cssText = 'position:fixed;top:10px;left:10px;background:rgba(220,38,38,0.95);color:white;z-index:99999;padding:12px;font-size:12px;max-height:300px;width:300px;overflow:auto;border-radius:8px;box-shadow:0 10px 15px rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.2);font-family:sans-serif;pointer-events:auto;';
-            div.innerHTML = '<h3 style="margin-top:0;font-size:14px;border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:4px;margin-bottom:8px;">Overflows (viewport: ' + bodyWidth + 'px)</h3>' +
-              overflows.map(o => `<strong>&lt;${o.tag.toLowerCase()}&gt;</strong>${o.id ? ' #' + o.id : ''}${o.class ? ' .' + o.class.trim().split(/\s+/).join('.') : ''} (w: ${Math.round(o.width)}px, r: ${Math.round(o.right)}px)`).join('<br><br>');
-            document.body.appendChild(div);
-          }
-        }, 1500);
-      }
 
-      if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        runDebug();
-      } else {
-        window.addEventListener('DOMContentLoaded', runDebug);
-      }
-    })();
-  </script>
 </body>
 
 </html>

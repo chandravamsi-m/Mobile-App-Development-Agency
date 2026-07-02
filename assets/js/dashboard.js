@@ -20,6 +20,10 @@
     }
     // Close sidebar on mobile after navigation
     if (window.innerWidth <= 1024) closeSidebar();
+    
+    // Reset scroll position to top
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    
     // Trigger page-specific init
     initPageFeatures(pageId);
   }
